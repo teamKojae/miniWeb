@@ -1,0 +1,611 @@
+
+<html lang="en">
+<head>
+<title>Treva - UIKit</title>
+
+<meta charset="utf-8">
+
+<link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="assets/css/plugins/dragula.min.css">
+<link rel="stylesheet" href="assets/css/plugins/fullcalendar.min.css">
+
+<link rel="stylesheet"
+	href="assets/css/plugins/dataTables.bootstrap4.min.css">
+
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/vendor-all.min.js"></script>
+<script async=""
+	src="https://script.hotjar.com/modules.e483a7fd5848d79df4ee.js"
+	charset="utf-8"></script>
+
+<link rel="stylesheet" href="studentStyle.css">
+</head>
+<body class="">
+
+
+
+
+	<nav class="pcoded-navbar dashboard-nav menupos-fixed">
+		<div class="navbar-wrapper  ">
+			<div class="navbar-content scroll-div ps ps--active-y">
+				<ul class="nav pcoded-inner-navbar ">
+					<li class="nav-item pcoded-menu-caption" 
+					style="text-align: center; margin-top: 20px;margin-bottom: 30px;"><label>흠떠레스띵</label>
+					</li>
+					<li class="nav-item"><a href="adm-dashboard.html"
+						class="nav-link "><span class="pcoded-micon"><i
+								class="fas fa-tachometer-alt"></i></span><span class="pcoded-mtext">AJAX</span></a></li>
+					<li class="nav-item pcoded-hasmenu pcoded-trigger"><a
+						href="#!" class="nav-link "><span class="pcoded-micon"><i
+								class="fas fa-user-tie"></i></span><span class="pcoded-mtext">수정요청</span></a>
+						<ul class="pcoded-submenu" style="display: block;">
+							<li><a href="">뭐였져 ..</a></li>
+							<li><a href="adm-client-list.html">으악 잘못지움</a></li>
+							<li><a href="adm-client-details.html">망함 이건 복구불가</a></li>
+						</ul></li>
+					<li class="nav-item pcoded-hasmenu"><a href="#!"
+						class="nav-link "><span class="pcoded-micon"><i
+								class="fas fa-users"></i></span><span class="pcoded-mtext">또 넣을게
+								있나여 ..</span></a>
+						<ul class="pcoded-submenu" style="display: none;">
+							<li><a href="adm-teams-card.html">Card</a></li>
+							<li><a href="adm-teams-list.html">List</a></li>
+							<li><a href="adm-teams-details.html">Details</a></li>
+						</ul></li>
+
+				</ul>
+
+				<div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+					<div class="ps__thumb-x" tabindex="0"
+						style="left: 0px; width: 0px;"></div>
+				</div>
+				<div class="ps__rail-y" style="top: 0px; height: 850px; right: 0px;">
+					<div class="ps__thumb-y" tabindex="0"
+						style="top: 0px; height: 516px;"></div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+
+	<header
+		class="navbar pcoded-header navbar-expand-lg navbar-light headerpos-fixed brand-dark ">
+			<!-- 로고넣자 !  -->
+		<div class="m-header">
+			
+				<img src="e:\hmmteresting.png" alt="" class="logo" 
+				style="position : relative; height: 60px; margin-left: 75px;top:30px; ">
+			
+		</div>
+	
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<div class="dropdown">
+						<a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
+							<i class="feather icon-monitor mx-2"></i> <span
+							class="d-none d-sm-inline-block">으악악악</span>
+						</a>
+					
+					</div>
+				</li>
+				<li class="nav-item">
+					<div class="dropdown mega-menu">
+						<a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
+							<i class="feather icon-layers mr-2"></i> <span
+							class="d-none d-sm-inline-block">로그아웃띠</span>
+						</a>
+					</div>
+				</li>
+				
+				<li class="nav-item h-auto d-none d-md-inline-block">
+					<div class="input-group search-form">
+						<div class="nav-search">
+							<div class="filter-block">
+								<div class="input-group-prepend">
+									<span class="input-group-text bg-transparent"><i
+										class="feather icon-search"></i></span>
+								</div>
+								<input type="text" class="form-control input nav-search"
+									placeholder="검색" tabindex="-1" data-search="menu-list">
+								<ul class="link-list dropdown-menu"></ul>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			
+		</div>
+	</header>
+
+
+	<div class="pcoded-main-container">
+		<div class="pcoded-content container">
+
+			<div class="row">
+
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-sm-12 mb-4">
+							<h1 class="d-inline-block font-weight-normal mb-0">
+								고재현
+								</h1>
+								<h4 class="d-inline-block font-weight-normal mb-0"
+									style="color: #b3b3b3;">10339M8392S</h4>
+							
+						</div>
+					</div>
+
+					<div class="tab-content" id="TasksmyTabContent">
+						<div class="tab-pane fade show active" id="List1" role="tabpanel"
+							aria-labelledby="List-tab">
+							<div class="row">
+								<div class="col-sm-6 d-flex align-items-center mb-4">
+									<h5 class="d-inline-block font-weight-normal text-body mb-0">정보
+										적을까요 아니면 없앨까요</h5>
+								</div>
+								<div
+									class="col-sm-6 d-flex align-items-center justify-content-end mb-4">
+									<div class="btn-group btn-group-toggle btn-group-link">
+										<label class="btn active"> <input type="radio"
+											name="options" id="filteropt11" checked=""> <i
+											class="fas fa-sort-amount-down m-r-5"></i>넣을까
+										</label> <label class="btn">
+											<div class="dropdown mb-0 mr-2">
+												<a class="dropdown-toggle" data-toggle="dropdown"
+													aria-haspopup="true" aria-expanded="false"><i
+													class="fas fa-sort-amount-up-alt m-r-5"></i>말까</a>
+												<div class="dropdown-menu dropdown-menu-right">
+													<a class="dropdown-item" href="#!"><i
+														class="feather icon-alert-circle mr-2"></i> Priority</a> <a
+														class="dropdown-item" href="#!"><i
+														class="feather icon-check mr-2"></i> Open Tasks</a> <a
+														class="dropdown-item" href="#!"><i
+														class="feather icon-calendar mr-2"></i> Due Date</a> <a
+														class="dropdown-item" href="#!"><i
+														class="feather icon-target mr-2"></i> Status</a>
+												</div>
+											</div>
+										</label>
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<div class="card">
+										<div class="card-body">
+											<div class="table-responsive" style="overflow-x:inherit; ">
+												<div id="tasktable_wrapper"
+													class="dataTables_wrapper dt-bootstrap4 no-footer">
+													<div class="row">
+														<div class="col-sm-12 col-md-6">
+															<div class="dataTables_length" id="tasktable_length">
+																<label>필터 <select name="tasktable_length"
+																	aria-controls="tasktable"
+																	class="custom-select custom-select-sm form-control form-control-sm"><option
+																			value="10">최근순</option>
+																		<option value="25">유관순</option>
+																		<option value="50">죽순</option>
+																		<option value="100">떡튀순</option></select> 
+																</label>
+															</div>
+														</div>
+														<div class="col-sm-12 col-md-6">
+															<div id="tasktable_filter" class="dataTables_filter">
+																<label>검색 :↓ 크기늘릴거임 ㅠ<input type="search"
+																	class="form-control form-control-sm" placeholder=""
+																	aria-controls="tasktable"></label>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-12">
+															<table id="tasktable"
+																class="table table-hover table-center mb-0 dataTable no-footer"
+																role="grid" aria-describedby="tasktable_info">
+																<thead>
+																	<tr role="row">
+																		<th class="sorting_asc" tabindex="0"
+																			aria-controls="tasktable" rowspan="1" colspan="1"
+																			aria-sort="ascending"
+																			aria-label="task name: activate to sort column descending"
+																			style="width: 666px;"><div class="col-sm-4"
+																				style="width: 30%; float: left; margin-left: 60px;">수학</div>
+																			<div class="col-sm-4"
+																				style="width: 30%;
+																		/* position: relative; */ float: left;">국어</div>
+																			<div class="col-sm-4"
+																				style="width: 30%; position: relative; float: left;">영어</div></th>
+																		<th class="sorting" tabindex="0"
+																			aria-controls="tasktable" rowspan="1" colspan="1"
+																			aria-label="project: activate to sort column ascending"
+																			style="width: 136px;">강남중학교</th>
+																		<th class="sorting" tabindex="0"
+																			aria-controls="tasktable" rowspan="1" colspan="1"
+																			aria-label="due date: activate to sort column ascending"
+																			style="width: 141px;">실시 일</th>
+																		<th class="sorting" tabindex="0"
+																			aria-controls="tasktable" rowspan="1" colspan="1"
+																			aria-label="Priority: activate to sort column ascending"
+																			style="width: 136px;">수정요청</th>
+																		<th class="text-right sorting" tabindex="0"
+																			aria-controls="tasktable" rowspan="1" colspan="1"
+																			aria-label="Status: activate to sort column ascending"
+																			style="width: 151px;">상태</th>
+																	</tr>
+																</thead>
+																<tbody>
+
+
+
+
+
+
+
+
+
+
+																	<tr role="row" class="odd">
+																		<td class="sorting_1">
+																			<div class="media align-items-center">
+																				<i class="feather icon-check-circle h2 mb-0"></i>
+																				<div class="media-body ml-3">
+																					<p class="mb-0">
+																						 --  열 맞춰서 숫자 넣기  --  
+																					</p>
+																				</div>
+																			</div>
+																		</td>
+																		<td><img src="e:\hmmteresting.png"
+																			alt="images" class="img-fluid avtar avtar-xs">
+																		</td>
+																		<td>2020/02/28</td>
+																		<td>수정요청</td>
+																		<td class="text-right"><span
+																			class="badge badge-pill badge-success">히익 요청하지마;; </span></td>
+																	</tr>
+																	<tr role="row" class="even">
+																		<td class="sorting_1">
+																			<div class="media align-items-center">
+																				<i class="feather icon-check-circle h2 mb-0"></i>
+																				<div class="media-body ml-3">
+																					<p class="mb-0">
+																						한글폰트 에바야
+																					</p>
+																				</div>
+																			</div>
+																		</td>
+																		<td><img src="e:/hmmteresting.png"
+																			alt="images" class="img-fluid avtar avtar-xs">
+																		</td>
+																		<td>2019/02/28</td>
+																		<td class="text-danger">수정불가</td>
+																		<td class="text-right"><span
+																			class="badge badge-pill badge-danger">너의 성적 끝</span></td>
+																	</tr>
+																	<tr role="row" class="odd">
+																		<td class="sorting_1">
+																			<div class="media align-items-center">
+																				<i class="feather icon-check-circle h2 mb-0"></i>
+																				<div class="media-body ml-3">
+																					<p class="mb-0">
+																						미니프로젝트
+																					</p>
+																				</div>
+																			</div>
+																		</td>
+																		<td><img src="e:/hmmteresting.png"
+																			alt="images" class="img-fluid avtar avtar-xs">
+																		</td>
+																		<td>2019/02/28</td>
+																		<td class="text-danger">수정불가</td>
+																		<td class="text-right"><span
+																			class="badge badge-pill badge-danger">너의 성적 끝</span></td>
+																	</tr>
+																	<tr role="row" class="even">
+																		<td class="sorting_1">
+																			<div class="media align-items-center">
+																				<i class="feather icon-check-circle h2 mb-0"></i>
+																				<div class="media-body ml-3">
+																					<p class="mb-0">
+																						*신   天  지*   &nbsp;&nbsp;헐? 욕천지네
+																					</p>
+																				</div>
+																			</div>
+																		</td>
+																		<td><img src="e:/hmmteresting.png"
+																			alt="images" class="img-fluid avtar avtar-xs">
+																		</td>
+																		<td>2018/07/28</td>
+																		<td class="text-danger">수정불가</td>
+																		<td class="text-right"><span
+																			class="badge badge-pill badge-danger">너의 성적 끝</span></td>
+																	</tr>
+																	<tr role="row" class="odd">
+																		<td class="sorting_1">
+																			<div class="media align-items-center">
+																				<i class="feather icon-check-circle h2 mb-0"></i>
+																				<div class="media-body ml-3">
+																					<p class="mb-0">90</p>
+																				</div>
+																			</div>
+																		</td>
+																		<td><img src="e:/hmmteresting.png"
+																			alt="images" class="img-fluid avtar avtar-xs">
+																		</td>
+																		<td>2020/02/28</td>
+																		<td class="text-danger">수정불가</td>
+																		<td class="text-right"><span
+																			class="badge badge-pill badge-danger">너의 성적 끝</span></td>
+																	</tr>
+																	<tr role="row" class="even">
+																		<td class="sorting_1">
+																			<div class="media align-items-center">
+																				<i class="feather icon-check-circle h2 mb-0"></i>
+																				<div class="media-body ml-3">
+																					<p class="mb-0">80</p>
+																				</div>
+																			</div>
+																		</td>
+																		<td><img src="e:/hmmteresting.png"
+																			alt="images" class="img-fluid avtar avtar-xs">
+																		</td>
+																		<td>2020/02/28</td>
+																		<td class="text-danger">수정불가</td>
+																		<td class="text-right"><span
+																			class="badge badge-pill badge-danger">너의 성적 끝</span></td>
+																	</tr>
+																
+																</tbody>
+															</table>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-12 col-md-5">
+															<div class="dataTables_info" id="tasktable_info"
+																role="status" aria-live="polite">페이징 되면 넣고 아님 말고</div>
+														</div>
+														<div class="col-sm-12 col-md-7">
+															<div class="dataTables_paginate paging_simple_numbers"
+																id="tasktable_paginate">
+																<ul class="pagination">
+																	<li class="paginate_button page-item previous disabled"
+																		id="tasktable_previous"><a href="#"
+																		aria-controls="tasktable" data-dt-idx="0" tabindex="0"
+																		class="page-link">페.이.징</a></li>
+																	<li class="paginate_button page-item active"><a
+																		href="#" aria-controls="tasktable" data-dt-idx="1"
+																		tabindex="0" class="page-link">1</a></li>
+																	<li class="paginate_button page-item next disabled"
+																		id="tasktable_next"><a href="#"
+																		aria-controls="tasktable" data-dt-idx="2" tabindex="0"
+																		class="page-link">넣.을.까</a></li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+	<script src="assets/js/plugins/bootstrap.min.js"></script>
+	<script src="assets/js/pcoded.min.js"></script>
+	<script src="assets/js/menu-setting.js"></script>
+	<script src="assets/js/plugins/dragula.min.js"></script>
+
+	<script src="assets/js/plugins/moment.js"></script>
+	<script src="assets/js/plugins/jquery-ui.min.js"></script>
+	<script src="assets/js/plugins/fullcalendar.min.js"></script>
+
+	<script src="assets/js/plugins/jquery.dataTables.min.js"></script>
+	<script src="assets/js/plugins/dataTables.bootstrap4.min.js"></script>
+	<script>
+    // [ advance card ] start
+    $(function() {
+        dragula([document.getElementById('taskbacklog'), document.getElementById('taskprogress'), document.getElementById('taskreview')]);
+    });
+    $(window).on('load', function() {
+        $('#tasktable').DataTable();
+        $('#taskprojtable').DataTable();
+        $('#external-events .fc-event').each(function() {
+            var tmp = $(this).html();
+            $(this).data('event', {
+                title: $(this).html(),
+                stick: true
+            });
+            $(this).draggable({
+                zIndex: 999,
+                revert: true,
+                revertDuration: 0
+            });
+        });
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            defaultView: 'agendaWeek',
+            defaultDate: '2018-08-12',
+            editable: true,
+            droppable: true,
+            events: [{
+                title: 'All Day Event',
+                start: '2018-08-01',
+                borderColor: '#B3F4E1',
+                backgroundColor: '#B3F4E1',
+                description: 'This is a cool event',
+                textColor: '#171F46'
+            }, {
+                title: 'Long Event',
+                start: '2018-08-07',
+                end: '2018-08-10',
+                borderColor: '#FF9D9D',
+                backgroundColor: '#FF9D9D',
+                description: 'This is a cool event',
+                textColor: '#171F46'
+            }, {
+                id: 999,
+                title: 'Repeating Event',
+                start: '2018-08-09T16:00:00',
+                borderColor: '#FFD89D',
+                backgroundColor: '#FFD89D',
+                textColor: '#171F46'
+            }, {
+                id: 999,
+                title: 'Repeating Event',
+                start: '2018-08-16T16:00:00',
+                borderColor: '#C3AEFF',
+                backgroundColor: '#C3AEFF',
+                textColor: '#171F46'
+            }, {
+                title: 'Conference',
+                start: '2018-08-11',
+                end: '2018-08-13',
+                borderColor: '#A9ECA3',
+                backgroundColor: '#A9ECA3',
+                textColor: '#171F46'
+            }, {
+                title: 'Lunch',
+                start: '2018-08-12T12:00:00',
+                borderColor: '#FF9D9D',
+                backgroundColor: '#FF9D9D',
+                textColor: '#171F46'
+            }, {
+                title: 'Happy Hour',
+                start: '2018-08-12T17:30:00',
+                borderColor: '#A4E3FE',
+                backgroundColor: '#A4E3FE',
+                textColor: '#171F46'
+            }, {
+                title: 'Birthday Party',
+                start: '2018-08-13T07:00:00',
+                borderColor: '#C3AEFF',
+                backgroundColor: '#C3AEFF',
+                textColor: '#171F46'
+            }, {
+                title: 'Click for Google',
+                url: 'http://google.com/',
+                start: '2018-08-28',
+                borderColor: '#A4E3FE',
+                backgroundColor: '#A4E3FE',
+                textColor: '#171F46'
+            }],
+            drop: function() {
+                if ($('#drop-remove').is(':checked')) {
+                    $(this).remove();
+                }
+            },
+        });
+    });
+    $(window).on('load', function() {
+        $('#external-events1 .fc-event').each(function() {
+            var tmp = $(this).html();
+            $(this).data('event', {
+                title: $(this).html(),
+                stick: true
+            });
+            $(this).draggable({
+                zIndex: 999,
+                revert: true,
+                revertDuration: 0
+            });
+        });
+        $('#calendar1').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            defaultDate: '2018-08-12',
+            editable: true,
+            droppable: true,
+            events: [{
+                title: 'All Day Event',
+                start: '2018-08-01',
+                borderColor: '#B3F4E1',
+                backgroundColor: '#B3F4E1',
+                description: 'This is a cool event',
+                textColor: '#171F46'
+            }, {
+                title: 'Long Event',
+                start: '2018-08-07',
+                end: '2018-08-10',
+                borderColor: '#FF9D9D',
+                backgroundColor: '#FF9D9D',
+                description: 'This is a cool event',
+                textColor: '#171F46'
+            }, {
+                id: 999,
+                title: 'Repeating Event',
+                start: '2018-08-09T16:00:00',
+                borderColor: '#FFD89D',
+                backgroundColor: '#FFD89D',
+                textColor: '#171F46'
+            }, {
+                id: 999,
+                title: 'Repeating Event',
+                start: '2018-08-16T16:00:00',
+                borderColor: '#C3AEFF',
+                backgroundColor: '#C3AEFF',
+                textColor: '#171F46'
+            }, {
+                title: 'Conference',
+                start: '2018-08-11',
+                end: '2018-08-13',
+                borderColor: '#A9ECA3',
+                backgroundColor: '#A9ECA3',
+                textColor: '#171F46'
+            }, {
+                title: 'Lunch',
+                start: '2018-08-12T12:00:00',
+                borderColor: '#FF9D9D',
+                backgroundColor: '#FF9D9D',
+                textColor: '#171F46'
+            }, {
+                title: 'Happy Hour',
+                start: '2018-08-12T17:30:00',
+                borderColor: '#A4E3FE',
+                backgroundColor: '#A4E3FE',
+                textColor: '#171F46'
+            }, {
+                title: 'Birthday Party',
+                start: '2018-08-13T07:00:00',
+                borderColor: '#C3AEFF',
+                backgroundColor: '#C3AEFF',
+                textColor: '#171F46'
+            }, {
+                title: 'Click for Google',
+                url: 'http://google.com/',
+                start: '2018-08-28',
+                borderColor: '#A4E3FE',
+                backgroundColor: '#A4E3FE',
+                textColor: '#171F46'
+            }],
+            drop: function() {
+                if ($('#drop-remove1').is(':checked')) {
+                    $(this).remove();
+                }
+            },
+        });
+    });
+    // [ advance card ] start
+</script>
+
+
+</body>
+</html>
