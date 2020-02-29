@@ -3,4 +3,27 @@
   <welcome-file-list>
     <welcome-file>adminMain.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- 고재현  -->
+   <servlet>
+   	 <servlet-name>adminMain</servlet-name>
+   	 <jsp-file>/resource/view/adminMain.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	  <servlet-name>adminMain</servlet-name>
+  	  <url-pattern>/galaxy/hosting/bitcamp</url-pattern>
+  </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/</url-pattern>
+        <url-pattern>*.js</url-pattern>
+			    <url-pattern>*.css</url-pattern>
+			    <url-pattern>*.jpg</url-pattern>
+			    <url-pattern>*.gif</url-pattern>
+			    <url-pattern>*.png</url-pattern>
+    </servlet-mapping>
+
+ 
+
 </web-app>

@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +11,15 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugins.css">
 <script src="${pageContext.request.contextPath}/js/jquery-3.4.1.min.js"></script> -->
 
-<link rel="stylesheet" href="../css/adminStyle.css">
-<link rel="stylesheet" href="../css/adminStyleCustom.css">
-<link rel="stylesheet" href="../css/plugins.css">
-<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/adminStyle.css" >
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/adminStyleCustom.css"  >
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/plugins.css"  >
+
+
+ <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
+ 
 </head>
 <body
 	class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed 
@@ -97,9 +105,15 @@
 										</ul>
 									</div>
 								</div>
-								&nbsp; <a href="#" class="btn btn-brand btn-elevate btn-icon-sm">
-									<i class="fas fa-file-upload"></i> 엑셀 업로드
-								</a>
+								<form action="/AdminStudentUpload.do" method="post"  enctype="multipart/form-data">
+										<div class="filebox">
+										<i class="fas fa-file-upload"></i>
+										<label id="aaa"> 엑셀 업로드</label>
+								&nbsp; <input name="file" type="file"  id="fileUpload" style="width:200px">
+										<button type="submit" class="btn btn-brand btn-elevate btn-icon-sm">보내기</button>
+									</div>
+									</form>
+								
 							</div>
 						</div>
 					</div>

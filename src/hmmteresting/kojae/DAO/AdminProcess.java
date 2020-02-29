@@ -18,7 +18,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class AdminProcess {
-		
+
 	public static void readExcelData(String fileName) {
 	//	List<Country> countriesList = new ArrayList<Country>();
 
@@ -41,7 +41,9 @@ public class AdminProcess {
 			System.out.println("Can use connetion");
 
 			PreparedStatement pState = null;
-			String sql = "INSERT INTO sample.student " + "(name, grade, math, korean, english) VALUES(?,?,?,?,?)";
+			String sql = "INSERT INTO hmmteresting.grade " +
+			"(studentNo, examNo, koreanScore, mathScore, englishScore, scienceScore,historyScore,"+
+					"totalScore,averageScore) VALUES(?,?,?,?,?,?,?,?,?)";
 
 			pState = conn.prepareStatement(sql);
 			// loop through each of the sheets
@@ -69,7 +71,7 @@ public class AdminProcess {
 							pState.setDouble(cell.getColumnIndex() + 1, cell.getNumericCellValue());
 							break;
 						case Cell.CELL_TYPE_FORMULA:
-							// 함수 추가시 넣으면됨.
+							pState.setDouble(cell.getColumnIndex() + 1, cell.getNumericCellValue());
 						}
 					} // end of cell iterator
 						// 하드코딩냄시..^^;; 되는게 중요한거지 ~
@@ -98,6 +100,8 @@ public class AdminProcess {
 			e.printStackTrace();
 		}
 
-		return countriesList;
+	}
+	public static void main(String[] args) {
+		readExcelData("E:\\excel\\studentGrade.xlsx");
 	}
 }
