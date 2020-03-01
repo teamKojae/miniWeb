@@ -17,7 +17,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/adminStyleCustom.css"  >
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/plugins.css"  >
 
-
+<script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
+ 
  <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
  
 </head>
@@ -108,20 +109,23 @@
 								<form action="/AdminStudentUpload.do" method="post"  enctype="multipart/form-data">
 										<div class="filebox">
 										<i class="fas fa-file-upload"></i>
-										<label id="aaa"> 엑셀 업로드</label>
+										<label id="labelExcel"> 엑셀 업로드</label>
 								&nbsp; <input name="file" type="file"  id="fileUpload" style="width:200px">
+										<label id="checkExcel"> 확인하기</label>
 										<button type="submit" class="btn btn-brand btn-elevate btn-icon-sm">보내기</button>
 									</div>
 									</form>
-<%-- 								<%@ page import="com.oreilly.servlet.MultipartRequest,
-						                   com.oreilly.servlet.multipart.DefaultFileRenamePolicy,
-						                   java.util.*" %>
-						                   <%
-
-						           			String path = application.getRealPath("/");
-						                   MultipartRequest multi = new MultipartRequest(request,path,1024*1024*3,"utf-8" );
-						                   %> --%>
-
+									
+									<script type="text/javascript">
+									$('input[type="file"]').change(function(e){
+										var fileValue = $("#fileUpload").val();
+										var fileName = e.target.files[0].name;
+										var fileaa = e.target.files[0].path;
+										console.log(fileValue);
+										console.log(fileName);
+										console.log(aa);
+									});
+									</script>
 							</div>
 						</div>
 					</div>

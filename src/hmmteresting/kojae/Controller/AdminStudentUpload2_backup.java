@@ -17,7 +17,7 @@ import hmmteresting.kojae.DAO.AdminProcess;
 /**
  * Servlet implementation class AdminStudentUpload
  */
-@WebServlet("/AdminStudentUpload.do")
+@WebServlet("/AdminStudentUpload_backUp.do")
 public class AdminStudentUpload2_backup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
