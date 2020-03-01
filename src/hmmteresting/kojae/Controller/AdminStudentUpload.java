@@ -32,6 +32,7 @@ public class AdminStudentUpload extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String filePath = "/excel/";	//업로드 될 경로 (폴더생성)
+		//없으면 폴더생성 (E:\hajae\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\hmmteresting\excel)
 		int size = 1024*1024*10;  			// 업로드 용량 10MB
 		
 		// 업로드될 실제 경로 (이클리스상 경로)
