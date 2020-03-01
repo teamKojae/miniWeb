@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
     
+    <%  request.setCharacterEncoding("UTF-8");  %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -173,7 +175,7 @@
 								<label>지역</label> <select class="form-control kt-input" name="locationName"
 									data-col-index="7">
 									<option value="">구 선택</option>
-									<option value="1">Online</option>
+									<option value="강남구">강남구</option>
 									<option value="2">Retail</option>
 									<option value="3">Direct</option>
 								</select>
@@ -182,7 +184,7 @@
 								<label>학교</label> <select class="form-control kt-input" name="schoolName"
 									data-col-index="2">
 									<option value="">학교선택</option>
-									<option value="Argentina">Argentina</option>
+									<option value="개표고등학교">개표고등학교</option>
 									<option value="Austria">Austria</option>
 									<option value="China">China</option>
 									<option value="Colombia">Colombia</option>

@@ -15,7 +15,10 @@ public class DAO {
 	private Connection conn;
 	private static DAO instance;
 	private String sqlSelcet = "select student.studentNo,student.studentName,grade.koreanScore,grade.englishScore,"
-			+ "grade.mathScore,grade.scienceScore,grade.historyScore,exam.examDate,exam.examNo " + "from exam,grade,school,student";
+			+ "grade.mathScore,grade.scienceScore,grade.historyScore,exam.examDate,exam.examNo " + "from exam,grade,school,student"
+			+" where grade.examNo = exam.examNo " 
+			+"and student.studentNo=grade.studentNo " 
+			+"and school.schoolNo = student.schoolNo and";
 	private PreparedStatement pState;
 
 	private DAO() {
@@ -48,7 +51,7 @@ public class DAO {
 		String sql = sqlSelcet;
 		System.out.println(args[0]);
 		if (args[0] != "" || args[1] != "" || args[2] != "")
-			sql += " where ";
+			//sql += " where ";
 
 		if (args[0] != "")
 			sql += "school.schoolName = '" + args[0] + "' and ";

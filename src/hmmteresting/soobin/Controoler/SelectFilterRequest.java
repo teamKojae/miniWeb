@@ -22,9 +22,10 @@ import hmmteresting.soobin.model.ModelViewBean;
 @WebServlet("/SelectFilterRequest.do")
 public class SelectFilterRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 
 		List<ModelViewBean> list = new ArrayList<ModelViewBean>();
 
@@ -34,6 +35,9 @@ public class SelectFilterRequest extends HttpServlet {
 		String examDate = request.getParameter("examDate");
 		String examCode = request.getParameter("examCode");
 		String locationName = request.getParameter("locationName");
+		
+		System.out.println(request.getParameter("studentName"));
+		
 		JSONObject obj = new JSONObject();
 		DAO dao = DAO.getInstance();
 		System.out.println(studentNo);
