@@ -24,36 +24,9 @@
 <script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
  
  <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
-<<<<<<< HEAD
- <script type="text/javascript">
-  $(function() {
-    $("#kt_search").click(function() {
-      var str = $("#form123").serialize();
-      $.ajax({
-    	  url:"/SelectFilterRequest.do",
-    	  type:'GET',
-    	  datatype:'JSON',
-    	  contentType: "application/x-www-form-urlencoded; charset=utf-8",
-        data: str,
-        //sdsdsd
-        success: function(data) {
-        	console.log('안녕');
-        	alert(data.result);
-        	var a = JSON.parse(data.result);
-          		alert(a);
-          		
-        },	
-        error: function(data){
-        	alert(data.result);
-        	console.log(data.result);
-        }
-      });
-    });
-  });
-  </script>
-=======
+
  
->>>>>>> 7a1ad9c154cc68e49e023cf94c3f153e58df4bd7
+
 </head>
 <body
 	class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed 
@@ -167,11 +140,8 @@
 
 				<div class="kt-portlet__body">
 					<!--begin: Search Form -->
-<<<<<<< HEAD
-					<form id="form123" method="get" class="kt-form kt-form--fit kt-margin-b-20" action="/SelectFilterRequest.do">
-=======
+
 					<form id="form123" method="post" class="kt-form kt-form--fit kt-margin-b-20">
->>>>>>> 7a1ad9c154cc68e49e023cf94c3f153e58df4bd7
 						<div class="row kt-margin-b-20">
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
 								<label>이름<c:out value="${list.get(0).getExamNo() }"></c:out></label> <input type="text" name="studentName"
