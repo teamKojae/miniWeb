@@ -17,12 +17,9 @@ function ajax(){
 		datatype : 'JSON',
 		data : str,
 		success : function(data) {
-			alert(data);
-			console.log(data);
-			/* console.log('안녕');
-			alert(data.result);
-			var a = JSON.parse(data.result);
-				alert(a); */
+		
+			var a = jQuery.parseJSON(data);
+				alert(a); 
 		},
 		error : function(data) {
 			alert(data.result);

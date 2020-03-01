@@ -15,9 +15,10 @@ import hmmteresting.soobin.model.ModelViewBean;
 public class DAO {
 
 	private Connection conn = null;
-	//private static DAO instance;
+	private static DAO instance;
 	private String sqlSelcet = "select student.studentNo,student.studentName,grade.koreanScore,grade.englishScore,"
-			+ "grade.mathScore,grade.scienceScore,grade.historyScore,exam.examDate,exam.examNo " + "from exam,grade,school,student"
+			+ "grade.mathScore,grade.scienceScore,grade.historyScore,exam.examDate,exam.examNo " 
+			+ "from exam,grade,school,student"
 			+" where grade.examNo = exam.examNo " 
 			+"and student.studentNo=grade.studentNo " 
 			+"and school.schoolNo = student.schoolNo and";
@@ -27,10 +28,10 @@ public class DAO {
 	public DAO() {
 		
 	}
-//	public static DAO getInstance() {
-//
-//		return (instance == null) ? instance = new DAO() : instance;
-//	}
+	public static DAO getInstance() {
+
+		return (instance == null) ? instance = new DAO() : instance;
+	}
 
 	public String SelectWhere(String... args) {
 

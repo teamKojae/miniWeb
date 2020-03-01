@@ -1,12 +1,8 @@
 package hmmteresting.soobin.Controoler;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,13 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import com.google.gson.Gson;
 
-import hmmteresting.kojae.DAO.AdminProcess;
 import hmmteresting.kojae.DAO.Util.SqlUtil;
 import hmmteresting.kojae.Model.GradeBean;
 import hmmteresting.soobin.DAO.DAO;

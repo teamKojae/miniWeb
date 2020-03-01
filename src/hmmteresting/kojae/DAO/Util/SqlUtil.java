@@ -11,7 +11,7 @@ public class SqlUtil {
 		try {
 			 
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			 conn = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
