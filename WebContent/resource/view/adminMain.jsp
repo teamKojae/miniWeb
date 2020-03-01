@@ -113,7 +113,15 @@
 										<button type="submit" class="btn btn-brand btn-elevate btn-icon-sm">보내기</button>
 									</div>
 									</form>
-								
+<%-- 								<%@ page import="com.oreilly.servlet.MultipartRequest,
+						                   com.oreilly.servlet.multipart.DefaultFileRenamePolicy,
+						                   java.util.*" %>
+						                   <%
+
+						           			String path = application.getRealPath("/");
+						                   MultipartRequest multi = new MultipartRequest(request,path,1024*1024*3,"utf-8" );
+						                   %> --%>
+
 							</div>
 						</div>
 					</div>

@@ -18,8 +18,10 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class AdminProcess {
-
-	public static void readExcelData(String fileName) {
+		public AdminProcess() {
+			// TODO Auto-generated constructor stub
+		}
+	public void readExcelData(String fileName) {
 	//	List<Country> countriesList = new ArrayList<Country>();
 
 		try {
@@ -98,10 +100,10 @@ public class AdminProcess {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+	
+			
 		}
 
-	}
-	public static void main(String[] args) {
-		readExcelData("E:\\excel\\studentGrade.xlsx");
 	}
 }
