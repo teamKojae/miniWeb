@@ -41,7 +41,7 @@ public class AdminStudentUpload2_backup extends HttpServlet {
 		// 이클립스 상대경로에 있는 엑셀을 Read
 		AdminProcess adminDAO = new AdminProcess();
 		
-		adminDAO.readExcelData(request.getSession().getServletContext().getRealPath(filePath)+"studentGrade.xlsx");
+		//adminDAO.readExcelData(request.getSession().getServletContext().getRealPath(filePath)+"studentGrade.xlsx");
 		request.getRequestDispatcher("/galaxy/hosting/bitcamp").forward(request, response);
 	}
 	
