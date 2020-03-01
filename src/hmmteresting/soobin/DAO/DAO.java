@@ -44,9 +44,9 @@ public class DAO {
 		if (args[1] != "") {
 			sql += " student.studentName = '";
 
-			if (args[0] != "")
+			if (args[0] != "") {
 				sql += args[1] + "' and ";
-			else
+			}else if(args[0]=="")
 				sql += args[0] + "' and ";
 		}
 		if ((args[0]!=""||args[1]!="")&&args[2] == "")
