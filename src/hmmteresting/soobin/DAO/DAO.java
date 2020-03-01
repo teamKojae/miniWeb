@@ -17,16 +17,28 @@ public class DAO {
 	private Connection conn = null;
 	private static DAO instance;
 	private String sqlSelcet = "select student.studentNo,student.studentName,grade.koreanScore,grade.englishScore,"
+<<<<<<< HEAD
 			+ "grade.mathScore,grade.scienceScore,grade.historyScore,exam.examDate,exam.examNo " 
 			+ "from exam,grade,school,student"
 			+" where grade.examNo = exam.examNo " 
 			+"and student.studentNo=grade.studentNo " 
 			+"and school.schoolNo = student.schoolNo and";
 	private PreparedStatement pState = null;
+=======
+			+ "grade.mathScore,grade.scienceScore,grade.historyScore,exam.examDate,exam.examNo "
+			+ "from exam,grade,school,student  where grade.examNo = exam.examNo "
+			+ "and student.studentNo=grade.studentNo and school.schoolNo = student.schoolNo ";
+	private PreparedStatement pState;
+>>>>>>> 67d433b84313345b582127cf6c3e2d4e939fcadb
 	SqlUtil util = new SqlUtil();
 
 	public DAO() {
-		
+	}
+
+	public static DAO getInstance() {
+
+		return (instance == null) ? instance = new DAO() : instance;
+			
 	}
 	public static DAO getInstance() {
 
@@ -36,32 +48,21 @@ public class DAO {
 	public String SelectWhere(String... args) {
 
 		String sql = sqlSelcet;
-		System.out.println(args[0]);
-		if (args[0] != "" || args[1] != "" || args[2] != "")
-			//sql += " where ";
-
-		if (args[0] != "")
-			sql += " school.schoolName = '" + args[0] + "' and ";
+		if (args[0] != "" || args[1] != "" || args[2] != "") {
+			sql += " and ";
+		}
+		if (args[0] != "") {
+			sql += "  school.schoolName = '" + args[0] + "'  and ";
+		}
 
 		if (args[1] != "") {
-			sql += " student.studentName = '";
-
-			if (args[0] != "") {
-				sql += args[1] + "' and ";
-			}else if(args[0]=="")
-				sql += args[0] + "' and ";
+			sql += " student.studentName = '" + args[1] + "' and ";
 		}
-		if ((args[0]!=""||args[1]!="")&&args[2] == "")
-			sql=sql.substring(0, sql.length() - 4);
-
-		else if (args[2]!=""){
-			sql += " student.studentNo = '";
-			if (args[0]!=""&&args[1]!="")
-				sql += args[2]+"'";
-			else if (args[0]!=""||args[1]!="")
-				sql += args[1]="'";
-			else
-				sql += args[0]="'";
+		if ((args[0] != "" || args[1] != "") && args[2] == "") {
+			sql = sql.substring(0, sql.length() - 4);
+		}
+		if (args[2] != "") {
+			sql += " student.studentNo = '" + args[2] + "'";
 		}
 		return sql;
 	}
@@ -79,16 +80,18 @@ public class DAO {
 			if (args[1] != "" || args[2] != "" || args[3] != "")
 				sql += " order by ";
 
-			if (args[1]!="")
-				sql += " exam.examDate , ";
+			if (args[1] != "")
+				sql += "exam.examDate , ";
 
-			if (args[2]!="")
-				sql += " exam.examCode , ";
+			if (args[2] != "")
+				sql += "exam.examCode , ";
 
-			if (args[3]!="")
-				sql += " school.locationName , ";
+			if (args[3] != "")
+				sql += "school.locationName , ";
+			if (args[1] != "" || args[2] != "" || args[3] != "") {
+				sql = sql.substring(0, sql.length() - 2);
+			}
 
-			sql=sql.substring(0, sql.length() - 2);
 			System.out.println(sql);
 			sql = new String (sql.getBytes(),"utf-8");
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -96,7 +99,7 @@ public class DAO {
 			pState = conn.prepareStatement(sql);
 			rest = pState.executeQuery();
 			while (rest.next()) {
-				bean= new ModelViewBean();
+				bean = new ModelViewBean();
 				int sum = 0;
 				double ave = 0;
 				bean.setStudentNo(rest.getString(1));

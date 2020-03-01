@@ -24,7 +24,9 @@
 <script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
  
  <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
+
  
+
 </head>
 <body
 	class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed 
@@ -138,6 +140,7 @@
 
 				<div class="kt-portlet__body">
 					<!--begin: Search Form -->
+
 					<form id="form123" method="post" class="kt-form kt-form--fit kt-margin-b-20">
 						<div class="row kt-margin-b-20">
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
