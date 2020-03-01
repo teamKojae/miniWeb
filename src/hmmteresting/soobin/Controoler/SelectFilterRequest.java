@@ -36,6 +36,7 @@ public class SelectFilterRequest extends HttpServlet {
 		String locationName = request.getParameter("locationName");
 		JSONObject obj = new JSONObject();
 		DAO dao = DAO.getInstance();
+		System.out.println(studentNo);
 		String selcetData = dao.SelectWhere(schoolName, studentName, studentNo);
 		list.addAll(dao.SelcetFilter(selcetData, examDate, examCode, locationName));
 		obj.put("result", list);

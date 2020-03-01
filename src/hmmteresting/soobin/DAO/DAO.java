@@ -61,10 +61,10 @@ public class DAO {
 			else
 				sql += args[0] + "' and ";
 		}
-		if ((args[0]==""||args[1]=="")&&args[2] == "")
+		if ((args[0]!=""||args[1]!="")&&args[2] == "")
 			sql=sql.substring(0, sql.length() - 4);
 
-		else{
+		else if (args[2]!=""){
 			sql += " student.studentNo = '";
 			if (args[0]!=""&&args[1]!="")
 				sql += args[2]+"'";
