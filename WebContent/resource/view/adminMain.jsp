@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
-    
-    <%  request.setCharacterEncoding("UTF-8");  %>
+<%  request.setCharacterEncoding("UTF-8");  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
 <html>
-<head>
+<head >
 <meta charset="UTF-8">
+
+
 <title>Insert title here</title>
 <!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminStyle.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminStyleCustom.css">
@@ -22,32 +24,7 @@
 <script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
  
  <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
- <script type="text/javascript">
-  $(function() {
-    $("#kt_search").click(function() {
-      var str = $("#form123").serialize();
-      $.ajax({
-    	  url:"/SelectFilterRequest.do",
-    	  type:'GET',
-    	  datatype:'JSON',
-    	  contentType: "application/x-www-form-urlencoded; charset=utf-8",
-        data: str,
-        
-        success: function(data) {
-        	console.log('안녕');
-        	alert(data.result);
-        	var a = JSON.parse(data.result);
-          		alert(a);
-          		
-        },	
-        error: function(data){
-        	alert(data.result);
-        	console.log(data.result);
-        }
-      });
-    });
-  });
-  </script>
+ 
 </head>
 <body
 	class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed 
@@ -143,7 +120,7 @@
 									</div>
 									</form>
 									
-									<script type="text/javascript">
+								<!-- 	<script type="text/javascript">
 									$('input[type="file"]').change(function(e){
 										var fileValue = $("#fileUpload").val();
 										var fileName = e.target.files[0].name;
@@ -152,7 +129,7 @@
 										console.log(fileName);
 										console.log(aa);
 									});
-									</script>
+									</script> -->
 							</div>
 						</div>
 					</div>
@@ -161,10 +138,10 @@
 
 				<div class="kt-portlet__body">
 					<!--begin: Search Form -->
-					<form id="form123" method="get" class="kt-form kt-form--fit kt-margin-b-20">
+					<form id="form123" method="post" class="kt-form kt-form--fit kt-margin-b-20">
 						<div class="row kt-margin-b-20">
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>이름</label> <input type="text" name="studentName"
+								<label>이름<c:out value="${list.get(0).getExamNo() }"></c:out></label> <input type="text" name="studentName"
 									class="form-control kt-input" placeholder="" data-col-index="0">
 							</div>
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
@@ -176,7 +153,7 @@
 									data-col-index="7">
 									<option value="">구 선택</option>
 									<option value="강남구">강남구</option>
-									<option value="2">Retail</option>
+									<option value="서초구">서초구</option>
 									<option value="3">Direct</option>
 								</select>
 							</div>

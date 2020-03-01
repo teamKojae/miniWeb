@@ -1,5 +1,6 @@
 package hmmteresting.soobin.DAO;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,23 +14,23 @@ import hmmteresting.soobin.model.ModelViewBean;
 
 public class DAO {
 
-	private Connection conn;
-	private static DAO instance;
+	private Connection conn = null;
+	//private static DAO instance;
 	private String sqlSelcet = "select student.studentNo,student.studentName,grade.koreanScore,grade.englishScore,"
 			+ "grade.mathScore,grade.scienceScore,grade.historyScore,exam.examDate,exam.examNo " + "from exam,grade,school,student"
 			+" where grade.examNo = exam.examNo " 
 			+"and student.studentNo=grade.studentNo " 
 			+"and school.schoolNo = student.schoolNo and";
-	private PreparedStatement pState;
+	private PreparedStatement pState = null;
 	SqlUtil util = new SqlUtil();
 
-	private DAO() {
-		conn = SqlUtil.getConnection();
+	public DAO() {
+		
 	}
-	public static DAO getInstance() {
-
-		return (instance == null) ? instance = new DAO() : instance;
-	}
+//	public static DAO getInstance() {
+//
+//		return (instance == null) ? instance = new DAO() : instance;
+//	}
 
 	public String SelectWhere(String... args) {
 
@@ -39,7 +40,7 @@ public class DAO {
 			//sql += " where ";
 
 		if (args[0] != "")
-			sql += "school.schoolName = '" + args[0] + "' and ";
+			sql += " school.schoolName = '" + args[0] + "' and ";
 
 		if (args[1] != "") {
 			sql += " student.studentName = '";
@@ -78,16 +79,19 @@ public class DAO {
 				sql += " order by ";
 
 			if (args[1]!="")
-				sql += "exam.examDate , ";
+				sql += " exam.examDate , ";
 
 			if (args[2]!="")
-				sql += "exam.examCode , ";
+				sql += " exam.examCode , ";
 
 			if (args[3]!="")
-				sql += "school.locationName , ";
+				sql += " school.locationName , ";
 
 			sql=sql.substring(0, sql.length() - 2);
 			System.out.println(sql);
+			sql = new String (sql.getBytes(),"utf-8");
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
 			pState = conn.prepareStatement(sql);
 			rest = pState.executeQuery();
 			while (rest.next()) {
@@ -111,11 +115,34 @@ public class DAO {
 				bean.setExamNo(rest.getInt(9));
 				listbean.add(bean);
 				bean = null;
-
 			}
+			System.out.println("conn Close ?");
+			conn.close();
+			System.out.println("conn Close !");
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn!=null)
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
 		return listbean;
 	}
 
@@ -133,10 +160,5 @@ public class DAO {
 
 	}
 
-	@Override
-	protected void finalize() throws Throwable {
 
-		close();
-		super.finalize();
-	}
 }
