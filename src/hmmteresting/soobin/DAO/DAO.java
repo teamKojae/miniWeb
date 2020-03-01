@@ -18,13 +18,10 @@ public class DAO {
 			+ "grade.mathScore,grade.scienceScore,grade.historyScore,exam.examDate,exam.examNo " + "from exam,grade,school,student";
 	private PreparedStatement pState;
 
-	// 학생번호,이름,국어,영어,수학,총점,평균,일시,회차
 	private DAO() {
 
-		// 1.DB Drive Load 현재 어플리케이션에서 한번만 실행
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			// 2.connection(DB 사용권한을 받는다) 현재 어플리케이션에서 한번만 실행
 
 			conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost/hmmteresting?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
@@ -37,14 +34,11 @@ public class DAO {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	public static DAO getInstance() {
-		// if (instance==null) instance=new MemberDAO();
-		// return instance;
 
 		return (instance == null) ? instance = new DAO() : instance;
 	}
@@ -67,7 +61,7 @@ public class DAO {
 			else
 				sql += args[0] + "' and ";
 		}
-		if (args[2] == "")
+		if ((args[0]==""||args[1]=="")&&args[2] == "")
 			sql=sql.substring(0, sql.length() - 4);
 
 		else{
@@ -132,7 +126,6 @@ public class DAO {
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return listbean;

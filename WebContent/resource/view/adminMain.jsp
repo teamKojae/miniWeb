@@ -22,7 +22,7 @@
  <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
  <script type="text/javascript">
   $(function() {
-    $("button").click(function() {
+    $("#kt_search").click(function() {
       var str = $("#form123").serialize();
       $.ajax({
     	  url:"/SelectFilterRequest.do",
