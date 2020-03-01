@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import hmmteresting.kojae.DAO.Util.SqlUtil;
 import hmmteresting.soobin.model.ModelViewBean;
 
 public class DAO {
@@ -20,27 +21,11 @@ public class DAO {
 			+"and student.studentNo=grade.studentNo " 
 			+"and school.schoolNo = student.schoolNo and";
 	private PreparedStatement pState;
+	SqlUtil util = new SqlUtil();
 
 	private DAO() {
-
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-//
-			conn = DriverManager.getConnection(
-					"jdbc:mysql://localhost/hmmteresting?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-					"root", "1234");
-
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		conn = SqlUtil.getConnection();
 	}
-
 	public static DAO getInstance() {
 
 		return (instance == null) ? instance = new DAO() : instance;
