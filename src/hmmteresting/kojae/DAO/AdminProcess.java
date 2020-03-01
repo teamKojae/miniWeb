@@ -117,14 +117,19 @@
 				pState = connection.prepareStatement(sql);
 				int index=0;
 				for(GradeBean gradeBean : gradeList) {
-					pState.setString(0, gradeBean.getStudentNo());
-					pState.setInt(1, gradeBean.getExamNo());
-					pState.setInt(2,gradeBean.getKoreanScore());
-					pState.setInt(3,gradeBean.getMathScore());
-					pState.setInt(4,gradeBean.getEnglishScore());
-							
-							
+					pState.setString(1, gradeBean.getStudentNo());
+					pState.setInt(2, gradeBean.getExamNo());
+					pState.setInt(3,gradeBean.getKoreanScore());
+					pState.setInt(4,gradeBean.getMathScore());
+					pState.setInt(5,gradeBean.getEnglishScore());
+					pState.setInt(6,gradeBean.getScienceScore());
+					pState.setInt(7,gradeBean.getHistoryScore());
+					pState.setInt(8,gradeBean.getTotlaScore());
+					pState.setInt(9,gradeBean.getAverageScore());
+					pState.execute();
 				}
+			
+				pState.close();
 				
 				connection.close();
 	
@@ -211,7 +216,7 @@
 		}
 		public static void main(String[] args) {
 			AdminProcess a = new AdminProcess();
-			a.insertExcelData("E:/excel/studentGrade.xlsx");
+			a.readExcelDataa("E:/excel/studentGrade.xlsx");
 //			for(GradeBean grade : list) {
 //				System.out.println(grade.toString());
 //			}

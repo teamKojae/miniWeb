@@ -38,7 +38,7 @@ public class AdminStudentUpload extends HttpServlet {
 		// 이클립스 상대경로에 있는 엑셀을 Read
 		AdminProcess adminDAO = new AdminProcess();
 		
-		//adminDAO.readExcelData(uploadPath+"studentGrade.xlsx");
+		adminDAO.insertExcelData(uploadPath+"studentGrade.xlsx");
 		request.getRequestDispatcher("/galaxy/hosting/bitcamp").forward(request, response);
 	}
 	
