@@ -20,7 +20,16 @@
 	import hmmteresting.kojae.Model.GradeBean;
 	
 	public class AdminProcess {
+		PreparedStatement pState = null;
+		Connection connection =null ;
+		SqlUtil util = new SqlUtil();
 		public AdminProcess() {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	
 		public List<GradeBean> excelData(String fileName) {
@@ -61,22 +70,22 @@
 							case Cell.CELL_TYPE_NUMERIC:  // 숫자형 셀
 								int intValue = (int) cell.getNumericCellValue();
 								switch (cell.getColumnIndex()) {
-								case 2:
+								case 1:
 									gradeBean.setExamNo(intValue);
 									break;
-								case 3:
+								case 2:
 									gradeBean.setKoreanScore(intValue);
 									break;
-								case 4:
+								case 3:
 									gradeBean.setMathScore(intValue);
 									break;
-								case 5:
+								case 4:
 									gradeBean.setEnglishScore(intValue);
 									break;
-								case 6:
+								case 5:
 									gradeBean.setScienceScore(intValue);
 									break;
-								case 7:
+								case 6:
 									gradeBean.setHistoryScore(intValue);
 									break;
 								}
@@ -84,10 +93,10 @@
 							case Cell.CELL_TYPE_FORMULA:   // 함수 사용한 셀
 								int intValueFomula = (int) cell.getNumericCellValue();
 								switch (cell.getColumnIndex()) {
-								case 8:
+								case 7:
 									gradeBean.setTotlaScore(intValueFomula);
 									break;
-								case 9:
+								case 8:
 									gradeBean.setAverageScore(intValueFomula);
 								}
 								break;
@@ -107,9 +116,9 @@
 			try {
 				List<GradeBean> gradeList = excelData(fileName); 
 	
-				Connection connection = SqlUtil.getConnection();
+				 connection = util.getConnection();
 	
-				PreparedStatement pState = null;
+			
 				String sql = "INSERT INTO hmmteresting.grade "
 						+ "(studentNo, examNo, koreanScore, mathScore, englishScore, scienceScore,historyScore,"
 						+ "totalScore,averageScore) VALUES(?,?,?,?,?,?,?,?,?)";
@@ -127,6 +136,7 @@
 					pState.setInt(8,gradeBean.getTotlaScore());
 					pState.setInt(9,gradeBean.getAverageScore());
 					pState.execute();
+					
 				}
 			
 				pState.close();
@@ -159,7 +169,7 @@
 	
 				// Get the number of sheets in the xlsx file
 				int numberOfSheets = workbook.getNumberOfSheets();
-				Connection connection = SqlUtil.getConnection();
+				Connection connection = util.getConnection();
 	
 				PreparedStatement pState = null;
 				String sql = "INSERT INTO hmmteresting.grade "
@@ -214,6 +224,27 @@
 			}
 	
 		}
+		
+		public void close() {
+
+			try {
+				if (pState != null)
+					pState.close();
+				if (connection != null)
+					connection.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+		@Override
+		protected void finalize() throws Throwable {
+
+			close();
+			super.finalize();
+		}
 		public static void main(String[] args) {
 			AdminProcess a = new AdminProcess();
 			a.readExcelDataa("E:/excel/studentGrade.xlsx");
@@ -222,4 +253,7 @@
 //			}
 		
 		}
+		
+		
+		
 	}

@@ -1,8 +1,34 @@
+  $(function() {
+	  ajax();
+  });
 
-
-$('input[type="file"]').change(function(e){
+$('input[type="file"]').change(function(e) {
 	var fileName = e.target.files[0].name;
-	alert("this file"+fileName+"has been select");
+	alert("this file" + fileName + "has been select");
 })
 
-
+function ajax(){ 
+	$("#kt_search").click(function(event) {
+	event.preventDefault();
+	var str = $("#form123").serialize();
+	$.ajax({
+		url : "/SelectFilterRequest.do",
+		type : 'POST',
+		datatype : 'JSON',
+		data : str,
+		success : function(data) {
+			alert(data);
+			console.log(data);
+			/* console.log('안녕');
+			alert(data.result);
+			var a = JSON.parse(data.result);
+				alert(a); */
+		},
+		error : function(data) {
+			alert(data.result);
+			console.log(data.result);
+		}
+	});
+	
+});
+}

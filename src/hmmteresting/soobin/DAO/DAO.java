@@ -1,5 +1,6 @@
 package hmmteresting.soobin.DAO;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,9 +14,10 @@ import hmmteresting.soobin.model.ModelViewBean;
 
 public class DAO {
 
-	private Connection conn;
-	private static DAO instance;
+	private Connection conn = null;
+	//private static DAO instance;
 	private String sqlSelcet = "select student.studentNo,student.studentName,grade.koreanScore,grade.englishScore,"
+<<<<<<< HEAD
 			+ "grade.mathScore,grade.scienceScore,grade.historyScore,exam.examDate,exam.examNo "
 			+ "from exam,grade,school,student" + " where grade.examNo = exam.examNo "
 			+ "and student.studentNo=grade.studentNo " + "and school.schoolNo = student.schoolNo ";
@@ -29,17 +31,42 @@ public class DAO {
 	public static DAO getInstance() {
 
 		return (instance == null) ? instance = new DAO() : instance;
+=======
+			+ "grade.mathScore,grade.scienceScore,grade.historyScore,exam.examDate,exam.examNo " + "from exam,grade,school,student"
+			+" where grade.examNo = exam.examNo " 
+			+"and student.studentNo=grade.studentNo " 
+			+"and school.schoolNo = student.schoolNo and";
+	private PreparedStatement pState = null;
+	SqlUtil util = new SqlUtil();
+
+	public DAO() {
+		
+>>>>>>> 7a1ad9c154cc68e49e023cf94c3f153e58df4bd7
 	}
+//	public static DAO getInstance() {
+//
+//		return (instance == null) ? instance = new DAO() : instance;
+//	}
 
 	public String SelectWhere(String... args) {
 
 		String sql = sqlSelcet;
+<<<<<<< HEAD
 		if (args[0] != "" || args[1] != "" || args[2] != "") {
 			sql += " and ";
 		}
 		if (args[0] != "") {
 			sql += "  school.schoolName = '" + args[0] + " '  and ";
 		}
+=======
+		System.out.println(args[0]);
+		if (args[0] != "" || args[1] != "" || args[2] != "")
+			//sql += " where ";
+
+		if (args[0] != "")
+			sql += " school.schoolName = '" + args[0] + "' and ";
+
+>>>>>>> 7a1ad9c154cc68e49e023cf94c3f153e58df4bd7
 		if (args[1] != "") {
 			sql += " student.studentName = '" + args[1] + " ' and ";
 		}
@@ -65,6 +92,7 @@ public class DAO {
 			if (args[1] != "" || args[2] != "" || args[3] != "")
 				sql += " order by ";
 
+<<<<<<< HEAD
 			if (args[1] != "")
 				sql += "exam.examDate , ";
 
@@ -76,7 +104,22 @@ public class DAO {
 			if (args[1] != "" || args[2] != "" || args[3] != "") {
 				sql = sql.substring(0, sql.length() - 2);
 			}
+=======
+			if (args[1]!="")
+				sql += " exam.examDate , ";
+
+			if (args[2]!="")
+				sql += " exam.examCode , ";
+
+			if (args[3]!="")
+				sql += " school.locationName , ";
+
+			sql=sql.substring(0, sql.length() - 2);
+>>>>>>> 7a1ad9c154cc68e49e023cf94c3f153e58df4bd7
 			System.out.println(sql);
+			sql = new String (sql.getBytes(),"utf-8");
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
 			pState = conn.prepareStatement(sql);
 			rest = pState.executeQuery();
 			while (rest.next()) {
@@ -100,11 +143,34 @@ public class DAO {
 				bean.setExamNo(rest.getInt(9));
 				listbean.add(bean);
 				bean = null;
-
 			}
+			System.out.println("conn Close ?");
+			conn.close();
+			System.out.println("conn Close !");
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn!=null)
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
 		return listbean;
 	}
 
@@ -122,10 +188,5 @@ public class DAO {
 
 	}
 
-	@Override
-	protected void finalize() throws Throwable {
 
-		close();
-		super.finalize();
-	}
 }
