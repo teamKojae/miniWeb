@@ -16,10 +16,11 @@ function ajax(){
 		type : 'POST',
 		datatype : 'JSON',
 		data : str,
+	
 		success : function(data) {
-		
-			var a = jQuery.parseJSON(data);
-				alert(a); 
+			alert(data)
+/*			var a = jQuery.parseJSON(data);
+				alert(a);*/ 
 		},
 		error : function(data) {
 			alert(data.result);

@@ -17,29 +17,19 @@ public class DAO {
 	private Connection conn = null;
 	private static DAO instance;
 	private String sqlSelcet = "select student.studentNo,student.studentName,grade.koreanScore,grade.englishScore,"
-<<<<<<< HEAD
 			+ "grade.mathScore,grade.scienceScore,grade.historyScore,exam.examDate,exam.examNo " 
 			+ "from exam,grade,school,student"
 			+" where grade.examNo = exam.examNo " 
 			+"and student.studentNo=grade.studentNo " 
-			+"and school.schoolNo = student.schoolNo and";
+			+"and school.schoolNo = student.schoolNo ";
 	private PreparedStatement pState = null;
-=======
-			+ "grade.mathScore,grade.scienceScore,grade.historyScore,exam.examDate,exam.examNo "
-			+ "from exam,grade,school,student  where grade.examNo = exam.examNo "
-			+ "and student.studentNo=grade.studentNo and school.schoolNo = student.schoolNo ";
-	private PreparedStatement pState;
->>>>>>> 67d433b84313345b582127cf6c3e2d4e939fcadb
+
+			
 	SqlUtil util = new SqlUtil();
 
 	public DAO() {
 	}
 
-	public static DAO getInstance() {
-
-		return (instance == null) ? instance = new DAO() : instance;
-			
-	}
 	public static DAO getInstance() {
 
 		return (instance == null) ? instance = new DAO() : instance;

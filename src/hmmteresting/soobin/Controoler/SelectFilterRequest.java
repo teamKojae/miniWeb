@@ -54,8 +54,7 @@ public class SelectFilterRequest extends HttpServlet {
 		stringBuffer.append(obj.toString());
 		request.setAttribute("list", list);
 		String gson = new Gson().toJson(obj);
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
+
 		response.getWriter().write(gson);
 		
 //		printWriter.write(stringBuffer.toString());
@@ -108,19 +107,16 @@ public class SelectFilterRequest extends HttpServlet {
 			String examCode = request.getParameter("examCode");
 			String locationName = request.getParameter("locationName");
 			
+
+			
 			DAO dao =new DAO();
 			String selcetData = dao.SelectWhere(schoolName, studentName, studentNo);
 			list.addAll(dao.SelcetFilter(selcetData, examDate, examCode, locationName));
-			System.out.println(selcetData);
-			//			JSONObject obj = new JSONObject();
-//			obj.put("result",list);
-			
-			//request.setAttribute("list", list.get(0).getExamNo());
-			
 			
 			String gson = new Gson().toJson(list);
 			System.out.println(gson);
 			
+			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(gson);
 		
 		
