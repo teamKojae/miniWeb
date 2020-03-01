@@ -1,4 +1,4 @@
-package contoller;
+package hmmteresting.soobin.Controoler;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import VO.DAO;
-import model.ModelViewBean;
+import hmmteresting.soobin.DAO.DAO;
+import hmmteresting.soobin.model.ModelViewBean;
 
 /**
  * Servlet implementation class SelectFilterRequest

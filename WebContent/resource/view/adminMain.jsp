@@ -20,7 +20,32 @@
 <script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
  
  <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
- 
+ <script type="text/javascript">
+  $(function() {
+    $("button").click(function() {
+      var str = $("#form123").serialize();
+      $.ajax({
+    	  url:"/SelectFilterRequest.do",
+    	  type:'GET',
+    	  datatype:'JSON',
+    	  contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        data: str,
+        
+        success: function(data) {
+        	console.log('안녕');
+        	alert(data.result);
+        	var a = JSON.parse(data.result);
+          		alert(a);
+          		
+        },	
+        error: function(data){
+        	alert(data.result);
+        	console.log(data.result);
+        }
+      });
+    });
+  });
+  </script>
 </head>
 <body
 	class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed 
@@ -134,18 +159,27 @@
 
 				<div class="kt-portlet__body">
 					<!--begin: Search Form -->
-					<form class="kt-form kt-form--fit kt-margin-b-20">
+					<form id="form123" method="get" class="kt-form kt-form--fit kt-margin-b-20">
 						<div class="row kt-margin-b-20">
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>이름</label> <input type="text"
+								<label>이름</label> <input type="text" name="studentName"
 									class="form-control kt-input" placeholder="" data-col-index="0">
 							</div>
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>수험번호</label> <input type="text"
+								<label>수험번호</label> <input type="text"	name="studentNo"
 									class="form-control kt-input" placeholder="" data-col-index="1">
 							</div>
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>학교</label> <select class="form-control kt-input"
+								<label>지역</label> <select class="form-control kt-input" name="locationName"
+									data-col-index="7">
+									<option value="">구 선택</option>
+									<option value="1">Online</option>
+									<option value="2">Retail</option>
+									<option value="3">Direct</option>
+								</select>
+							</div>
+							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
+								<label>학교</label> <select class="form-control kt-input" name="schoolName"
 									data-col-index="2">
 									<option value="">학교선택</option>
 									<option value="Argentina">Argentina</option>
@@ -162,7 +196,7 @@
 
 						<div class="row kt-margin-b-20">
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>년도</label> <select class="form-control kt-input"
+								<label>년도</label> <select class="form-control kt-input" name="examDate"
 									data-col-index="2">
 									<option value="">년도선택</option>
 									<option value="Argentina">Argentina</option>
@@ -176,7 +210,7 @@
 							</div>
 
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>회차선택</label> <select class="form-control kt-input"
+								<label>회차선택</label> <select class="form-control kt-input" name="examCode"
 									data-col-index="6">
 									<option value="">회차 선택</option>
 									<option value="1">Pending</option>
@@ -186,15 +220,7 @@
 									<option value="6">Danger</option>
 								</select>
 							</div>
-							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>지역</label> <select class="form-control kt-input"
-									data-col-index="7">
-									<option value="">구 선택</option>
-									<option value="1">Online</option>
-									<option value="2">Retail</option>
-									<option value="3">Direct</option>
-								</select>
-							</div>
+							
 
 						</div>
 

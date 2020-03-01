@@ -12,32 +12,6 @@
 <link rel="stylesheet" href="../css/adminStyleCustom.css">
 <link rel="stylesheet" href="../css/plugins.css">
 <script src="../js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-  $(function() {
-    $("button").click(function() {
-      var str = $("#form123").serialize();
-      $.ajax({
-    	  url:"/SelectFilterRequest.do",
-    	  type:'GET',
-    	  datatype:'JSON',
-    	  contentType: "application/x-www-form-urlencoded; charset=utf-8",
-        data: str,
-        
-        success: function(data) {
-        	console.log('안녕');
-        	alert(data.result);
-        	var a = JSON.parse(data.result);
-          		alert(a);
-          		
-        },	
-        error: function(data){
-        	alert(data.result);
-        	console.log(data.result);
-        }
-      });
-    });
-  });
-  </script>
 </head>
 <body
 	class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed 
