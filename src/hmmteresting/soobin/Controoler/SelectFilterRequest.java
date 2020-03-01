@@ -36,7 +36,6 @@ public class SelectFilterRequest extends HttpServlet {
 		String examCode = request.getParameter("examCode");
 		String locationName = request.getParameter("locationName");
 		
-		System.out.println(request.getParameter("studentName"));
 		
 		JSONObject obj = new JSONObject();
 		DAO dao = DAO.getInstance();
@@ -45,8 +44,9 @@ public class SelectFilterRequest extends HttpServlet {
 		list.addAll(dao.SelcetFilter(selcetData, examDate, examCode, locationName));
 		obj.put("result", list);
 		response.setContentType("application/x-json; charset=UTF-8");
-		response.getWriter().print(obj);
+		response.getWriter().println(obj);
 		response.getWriter().flush();
+		response.getWriter().close();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

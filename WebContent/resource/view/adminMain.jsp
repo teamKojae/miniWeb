@@ -32,7 +32,7 @@
     	  datatype:'JSON',
     	  contentType: "application/x-www-form-urlencoded; charset=utf-8",
         data: str,
-        
+        //sdsdsd
         success: function(data) {
         	console.log('안녕');
         	alert(data.result);
@@ -161,7 +161,7 @@
 
 				<div class="kt-portlet__body">
 					<!--begin: Search Form -->
-					<form id="form123" method="get" class="kt-form kt-form--fit kt-margin-b-20">
+					<form id="form123" method="get" class="kt-form kt-form--fit kt-margin-b-20" action="/SelectFilterRequest.do">
 						<div class="row kt-margin-b-20">
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
 								<label>이름</label> <input type="text" name="studentName"
