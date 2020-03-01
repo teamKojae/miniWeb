@@ -22,7 +22,7 @@ public class DAO {
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-
+//
 			conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost/hmmteresting?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 					"root", "1234");
