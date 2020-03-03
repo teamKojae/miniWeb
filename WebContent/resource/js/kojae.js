@@ -20,10 +20,12 @@ function excelRead() {
 					data : data,
 					success : function(data) {
 						// alert(data);
+						console.log('success?');
 						$('#studentData').empty();
+						$('#kt_table_1').append("<tbody>");
 						$.each(jQuery.parseJSON(data), function(key, value) {
-
-							$('#studentData').append(
+							console.log(value);
+							$('#kt_table_1').append(
 									'<tr role="row" class="odd">' + '<td>'
 											+ (key + 1) + '</td>' + '<td>'
 											+ value[0] + '</td>' + '<td>'
@@ -37,9 +39,9 @@ function excelRead() {
 											+ value[8] + '</td>' + '<td>'
 											+ value[9] + '</td>' + '<td>'
 											+ value[10] + '</td>' + +'</tr>'
-
 							);
 						})
+						$('#kt_table_1').append("</tbody>");
 					}
 				});
 

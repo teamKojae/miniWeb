@@ -33,7 +33,7 @@ public class SelectFilterRequest extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		List<ModelViewBean> list = new ArrayList<ModelViewBean>();
-
+			
 		String studentName = request.getParameter("studentName");
 		String studentNo = request.getParameter("studentNo");
 		String schoolName = request.getParameter("schoolName");
@@ -92,13 +92,17 @@ public class SelectFilterRequest extends HttpServlet {
 //	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		request.setCharacterEncoding("UTF-8");
 		SqlUtil sqlUtil = new SqlUtil();
 		PreparedStatement pState = null;
 		ResultSet rest = null;
 		List<ModelViewBean> list = new ArrayList<ModelViewBean>();
 		ModelViewBean modelViewBean = new ModelViewBean();
 
+		
+
+		System.out.println("왔냐");
 		String studentName = request.getParameter("studentName");
 		String studentNo = request.getParameter("studentNo");
 		String schoolName = request.getParameter("schoolName");
@@ -106,10 +110,14 @@ public class SelectFilterRequest extends HttpServlet {
 		String examCode = request.getParameter("examCode");
 		String locationName = request.getParameter("locationName");
 
+		System.out.println(request.getParameter("filter"));
+		System.out.println(request.getParameter("kojae"));
+		
 		DAO dao = new DAO();
 		String selcetData = dao.SelectWhere(schoolName, studentName, studentNo);
 		list.addAll(dao.SelcetFilter(selcetData, examDate, examCode, locationName));
 		String gson = new Gson().toJson(list);
+		System.out.println("gson : "+gson);
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(gson);
 

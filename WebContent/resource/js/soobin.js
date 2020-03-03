@@ -1,5 +1,6 @@
 $(function() {
 	ajax();
+	ajax2();
 });
 
 $('input[type="file"]').change(function(e) {
@@ -69,15 +70,17 @@ function ajax1(){
 	});
 }
 function ajax2(){
-	$("#kt_search").click(function(event) {
+	$("#kt_search").bind('click',function(event) {
 		event.preventDefault();
+		
 		var str = $("#form123").serialize();
+		console.log(str);
 		$.ajax({
 			url : "/SelectFilterRequest.do",
 			type : 'POST',
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
 			datatype : 'JSON',
 			data : str,
-		
 			success : function(data) {
 				var i=1;
 				var results = JSON.parse(data);
