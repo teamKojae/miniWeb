@@ -1,7 +1,7 @@
 $(function() {
-	ajax();
 	excelRead();
-	getFilterAjax();
+	getLocationAjax();
+	getSchoolNames();
 });
 
 function excelRead() {
@@ -46,68 +46,55 @@ function excelRead() {
 			});
 }
 
-function getFilterAjax() {
-	$('.kt-input').click(function(event) {
-		/*
-		 * console.log($('.kt-input option:selected').val()); --> 선택한 애
-		 */
-		event.preventDefault();
-		var target = $(event.target);
+function getLocationAjax() {
+	$('#locationName').on(
+			'click',
+			function(event) {
+				event.preventDefault();
+				// var str = $("#examDate").serialize();
+				$.ajax({
+					url : "/FilterGetExam.do",
+					type : 'POST',
+					dataType : 'JSON',
+					success : function(data) {
+						$('#locationName').empty();
+						$(this).attr('option', 'selected');
+						$(event.target).append("<option value=''>구 선택</td>");
+						$.each(data, function(key, value) {
+							$(event.target).append(
+									"<option value=" + value.locationName
+											+ "> " + value.locationName
+											+ "</option>");
+						});
+						$(this).off(event);
+					}
+				});
 
-		// console.log($('.kt-input[option=selected]').length);
-		var a = $('.kt-input option:selected');
-
-		$(this).attr('option', 'selected');
-
-		var selectFilter = $('.kt-input[option=selected]');
-
-		//
-		// console.log(selectFilter.length);
-		// console.log(selectFilter[0].name);
-		//						
-		// console.log($(this).attr('id'));
-
-		var filterNameArray = [];
-		var filterValueArray = [];
-
-		for (var i = 0; i < selectFilter.length; i++) {
-			filterNameArray.push(selectFilter[i].id);
-			filterValueArray.push(selectFilter[i].value);
-		}
-
-		var dataArray = {
-			"paramName" : filterNameArray,
-			"paramValue" : filterValueArray
-		}
-
-	})
+			});
 }
-function ajax() {
 
-	$.ajax({
-		url : "/FilterGetExam.do",
-		type : 'post',
-		dataType : 'json',
-		data : dataArray,
-		success : function(data) {
-			$(event.target).empty();
+function getSchoolNames() {
+	$('#locationName').bind(
+			'change',
+			function(event) {
+				event.preventDefault();
+				console.log($('#locationName').val());
+				$.ajax({
+					url : "/FilterGetExam.do",
+					type : 'POST',
+					dataType : 'JSON',
+					data : "locationName=" + $('#locationName').val(),
+					success : function(data) {
+						$('#schoolName').empty();
+						$('#schoolName').append("<option value=''>학교선택</td>");
 
-			$.each(data, function(key, value) {
+						$.each(data, function(key, value) {
+							$('#schoolName').append(
+									"<option value=" + value.schoolName + "> "
+											+ value.schoolName + "</option>");
 
-				var contents = target.attr('id');
-				if (contents == ('locationName')) {
-					$(event.target).append(
-							"<option value=" + value.locationName + "> "
-									+ value.locationName + "</option>");
-
-				} else if (contents == ('schoolName')) {
-					$(event.target).append(
-							"<option value=" + value.schoolName + "> "
-									+ value.schoolName + "</option>");
-				}
+						})
+					}
+				})
 			})
-
-		}
-	});
-
 }

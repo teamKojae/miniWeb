@@ -1,5 +1,6 @@
 package hmmteresting.kojae.DAO;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +23,53 @@ public class AdminProcess {
 
 	}
 
+	public List<SchoolBean> getLocation(){
+		connection = sqlUtil.getConnection();
+		String getLocation = " SELECT DISTINCT locationName FROM school";
+		SchoolBean schoolBean = null;
+		List<SchoolBean> list = new ArrayList<SchoolBean>();
+		try {
+			preparedStatement = connection.prepareStatement(getLocation);
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				schoolBean = new SchoolBean();
+				schoolBean.setLocationName(resultSet.getString(1));
+				list.add(schoolBean);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<SchoolBean> getSchoolName(String locationName){
+		connection = sqlUtil.getConnection();
+		String getLocation = " SELECT DISTINCT locationName, schoolName FROM school "
+				+ "WHERE locationName = '"+locationName+"'";
+		SchoolBean schoolBean = null;
+		List<SchoolBean> list = new ArrayList<SchoolBean>();
+		try {
+			getLocation = new String(getLocation.getBytes(), "utf-8");
+			preparedStatement = connection.prepareStatement(getLocation);
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				schoolBean = new SchoolBean();
+				schoolBean.setLocationName(resultSet.getString(1));
+				schoolBean.setSchoolName(resultSet.getString(2));
+				list.add(schoolBean);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
 	public List<SchoolBean> getLoactionName(List<String> column, List<String> whereQuary) {
 
 		connection = sqlUtil.getConnection();
@@ -45,16 +93,19 @@ public class AdminProcess {
 			}
 		}
 		sql.append(from);
-		
-		if(! whereQuary.get(0).equals("")) {
-			sql.append(" WHERE ");
-			
-			// 조건문 붙히기. 조건 추가되면 and붙히는 조건절이랑 조인문도 추가할예정   
-			for(int i = 0 ; i< whereQuary.size()-1; i++) {
-				// WHERE	    ex) ↓ locationName = '강남구'  ↓
-				sql.append(" "+ column.get(i)+"='"+whereQuary.get(i)+"'" );
+		int i = 0;
+		if( ! whereQuary.get(0).equals(""))
+		sql.append(" WHERE ");
+		for(String where : whereQuary) {
+			if( column.size() == whereQuary.size() && ! whereQuary.get(i).equals("")) {
+				// 조건문 붙히기. 조건 추가되면 and붙히는 조건절이랑 조인문도 추가할예정   
+					// WHERE	    ex) ↓ locationName = '강남구'  ↓
+				sql.append(" "+ column.get(i)+"='"+where+"' and " );
+				if( i == whereQuary.size()-1 || whereQuary.get(whereQuary.size()-1).equals("")) 
+					sql.delete(sql.length()-4 , sql.length());
+				
+				i++;
 			}
-
 		}
 		System.out.println("query :  " + sql);
 		List<SchoolBean> schoolBeansList = null;
@@ -66,7 +117,7 @@ public class AdminProcess {
 			while (resultSet.next()) {
 				SchoolBean schoolBean = new SchoolBean();
 				schoolBean.setLocationName(resultSet.getString(1));
-				if( ! whereQuary.get(0).equals(""))
+				if( column.size() > 1 && ! column.get(1).equals("locationName"))
 				schoolBean.setSchoolName(resultSet.getString(2));
 				schoolBeansList.add(schoolBean);
 

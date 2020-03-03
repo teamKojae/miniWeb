@@ -12,6 +12,7 @@ function ajax() {
 	$("#examDate").on("click",function(event){
 		var str = $("#examDate").serialize();
 		console.log(str);
+		event.preventDefault();
 		$.ajax({
 			url : "/SelectExamRequest.do",
 			type : 'POST',
@@ -43,6 +44,7 @@ function ajax() {
 		event.preventDefault();
 		var str = $("#examDate > option").serialize();
 		console.log(str);
+	
 		$.ajax({
 			url : "/SelectExamRequest.do",
 			type : 'POST',
