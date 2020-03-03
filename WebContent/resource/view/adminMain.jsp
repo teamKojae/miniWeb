@@ -24,6 +24,8 @@
 
 <script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
 
+ <script src="${pageContext.request.contextPath}/resource/js/soobin.js"></script>
+
  <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
 
  
@@ -123,18 +125,25 @@
 									class="form-control kt-input" placeholder="" data-col-index="1">
 							</div>
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>지역</label> <select class="form-control kt-input" id="locationName" name="filter"
+								<label>지역</label> <select class="form-control kt-input" id="locationName" name="kojae"
 									data-col-index="7">
 									<option value="" >구 선택</option>
+									<option value="" ></option>
+									<option value="" ></option>
+									<option value="" ></option>
 									<option value="" ></option>
 									<option value="" ></option>
 									
 								</select>
 							</div>
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>학교</label> <select class="form-control kt-input" id="schoolName" name="filter"
+								<label>학교</label> <select class="form-control kt-input" id="schoolName" name="kojae"
 									data-col-index="2">
 									<option value="">학교선택</option>
+									<option value="" ></option>
+									<option value="" ></option>
+									<option value="" ></option>
+									<option value="" ></option>
 									<option value="" ></option>
 									<option value="" ></option>
 									<option value="" ></option>
@@ -159,6 +168,7 @@
 							</div>
 
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
+								
 								<label>회차선택</label> <select class="form-control kt-input" id="examCode" name="filter"
 									data-col-index="6">
 									<option value="">회차 선택</option>
@@ -223,7 +233,6 @@
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 95px;"
 												aria-label="Status: activate to sort column ascending">수학</th>
-											
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 95px;"
 												aria-label="Type: activate to sort column ascending">과학</th>
@@ -239,10 +248,7 @@
 										</tr>
 									</thead>
 
-
-
 									<tbody id="studentData">
-									
 									</tbody>
 								</table>
 								<div id="kt_table_1_processing"

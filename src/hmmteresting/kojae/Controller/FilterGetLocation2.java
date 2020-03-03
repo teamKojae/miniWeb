@@ -19,10 +19,10 @@ import java.util.Enumeration;
 			/**
 			 * Servlet implementation class FilterGetExam
 			 */
-			@WebServlet("/FilterGetExam.do")
-			public class FilterGetLocation extends HttpServlet {
+			@WebServlet("/FilterGetExam2.do")
+			public class FilterGetLocation2 extends HttpServlet {
 				private static final long serialVersionUID = 1L;
-			    public FilterGetLocation() {  }
+			    public FilterGetLocation2() {  }
 			
 				protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 					request.setCharacterEncoding("utf-8");
@@ -38,20 +38,30 @@ import java.util.Enumeration;
 					    System.out.println(name + " : " +request.getParameter(name));
 					}
 					System.out.println("----------------------------");
-					AdminProcess process = new AdminProcess();
-					String locationName = request.getParameter("locationName");
-					System.out.println(locationName);
 					
-					List<SchoolBean> list = null;
-					if(locationName==null)
-						list = process.getLocation();
+
+					String[] getColumn = request.getParameterValues("paramName[]");
+					String[] getWhereQuery = request.getParameterValues("paramValue[]");
 					
-					else {
-						list = process.getSchoolName(locationName);
-					}
-						
 					
-					String gson = new Gson().toJson(list);
+					List<String> column = new ArrayList<String>();
+					List<String> whereQuery = new ArrayList<String>();
+					for(String str : getColumn ) 
+						column.add(str);
+					
+					for(String str : getWhereQuery)
+						whereQuery.add(str);
+					
+					System.out.println("column  : "+column.get(0));
+					System.out.println("whereQuery  : "+whereQuery.get(0));
+					//request.get
+
+					
+					
+					AdminProcess adminProcess = new AdminProcess();
+					List<SchoolBean> schoolList = adminProcess.getLoactionName(column,whereQuery);
+					
+					String gson = new Gson().toJson(schoolList);
 					System.out.println(gson);
 					response.getWriter().write(gson);
 					

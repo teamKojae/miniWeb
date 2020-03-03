@@ -16,15 +16,12 @@ public class DAO {
 
 	private Connection conn = null;
 	private static DAO instance;
-	private String sqlSelcet = "select student.studentNo,student.studentName,grade.koreanScore,grade.englishScore,"
-			+ "grade.mathScore,grade.scienceScore,grade.historyScore,exam.examDate,exam.examNo " 
-			+ "from exam,grade,school,student"
-			+" where grade.examNo = exam.examNo " 
-			+"and student.studentNo=grade.studentNo " 
-			+"and school.schoolNo = student.schoolNo ";
+	private String sqlSelcet = "select student.studentNo,student.studentName,exam.examDate,exam.examNo ,grade.koreanScore,grade.englishScore,"
+			+ "grade.mathScore,grade.scienceScore,grade.historyScore,grade.totalScore,grade.averageScore "
+			+ " from exam,grade,school,student" + " where grade.examNo = exam.examNo "
+			+ "and student.studentNo=grade.studentNo " + "and school.schoolNo = student.schoolNo ";
 	private PreparedStatement pState = null;
 
-			
 	SqlUtil util = new SqlUtil();
 
 	public DAO() {
@@ -67,8 +64,7 @@ public class DAO {
 
 		try {
 
-			if (args[1] != "" || args[2] != "" || args[3] != "")
-				sql += " order by ";
+			sql += " order by student.studentName , ";
 
 			if (args[1] != "")
 				sql += "exam.examDate , ";
@@ -78,65 +74,53 @@ public class DAO {
 
 			if (args[3] != "")
 				sql += "school.locationName , ";
-			if (args[1] != "" || args[2] != "" || args[3] != "") {
-				sql = sql.substring(0, sql.length() - 2);
-			}
 
-			System.out.println(sql);
-			sql = new String (sql.getBytes(),"UTF-8");
+			sql = sql.substring(0, sql.length() - 2);
+
+			sql = new String(sql.getBytes(), "utf-8");
+
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
 			pState = conn.prepareStatement(sql);
 			rest = pState.executeQuery();
 			while (rest.next()) {
 				bean = new ModelViewBean();
-				int sum = 0;
-				double ave = 0;
 				bean.setStudentNo(rest.getString(1));
 				bean.setStudentName(rest.getString(2));
-				bean.setKoreanScore(rest.getInt(3));
-				bean.setEnglishScore(rest.getInt(4));
-				bean.setMathScore(rest.getInt(5));
-				bean.setScienceScore(rest.getInt(6));
-				bean.setHistoryScore(rest.getInt(7));
-				for (int i = 3; i < 8; i++) {
-					sum += rest.getInt(i);
-					ave = sum /= 5;
-				}
-				bean.setTotalScore(sum);
-				bean.setAverageScore(ave);
-				bean.setExamDate(rest.getString(8));
-				bean.setExamNo(rest.getInt(9));
+				bean.setExamDate(rest.getString(3));
+				bean.setExamNo(rest.getInt(4));
+				bean.setKoreanScore(rest.getInt(5));
+				bean.setEnglishScore(rest.getInt(6));
+				bean.setMathScore(rest.getInt(7));
+				bean.setScienceScore(rest.getInt(8));
+				bean.setHistoryScore(rest.getInt(9));
+				bean.setTotalScore(rest.getInt(10));
+				bean.setAverageScore(rest.getDouble(11));
+
 				listbean.add(bean);
 				bean = null;
 			}
-			System.out.println("conn Close ?");
+			pState.close();
 			conn.close();
-			System.out.println("conn Close !");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if(conn!=null)
-				conn.close();
+				if (conn != null)
+					conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
+
 		return listbean;
 	}
 
@@ -153,6 +137,5 @@ public class DAO {
 		}
 
 	}
-
 
 }

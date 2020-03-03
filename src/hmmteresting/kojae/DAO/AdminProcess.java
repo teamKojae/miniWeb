@@ -1,5 +1,6 @@
 package hmmteresting.kojae.DAO;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +23,53 @@ public class AdminProcess {
 
 	}
 
+	public List<SchoolBean> getLocation(){
+		connection = sqlUtil.getConnection();
+		String getLocation = " SELECT DISTINCT locationName FROM school";
+		SchoolBean schoolBean = null;
+		List<SchoolBean> list = new ArrayList<SchoolBean>();
+		try {
+			preparedStatement = connection.prepareStatement(getLocation);
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				schoolBean = new SchoolBean();
+				schoolBean.setLocationName(resultSet.getString(1));
+				list.add(schoolBean);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<SchoolBean> getSchoolName(String locationName){
+		connection = sqlUtil.getConnection();
+		String getLocation = " SELECT DISTINCT locationName, schoolName FROM school "
+				+ "WHERE locationName = '"+locationName+"'";
+		SchoolBean schoolBean = null;
+		List<SchoolBean> list = new ArrayList<SchoolBean>();
+		try {
+			getLocation = new String(getLocation.getBytes(), "utf-8");
+			preparedStatement = connection.prepareStatement(getLocation);
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				schoolBean = new SchoolBean();
+				schoolBean.setLocationName(resultSet.getString(1));
+				schoolBean.setSchoolName(resultSet.getString(2));
+				list.add(schoolBean);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
 	public List<SchoolBean> getLoactionName(List<String> column, List<String> whereQuary) {
 
 		connection = sqlUtil.getConnection();
