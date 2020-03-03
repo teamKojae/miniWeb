@@ -1,4 +1,4 @@
-package hmmteresting.soobin.Controoler;
+	package hmmteresting.soobin.Controoler;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -100,8 +100,7 @@ public class SelectFilterRequest extends HttpServlet {
 		List<ModelViewBean> list = new ArrayList<ModelViewBean>();
 		ModelViewBean modelViewBean = new ModelViewBean();
 
-		
-
+		request.setCharacterEncoding("UTF-8");
 		String studentName = request.getParameter("studentName");
 		String studentNo = request.getParameter("studentNo");
 		String schoolName = request.getParameter("schoolName");

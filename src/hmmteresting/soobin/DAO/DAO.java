@@ -18,8 +18,8 @@ public class DAO {
 	private static DAO instance;
 	private String sqlSelcet = "select student.studentNo,student.studentName,exam.examDate,exam.examNo ,grade.koreanScore,grade.englishScore,"
 			+ "grade.mathScore,grade.scienceScore,grade.historyScore,grade.totalScore,grade.averageScore "
-			+ " from exam,grade,school,student" + " where grade.examNo = exam.examNo "
-			+ "and student.studentNo=grade.studentNo " + "and school.schoolNo = student.schoolNo ";
+			+ " from exam,grade,school,student where grade.examNo = exam.examNo "
+			+ "and student.studentNo=grade.studentNo and school.schoolNo = student.schoolNo ";
 	private PreparedStatement pState = null;
 
 	SqlUtil util = new SqlUtil();

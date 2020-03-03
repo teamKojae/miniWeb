@@ -166,12 +166,12 @@
 								<label>회차선택</label> <select class="form-control kt-input" id="examCode" name="examCode"
 									data-col-index="6">
 									<option value="">회차 선택</option>
-									<option value=""></option>
-									<option value=""></option>
-									<option value=""></option>
-									<option value=""></option>
-									<option value=""></option>
-									
+									<option value="1">1회차</option>
+									<option value="2">2회차</option>
+									<option value="3">3회차</option>
+									<option value="4">4회차</option>
+									<option value="5">5회차</option>
+									<option value="6">6회차</option>
 								</select>
 							</div>
 							

@@ -1,5 +1,6 @@
 $(function() {
 	ajax();
+	ajax1();
 	ajax2();
 });
 
@@ -12,13 +13,11 @@ function ajax() {
 	
 	$("#examDate").on("click",function(event){
 		var str = $("#examDate").serialize();
-		console.log(str);
 		event.preventDefault();
 		$.ajax({
 			url : "/SelectExamRequest.do",
 			type : 'POST',
 			datatype : 'JSON',
-			data : str,
 		success: function(data){
 			var stop=1;
 			var results = JSON.parse(data);
@@ -43,16 +42,14 @@ function ajax() {
 	});
 }
 function ajax1(){
-	$("#examDate > option").click(function(event) {
+	$("#examDate > option").change(function(event) {
 		event.preventDefault();
 		var str = $("#examDate > option").serialize();
 		console.log(str);
-	
 		$.ajax({
 			url : "/SelectExamRequest.do",
 			type : 'POST',
 			datatype : 'JSON',
-			data : str,
 			success : function(data) {
 				var results = JSON.parse(data);
 				var examCodeSetting='<option value=""회차선택</option>';
