@@ -1,4 +1,4 @@
-package hmmteresting.soobin.Controoler;
+	package hmmteresting.soobin.Controoler;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -98,7 +98,7 @@ public class SelectFilterRequest extends HttpServlet {
 		ResultSet rest = null;
 		List<ModelViewBean> list = new ArrayList<ModelViewBean>();
 		ModelViewBean modelViewBean = new ModelViewBean();
-
+		request.setCharacterEncoding("UTF-8");
 		String studentName = request.getParameter("studentName");
 		String studentNo = request.getParameter("studentNo");
 		String schoolName = request.getParameter("schoolName");
@@ -111,6 +111,7 @@ public class SelectFilterRequest extends HttpServlet {
 		list.addAll(dao.SelcetFilter(selcetData, examDate, examCode, locationName));
 		String gson = new Gson().toJson(list);
 		response.setCharacterEncoding("UTF-8");
+		System.out.println(gson);
 		response.getWriter().write(gson);
 
 	}

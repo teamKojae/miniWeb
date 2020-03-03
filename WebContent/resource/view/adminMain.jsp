@@ -178,12 +178,12 @@
 								<label>회차선택</label> <select class="form-control kt-input" id="examCode" name="filter"
 									data-col-index="6">
 									<option value="">회차 선택</option>
-									<option value="">년도선택</option>
-									<option value="">년도선택</option>
-									<option value="">년도선택</option>
-									<option value="">년도선택</option>
-									<option value="">년도선택</option>
-									
+									<option value="1">1회차</option>
+									<option value="2">2회차</option>
+									<option value="3">3회차</option>
+									<option value="4">4회차</option>
+									<option value="5">5회차</option>
+									<option value="6">6회차</option>
 								</select>
 							</div>
 							
@@ -259,6 +259,8 @@
 												aria-label="Type: activate to sort column ascending">평균</th>
 										</tr>
 									</thead>
+									<tbody id="studentData">
+									</tbody>
 								</table>
 								<div id="kt_table_1_processing"
 									class="dataTables_processing card" style="display: none;">Processing...</div>
