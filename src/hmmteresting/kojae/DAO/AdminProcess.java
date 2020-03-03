@@ -1,259 +1,143 @@
-	package hmmteresting.kojae.DAO;
-	
-	import java.io.FileInputStream;
-	import java.io.IOException;
-	import java.sql.Connection;
-	import java.sql.PreparedStatement;
-	import java.sql.SQLException;
-	import java.util.ArrayList;
-	import java.util.Iterator;
-	import java.util.List;
-	
-	import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-	import org.apache.poi.ss.usermodel.Cell;
-	import org.apache.poi.ss.usermodel.Row;
-	import org.apache.poi.ss.usermodel.Sheet;
-	import org.apache.poi.ss.usermodel.Workbook;
-	import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-	
-	import hmmteresting.kojae.DAO.Util.SqlUtil;
-	import hmmteresting.kojae.Model.GradeBean;
-	
-	public class AdminProcess {
-		PreparedStatement pState = null;
-		Connection connection =null ;
-		SqlUtil util = new SqlUtil();
-		public AdminProcess() {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	
-		public List<GradeBean> excelData(String fileName) {
-			List<GradeBean> gradeList = new ArrayList<GradeBean>();
-			try {
-				// Create the input stream from the xlsx/xls file
-				FileInputStream fileInputStream = new FileInputStream(fileName);
-				// Create Workbook instance for xlsx/xls file input stream
-				Workbook workbook = null;
-				if (fileName.toLowerCase().endsWith("xlsx")) {
-					workbook = new XSSFWorkbook(fileInputStream);
-				} else if (fileName.toLowerCase().endsWith("xls")) {
-					workbook = new HSSFWorkbook(fileInputStream);
-				}
-	
-				//모든 시트 개수 가져오기
-				int numberOfSheets = workbook.getNumberOfSheets();
-				GradeBean gradeBean = null;
-				for (int i = 0; i < numberOfSheets; i++) {
-					// 시트 1개 읽어서 저장
-					Sheet sheet = workbook.getSheetAt(i);
-					// 시트를 객체로 변환
-					Iterator<Row> rowIterator = sheet.iterator();
-					while (rowIterator.hasNext()) {
-						gradeBean = new GradeBean();
-						// 시트에 있는 row읽기
-						Row row = rowIterator.next();
-						// 열하나씩 읽어서 Iterator 객체로 저장
-						Iterator<Cell> cellIterator = row.cellIterator();
-						while (cellIterator.hasNext()) {
-							// 열 하나에 대한 셀값 가져오기
-							Cell cell = cellIterator.next();	
-							// 타입에 따라 빈에 저장시키기
-							switch (cell.getCellType()) {
-							case Cell.CELL_TYPE_STRING:  	//String 형 셀
-								gradeBean.setStudentNo(cell.getStringCellValue());
-								break;
-							case Cell.CELL_TYPE_NUMERIC:  // 숫자형 셀
-								int intValue = (int) cell.getNumericCellValue();
-								switch (cell.getColumnIndex()) {
-								case 1:
-									gradeBean.setExamNo(intValue);
-									break;
-								case 2:
-									gradeBean.setKoreanScore(intValue);
-									break;
-								case 3:
-									gradeBean.setMathScore(intValue);
-									break;
-								case 4:
-									gradeBean.setEnglishScore(intValue);
-									break;
-								case 5:
-									gradeBean.setScienceScore(intValue);
-									break;
-								case 6:
-									gradeBean.setHistoryScore(intValue);
-									break;
-								}
-								break;
-							case Cell.CELL_TYPE_FORMULA:   // 함수 사용한 셀
-								int intValueFomula = (int) cell.getNumericCellValue();
-								switch (cell.getColumnIndex()) {
-								case 7:
-									gradeBean.setTotlaScore(intValueFomula);
-									break;
-								case 8:
-									gradeBean.setAverageScore(intValueFomula);
-								}
-								break;
-							}
-						}	//셀마다 읽기 끝
-						gradeList.add(gradeBean);
-					} // Row 열 읽기 끝
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			return gradeList;
-		}
-	
-		public void insertExcelData(String fileName) {
-	
-			try {
-				List<GradeBean> gradeList = excelData(fileName); 
-	
-				 connection = util.getConnection();
-	
-			
-				String sql = "INSERT INTO hmmteresting.grade "
-						+ "(studentNo, examNo, koreanScore, mathScore, englishScore, scienceScore,historyScore,"
-						+ "totalScore,averageScore) VALUES(?,?,?,?,?,?,?,?,?)";
-	
-				pState = connection.prepareStatement(sql);
-				int index=0;
-				for(GradeBean gradeBean : gradeList) {
-					pState.setString(1, gradeBean.getStudentNo());
-					pState.setInt(2, gradeBean.getExamNo());
-					pState.setInt(3,gradeBean.getKoreanScore());
-					pState.setInt(4,gradeBean.getMathScore());
-					pState.setInt(5,gradeBean.getEnglishScore());
-					pState.setInt(6,gradeBean.getScienceScore());
-					pState.setInt(7,gradeBean.getHistoryScore());
-					pState.setInt(8,gradeBean.getTotlaScore());
-					pState.setInt(9,gradeBean.getAverageScore());
-					pState.execute();
-					
-				}
-			
-				pState.close();
-				
-				connection.close();
-	
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-	
-			}
-	
-		}
-		
-		public void readExcelDataa(String fileName) {
-			// List<Country> countriesList = new ArrayList<Country>();
-	
-			try {
-				// Create the input stream from the xlsx/xls file
-				FileInputStream fis = new FileInputStream(fileName);
-	
-				// Create Workbook instance for xlsx/xls file input stream
-				Workbook workbook = null;
-				if (fileName.toLowerCase().endsWith("xlsx")) {
-					workbook = new XSSFWorkbook(fis);
-				} else if (fileName.toLowerCase().endsWith("xls")) {
-					workbook = new HSSFWorkbook(fis);
-				}
-	
-				// Get the number of sheets in the xlsx file
-				int numberOfSheets = workbook.getNumberOfSheets();
-				Connection connection = util.getConnection();
-	
-				PreparedStatement pState = null;
-				String sql = "INSERT INTO hmmteresting.grade "
-						+ "(studentNo, examNo, koreanScore, mathScore, englishScore, scienceScore,historyScore,"
-						+ "totalScore,averageScore) VALUES(?,?,?,?,?,?,?,?,?)";
-	
-				pState = connection.prepareStatement(sql);
-				// loop through each of the sheets
-				for (int i = 0; i < numberOfSheets; i++) {
-	
-					// Get the nth sheet from the workbook
-					Sheet sheet = workbook.getSheetAt(i);
-	
-					// every sheet has rows, iterate over them
-					Iterator<Row> rowIterator = sheet.iterator();
-					while (rowIterator.hasNext()) {
-						// Get the row object
-						Row row = rowIterator.next();
-						// Every row has columns, get the column iterator and iterate over them
-						Iterator<Cell> cellIterator = row.cellIterator();
-						while (cellIterator.hasNext()) {
-							// Get the Cell object
-							Cell cell = cellIterator.next();
-							// check the cell type and process accordingly
-							switch (cell.getCellType()) {
-							case Cell.CELL_TYPE_STRING:
-								pState.setString(cell.getColumnIndex() + 1, cell.getStringCellValue());
-								break;
-							case Cell.CELL_TYPE_NUMERIC:
-								pState.setDouble(cell.getColumnIndex() + 1, cell.getNumericCellValue());
-								break;
-							case Cell.CELL_TYPE_FORMULA:
-								pState.setDouble(cell.getColumnIndex() + 1, cell.getNumericCellValue());
-							}
-						} // end of cell iterator
-						pState.execute();
-					} // end of rows iterator
-	
-				} // end of sheets for loop
-	
-				// close file input stream
-				fis.close();
-				connection.close();
-	
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-	
-			}
-	
-		}
-		
-		public void close() {
+package hmmteresting.kojae.DAO;
 
-			try {
-				if (pState != null)
-					pState.close();
-				if (connection != null)
-					connection.close();
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+import hmmteresting.kojae.DAO.Util.ExcelUtil;
+import hmmteresting.kojae.DAO.Util.SqlUtil;
+import hmmteresting.kojae.Model.GradeBean;
+import hmmteresting.kojae.Model.SchoolBean;
 
-		}
+public class AdminProcess {
+	PreparedStatement preparedStatement;
+	Connection connection;
+	ResultSet resultSet;
+	SqlUtil sqlUtil = new SqlUtil();
 
-		@Override
-		protected void finalize() throws Throwable {
+	public AdminProcess() {
 
-			close();
-			super.finalize();
-		}
-		public static void main(String[] args) {
-			AdminProcess a = new AdminProcess();
-			a.readExcelDataa("E:/excel/studentGrade.xlsx");
-//			for(GradeBean grade : list) {
-//				System.out.println(grade.toString());
-//			}
-		
-		}
-		
-		
-		
 	}
+
+	public List<SchoolBean> getLoactionName(List<String> column, List<String> whereQuary) {
+
+		connection = sqlUtil.getConnection();
+		String select = "SELECT DISTINCT ";
+		String from = " FROM school";
+		
+		StringBuffer sql = new StringBuffer();
+
+		sql.append(select);
+		for(int i = 0 ; i<column.size(); i++) {
+			//칼럼 하나일땐  칼럼명만 오게  ex) SELECT DISTINCT locationName FROM school
+			if(column.size() == 1) {
+				sql.append(" " + column.get(i));
+			}
+			//칼럼 여러개일땐 , 붙게   ex) SELECT DISTINCT locationName, schoolName FROM school
+			else {
+				sql.append(" " + column.get(i) + ",");
+				if(i == column.size()-1 ) {
+				sql.delete(sql.length()-1, sql.length());
+				}
+			}
+		}
+		sql.append(from);
+		
+		if(! whereQuary.get(0).equals("")) {
+			sql.append(" WHERE ");
+			
+			// 조건문 붙히기. 조건 추가되면 and붙히는 조건절이랑 조인문도 추가할예정   
+			for(int i = 0 ; i< whereQuary.size()-1; i++) {
+				// WHERE	    ex) ↓ locationName = '강남구'  ↓
+				sql.append(" "+ column.get(i)+"='"+whereQuary.get(i)+"'" );
+			}
+
+		}
+		System.out.println("query :  " + sql);
+		List<SchoolBean> schoolBeansList = null;
+		try {
+			preparedStatement = connection.prepareStatement(sql.toString());
+			resultSet = preparedStatement.executeQuery();
+
+			schoolBeansList = new ArrayList<SchoolBean>();
+			while (resultSet.next()) {
+				SchoolBean schoolBean = new SchoolBean();
+				schoolBean.setLocationName(resultSet.getString(1));
+				if( ! whereQuary.get(0).equals(""))
+				schoolBean.setSchoolName(resultSet.getString(2));
+				schoolBeansList.add(schoolBean);
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return schoolBeansList;
+	}
+
+	
+	
+	public void insertUserUseExcel(String fileName) {
+
+		try {
+			ExcelUtil excelUtil = new ExcelUtil();
+			List<List<String>> gradeList = excelUtil.excelData(fileName);
+
+			connection = sqlUtil.getConnection();
+
+			String sql = "INSERT INTO hmmteresting.grade "
+					+ "(studentNo, examNo, koreanScore, mathScore, englishScore, scienceScore,historyScore,"
+					+ "totalScore,averageScore) VALUES(?,?,?,?,?,?,?,?,?)";
+
+			preparedStatement = connection.prepareStatement(sql);
+			int index=0;
+			for (List<String> excelDataList : gradeList) {
+				preparedStatement.setString(1, excelDataList.get(0));
+				preparedStatement.setInt(2, Integer.parseInt(excelDataList.get(3)));
+				preparedStatement.setInt(3, Integer.parseInt(excelDataList.get(4)));
+				preparedStatement.setInt(4, Integer.parseInt(excelDataList.get(5)));
+				preparedStatement.setInt(5, Integer.parseInt(excelDataList.get(6)));
+				preparedStatement.setInt(6, Integer.parseInt(excelDataList.get(7)));
+				preparedStatement.setInt(7, Integer.parseInt(excelDataList.get(8)));
+				preparedStatement.setInt(8, Integer.parseInt(excelDataList.get(9)));
+				preparedStatement.setDouble(9, Double.parseDouble(excelDataList.get(10)));
+				preparedStatement.execute();
+			}
+			preparedStatement.close();
+			connection.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+
+		}
+
+	}
+
+	public void close() {
+
+		try {
+			if (preparedStatement != null)
+				preparedStatement.close();
+			if (connection != null)
+				connection.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+
+		close();
+		super.finalize();
+	}
+
+}

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
-<%  request.setCharacterEncoding("UTF-8");  %>
+<% request.setCharacterEncoding("utf-8"); %>
+<% response.setContentType("text/html; charset=utf-8"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
@@ -112,10 +113,11 @@
 										</ul>
 									</div>
 								</div>
-								<form action="/AdminStudentUpload.do" method="post"  enctype="multipart/form-data">
+								<form action="/AdminExcelUpload.do" method="post" id="AdminExcelUpload" 
+									   enctype="multipart/form-data">
 										<div class="filebox">
 										<i class="fas fa-file-upload"></i>
-										<label id="labelExcel"> 엑셀 업로드</label>
+										<label id="labelExcel" > 엑셀 업로드</label>
 								&nbsp; <input name="file" type="file"  id="fileUpload" style="width:200px">
 										<label id="checkExcel"> 확인하기</label>
 										<button type="submit" class="btn btn-brand btn-elevate btn-icon-sm">보내기</button>
@@ -144,23 +146,23 @@
 					<form id="form123" method="post" class="kt-form kt-form--fit kt-margin-b-20">
 						<div class="row kt-margin-b-20">
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>이름<c:out value="${list.get(0).getExamNo() }"></c:out></label> <input type="text" name="studentName"
+								<label>이름 </label> <input type="text" name="filter"
 									class="form-control kt-input" placeholder="" data-col-index="0">
 							</div>
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>수험번호</label> <input type="text"	name="studentNo"
+								<label>수험번호</label> <input type="text"	name="filter"
 									class="form-control kt-input" placeholder="" data-col-index="1">
 							</div>
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>지역</label> <select class="form-control kt-input" name="locationName"
+								<label>지역</label> <select class="form-control kt-input" id="locationName" name="filter"
 									data-col-index="7">
-									
+									<option value="" >구 선택</option>
 								</select>
 							</div>
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>학교</label> <select class="form-control kt-input" name="schoolName"
+								<label>학교</label> <select class="form-control kt-input" id="schoolName" name="filter"
 									data-col-index="2">
-									
+									<option value="">학교선택</option>
 								</select>
 							</div>
 
@@ -168,16 +170,18 @@
 
 						<div class="row kt-margin-b-20">
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>년도</label> <select class="form-control kt-input" name="examDate" id="year"
+								<label>년도</label> <select class="form-control kt-input" id="year" name="filter"
 									data-col-index="2">
-									
+									<option value="">년도선택</option>
+							
 								</select>
 							</div>
 
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>회차선택</label> <select class="form-control kt-input" name="examCode" id="examCode"
-									data-col-index="6">
 								
+								<label>회차선택</label> <select class="form-control kt-input" id="examCode" name="filter"
+									data-col-index="6">
+									<option value="">회차 선택</option>
 								</select>
 							</div>
 							
@@ -239,6 +243,10 @@
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 95px;"
 												aria-label="Status: activate to sort column ascending">수학</th>
+<<<<<<< HEAD
+=======
+											
+>>>>>>> c83805108bb9d10eef97c56484f35a778ea90a6f
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 95px;"
 												aria-label="Type: activate to sort column ascending">과학</th>
@@ -253,6 +261,7 @@
 												aria-label="Type: activate to sort column ascending">평균</th>
 										</tr>
 									</thead>
+<<<<<<< HEAD
 									<tr role="row" class="odd" id="#kt_table_TR">
 											<td>1</td>
 											<td class="sorting_1" tabindex="0">389203S930D</td>
@@ -268,6 +277,14 @@
 											<td>90</td>
 										</tr>
 			
+=======
+
+
+
+									<tbody id="studentData">
+									
+									</tbody>
+>>>>>>> c83805108bb9d10eef97c56484f35a778ea90a6f
 								</table>
 								<div id="kt_table_1_processing"
 									class="dataTables_processing card" style="display: none;">Processing...</div>
