@@ -5,17 +5,17 @@ import java.util.Date;
 public class ModelExamBean {
 
 	private String examCode;
-	private Date examDate;
+	private String examDate;
 	public String getExamCode() {
 		return examCode;
 	}
 	public void setExamCode(String examCode) {
 		this.examCode = examCode;
 	}
-	public Date getExamDate() {
+	public String getExamDate() {
 		return examDate;
 	}
-	public void setExamDate(Date examDate) {
+	public void setExamDate(String examDate) {
 		this.examDate = examDate;
 	}
 	@Override

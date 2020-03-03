@@ -80,8 +80,6 @@ function getFilterAjax() {
 			"paramValue" : filterValueArray
 		}
 
-		console.log(dataArray);
-		console.log(target.attr('id'));
 	})
 }
 function ajax() {

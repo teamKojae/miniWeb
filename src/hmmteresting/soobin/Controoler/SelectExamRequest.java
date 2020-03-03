@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -35,8 +36,9 @@ public class SelectExamRequest extends HttpServlet {
 		ModelViewBean modelViewBean = new ModelViewBean();
 		
 		String examDate=request.getParameter("examDate");
-		String examNo=request.getParameter("examNo");
 		ExamDAO dao = new ExamDAO();
+		System.out.println(examDate);
+		System.out.println("--------------------");
 		list.addAll(dao.SelcetExamDate(examDate));
 		String gson=new Gson().toJson(list);
 		response.setCharacterEncoding("UTF-8");

@@ -22,7 +22,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/adminStyleCustom.css"  >
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/plugins.css"  >
 
-<script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
  <script src="${pageContext.request.contextPath}/resource/js/soobin.js"></script>
  <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
 
@@ -170,10 +169,16 @@
 
 						<div class="row kt-margin-b-20">
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>년도</label> <select class="form-control kt-input" id="year" name="filter"
+								<label>년도</label> <select class="form-control kt-input" id="examDate" name="filter"
 									data-col-index="2">
 									<option value="">년도선택</option>
-							
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									
+								
 								</select>
 							</div>
 
@@ -182,6 +187,12 @@
 								<label>회차선택</label> <select class="form-control kt-input" id="examCode" name="filter"
 									data-col-index="6">
 									<option value="">회차 선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									
 								</select>
 							</div>
 							
@@ -243,10 +254,6 @@
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 95px;"
 												aria-label="Status: activate to sort column ascending">수학</th>
-<<<<<<< HEAD
-=======
-											
->>>>>>> c83805108bb9d10eef97c56484f35a778ea90a6f
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 95px;"
 												aria-label="Type: activate to sort column ascending">과학</th>
@@ -261,30 +268,7 @@
 												aria-label="Type: activate to sort column ascending">평균</th>
 										</tr>
 									</thead>
-<<<<<<< HEAD
-									<tr role="row" class="odd" id="#kt_table_TR">
-											<td>1</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-			
-=======
-
-
-
-									<tbody id="studentData">
 									
-									</tbody>
->>>>>>> c83805108bb9d10eef97c56484f35a778ea90a6f
 								</table>
 								<div id="kt_table_1_processing"
 									class="dataTables_processing card" style="display: none;">Processing...</div>

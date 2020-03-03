@@ -31,16 +31,16 @@ public class ExamDAO {
 		return (instance == null) ? instance = new ExamDAO() : instance;
 	}
 
-	public List<ModelExamBean> SelcetExamDate(String... args) {
+	public List<ModelExamBean> SelcetExamDate(String args) {
 
 		ModelExamBean bean;
 		ResultSet rest = null;
 		List<ModelExamBean> listbean = new ArrayList<ModelExamBean>();
-		System.out.println(args[0]);
 		String sql=sqlinput;
-		if (args[0] != null) {
-			System.out.println(args[0]);
-			sql = sqlinput + " where examDate like '%" + args[0]+ "%' ";
+		System.out.println(args);
+		if (args!=null) {
+			System.out.println(args);
+			sql = sqlinput + " where examDate like '%" + args+ "%' ";
 		}
 			try {
 				sql = new String(sql.getBytes(), "utf-8");
@@ -50,7 +50,7 @@ public class ExamDAO {
 				rest = pState.executeQuery();
 				while (rest.next()) {
 					bean = new ModelExamBean();
-					bean.setExamDate(rest.getDate(1));
+					bean.setExamDate(rest.getString(1));
 					bean.setExamCode(rest.getString(2));
 					listbean.add(bean);
 					bean = null;
