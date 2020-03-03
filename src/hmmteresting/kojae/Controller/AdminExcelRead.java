@@ -37,8 +37,7 @@ public class AdminExcelRead extends HttpServlet {
 		if( ! file.isDirectory()) {
 			file.mkdir();
 		}
-		// 없으면 폴더생성해야됨
-		// ㅎ...(workSpace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\hmmteresting\excel)
+		// ↑ (workSpace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\hmmteresting\excel)
 		int size = 1024 * 1024 * 10; // 업로드 용량 10MB
 
 		// 업로드될 실제 경로 (이클리스상 경로)
