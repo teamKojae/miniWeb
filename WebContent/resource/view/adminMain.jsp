@@ -23,7 +23,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/plugins.css"  >
 
 <script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
- 
+
  <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
 
  
@@ -81,37 +81,6 @@
 							<div class="kt-portlet__head-actions">
 								<div class="dropdown dropdown-inline">
 
-									<div class="dropdown-menu dropdown-menu-right">
-										<ul class="kt-nav">
-											<li class="kt-nav__section kt-nav__section--first"><span
-												class="kt-nav__section-text">Choose an option</span></li>
-											<li class="kt-nav__item"><a href="#"
-												class="kt-nav__link"> <i
-													class="kt-nav__link-icon la la-print"></i> <span
-													class="kt-nav__link-text">Print</span>
-											</a></li>
-											<li class="kt-nav__item"><a href="#"
-												class="kt-nav__link"> <i
-													class="kt-nav__link-icon la la-copy"></i> <span
-													class="kt-nav__link-text">Copy</span>
-											</a></li>
-											<li class="kt-nav__item"><a href="#"
-												class="kt-nav__link"> <i
-													class="kt-nav__link-icon la la-file-excel-o"></i> <span
-													class="kt-nav__link-text">Excel</span>
-											</a></li>
-											<li class="kt-nav__item"><a href="#"
-												class="kt-nav__link"> <i
-													class="kt-nav__link-icon la la-file-text-o"></i> <span
-													class="kt-nav__link-text">CSV</span>
-											</a></li>
-											<li class="kt-nav__item"><a href="#"
-												class="kt-nav__link"> <i
-													class="kt-nav__link-icon la la-file-pdf-o"></i> <span
-													class="kt-nav__link-text">PDF</span>
-											</a></li>
-										</ul>
-									</div>
 								</div>
 								<form action="/AdminExcelUpload.do" method="post" id="AdminExcelUpload" 
 									   enctype="multipart/form-data">
@@ -157,6 +126,8 @@
 								<label>지역</label> <select class="form-control kt-input" id="locationName" name="filter"
 									data-col-index="7">
 									<option value="" >구 선택</option>
+									<option value="" ></option>
+									<option value="" ></option>
 									
 								</select>
 							</div>
