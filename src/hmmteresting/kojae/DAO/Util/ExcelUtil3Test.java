@@ -23,7 +23,7 @@ import hmmteresting.kojae.Model.GradeBean;
 import hmmteresting.kojae.Model.SchoolBean;
 import hmmteresting.kojae.Model.StudentBean;
 
-public class ExcelUtil3 {
+public class ExcelUtil3Test {
 
 	
 	public HashMap<String, List> excelData(String fileName) {

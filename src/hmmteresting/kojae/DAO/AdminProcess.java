@@ -81,11 +81,11 @@ public class AdminProcess {
 
 	
 	
-	public void insertExcelData(String fileName) {
+	public void insertUserUseExcel(String fileName) {
 
 		try {
 			ExcelUtil excelUtil = new ExcelUtil();
-//			List<GradeBean> gradeList = excelUtil.excelData(fileName);
+			List<List<String>> gradeList = excelUtil.excelData(fileName);
 
 			connection = sqlUtil.getConnection();
 
@@ -94,20 +94,19 @@ public class AdminProcess {
 					+ "totalScore,averageScore) VALUES(?,?,?,?,?,?,?,?,?)";
 
 			preparedStatement = connection.prepareStatement(sql);
-			int index = 0;
-//			for (GradeBean gradeBean : gradeList) {
-//				pState.setString(1, gradeBean.getStudentNo());
-//				pState.setInt(2, gradeBean.getExamNo());
-//				pState.setInt(3, gradeBean.getKoreanScore());
-//				pState.setInt(4, gradeBean.getMathScore());
-//				pState.setInt(5, gradeBean.getEnglishScore());
-//				pState.setInt(6, gradeBean.getScienceScore());
-//				pState.setInt(7, gradeBean.getHistoryScore());
-//				pState.setInt(8, gradeBean.getTotlaScore());
-//				pState.setInt(9, gradeBean.getAverageScore());
-//				pState.execute();
-//
-//			}
+			int index=0;
+			for (List<String> excelDataList : gradeList) {
+				preparedStatement.setString(1, excelDataList.get(0));
+				preparedStatement.setInt(2, Integer.parseInt(excelDataList.get(3)));
+				preparedStatement.setInt(3, Integer.parseInt(excelDataList.get(4)));
+				preparedStatement.setInt(4, Integer.parseInt(excelDataList.get(5)));
+				preparedStatement.setInt(5, Integer.parseInt(excelDataList.get(6)));
+				preparedStatement.setInt(6, Integer.parseInt(excelDataList.get(7)));
+				preparedStatement.setInt(7, Integer.parseInt(excelDataList.get(8)));
+				preparedStatement.setInt(8, Integer.parseInt(excelDataList.get(9)));
+				preparedStatement.setDouble(9, Double.parseDouble(excelDataList.get(10)));
+				preparedStatement.execute();
+			}
 			preparedStatement.close();
 			connection.close();
 

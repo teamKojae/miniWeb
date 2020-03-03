@@ -15,7 +15,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import hmmteresting.kojae.Model.GradeBean;
 
-public class ExcelUtil2 {
+public class ExcelUtil2Test {
 
 	public List<GradeBean> excelData(String fileName) {
 		List<GradeBean> gradeList = new ArrayList<GradeBean>();
