@@ -13,7 +13,7 @@ public class GradeBean {
 		this.englishScore = englishScore;
 		this.scienceScore = scienceScore;
 		this.historyScore = historyScore;
-		this.totlaScore = totlaScore;
+		this.totalScore = totlaScore;
 		this.averageScore = averageScore;
 	}
 
@@ -24,7 +24,7 @@ public class GradeBean {
 	private int englishScore;
 	private int scienceScore;
 	private int historyScore;
-	private int totlaScore;
+	private int totalScore;
 	private int averageScore;
 
 	public String getStudentNo() {
@@ -84,11 +84,11 @@ public class GradeBean {
 	}
 
 	public int getTotlaScore() {
-		return totlaScore;
+		return totalScore;
 	}
 
-	public void setTotlaScore(int totlaScore) {
-		this.totlaScore = totlaScore;
+	public void setTotalScore(int totlaScore) {
+		this.totalScore = totlaScore;
 	}
 
 	public int getAverageScore() {
@@ -103,7 +103,7 @@ public class GradeBean {
 	public String toString() {
 		return "GradeBean [studentNo=" + studentNo + ", examNo=" + examNo + ", koreanScore=" + koreanScore
 				+ ", mathScore=" + mathScore + ", englishScore=" + englishScore + ", scienceScore=" + scienceScore
-				+ ", historyScore=" + historyScore + ", totlaScore=" + totlaScore + ", averageScore=" + averageScore
+				+ ", historyScore=" + historyScore + ", totlaScore=" + totalScore + ", averageScore=" + averageScore
 				+ "]";
 	}
 
@@ -119,7 +119,7 @@ public class GradeBean {
 		result = prime * result + mathScore;
 		result = prime * result + scienceScore;
 		result = prime * result + ((studentNo == null) ? 0 : studentNo.hashCode());
-		result = prime * result + totlaScore;
+		result = prime * result + totalScore;
 		return result;
 	}
 
@@ -151,7 +151,7 @@ public class GradeBean {
 				return false;
 		} else if (!studentNo.equals(other.studentNo))
 			return false;
-		if (totlaScore != other.totlaScore)
+		if (totalScore != other.totalScore)
 			return false;
 		return true;
 	}

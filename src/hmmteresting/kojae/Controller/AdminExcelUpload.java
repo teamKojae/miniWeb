@@ -18,11 +18,11 @@ import hmmteresting.kojae.DAO.AdminProcess;
 /**
  * Servlet implementation class AdminStudentUpload
  */
-@WebServlet("/AdminStudentUpload.do")
-public class AdminStudentUpload extends HttpServlet {
+@WebServlet("/AdminExcelUpload.do")
+public class AdminExcelUpload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public AdminStudentUpload() {
+    public AdminExcelUpload() {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,13 +32,15 @@ public class AdminStudentUpload extends HttpServlet {
 		
 		// 업로드될 실제 경로 (이클리스상 경로)
 		String uploadPath = request.getServletContext().getRealPath(filePath);
+		
 		// 이클립스 상대경로로 엑셀 저장
 		MultipartRequest multi = new MultipartRequest(request,uploadPath,size,"UTF-8",new DefaultFileRenamePolicy() );
+		
 		
 		// 이클립스 상대경로에 있는 엑셀을 Read
 		AdminProcess adminDAO = new AdminProcess();
 		
-		adminDAO.insertExcelData(uploadPath+"studentGrade.xlsx");
+		adminDAO.insertExcelData(multi.getFile("file").toString());
 		request.getRequestDispatcher("/galaxy/hosting/bitcamp").forward(request, response);
 	}
 	

@@ -83,7 +83,7 @@ public class DAO {
 			}
 
 			System.out.println(sql);
-			sql = new String (sql.getBytes(),"utf-8");
+			sql = new String (sql.getBytes(),"UTF-8");
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
 			pState = conn.prepareStatement(sql);
