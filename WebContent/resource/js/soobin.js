@@ -32,6 +32,7 @@ function ajax() {
 			$("#examCode > option").remove();
 			$("#examDate").append(yearSetting);
 			$("#examCode").append(examCodeSetting);
+			$(this).off(event);
 			
 		},
 		error : function(data) {
@@ -39,7 +40,8 @@ function ajax() {
 		}
 		});
 	});
-	
+}
+function ajax1(){
 	$("#examDate > option").click(function(event) {
 		event.preventDefault();
 		var str = $("#examDate > option").serialize();
@@ -65,7 +67,8 @@ function ajax() {
 		});
 
 	});
-
+}
+function ajax2(){
 	$("#kt_search").click(function(event) {
 		event.preventDefault();
 		var str = $("#form123").serialize();
@@ -95,7 +98,6 @@ function ajax() {
 				}
 		});
 		});
-	
+}	
 	
 
-}
