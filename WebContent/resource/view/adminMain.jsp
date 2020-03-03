@@ -151,7 +151,13 @@
 								<label>년도</label> <select class="form-control kt-input" id="examDate" name="filter"
 									data-col-index="2">
 									<option value="">년도선택</option>
-							
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									
+								
 								</select>
 							</div>
 
@@ -160,6 +166,12 @@
 								<label>회차선택</label> <select class="form-control kt-input" id="examCode" name="filter"
 									data-col-index="6">
 									<option value="">회차 선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									<option value="">년도선택</option>
+									
 								</select>
 							</div>
 							
@@ -235,9 +247,6 @@
 												aria-label="Type: activate to sort column ascending">평균</th>
 										</tr>
 									</thead>
-
-									<tbody id="studentData">
-									</tbody>
 								</table>
 								<div id="kt_table_1_processing"
 									class="dataTables_processing card" style="display: none;">Processing...</div>

@@ -9,46 +9,54 @@ $('input[type="file"]').change(function(e) {
 
 function ajax() {
 	
-	$("#examDate").click(function(event){
+	$("#examDate").on("click",function(event){
 		var str = $("#examDate").serialize();
+		console.log(str);
 		event.preventDefault();
 		$.ajax({
 			url : "/SelectExamRequest.do",
 			type : 'POST',
 			datatype : 'JSON',
-			async:false,
 			data : str,
 		success: function(data){
 			var stop=1;
 			var results = JSON.parse(data);
 			var yearSetting = '<option value="">년도선택</option>';
+			var examCodeSetting='<option value=""회차선택</option>';
 			$.each(results, function(key, value) {
 				yearSetting +='<option value="'+value.examDate+'">'+value.examDate+'</option>' ;
+				examCodeSetting+='<option value="'+value.examCode+'">'+value.examCode+'</option>';
+				
 			});
+			$("#examDate > option").remove();
+			$("#examCode > option").remove();
 			$("#examDate").append(yearSetting);
+			$("#examCode").append(examCodeSetting);
+			$(this).off(event);
+			
 		},
 		error : function(data) {
 			alert(error);
 		}
 		});
 	});
-	
-	
-	$("#examDate").click(function(event) {
+}
+function ajax1(){
+	$("#examDate > option").click(function(event) {
 		event.preventDefault();
-		var str = $("#examDate").serialize();
+		var str = $("#examDate > option").serialize();
+		console.log(str);
+	
 		$.ajax({
 			url : "/SelectExamRequest.do",
 			type : 'POST',
 			datatype : 'JSON',
 			data : str,
-//
 			success : function(data) {
-				var i = 1;
 				var results = JSON.parse(data);
 				var examCodeSetting='<option value=""회차선택</option>';
 				$.each(results, function(key, value) {
-					examCodeSetting='<option value="'+value.examCode+'">'+value.examDate+'</option>';
+					examCodeSetting='<option value="'+value.examCode+'">'+value.examCode+'</option>';
 				});
 				$("#examCode > option").remove();
 				$("#examCode").append(examCodeSetting);
@@ -59,7 +67,8 @@ function ajax() {
 		});
 
 	});
-	
+}
+function ajax2(){
 	$("#kt_search").click(function(event) {
 		event.preventDefault();
 		var str = $("#form123").serialize();
@@ -79,7 +88,7 @@ function ajax() {
 	                '<TD>'+ value.scienceScore + '</TD><TD>'+ value.historyScore + '</TD><TD>'+ value.totalScore + '</TD>' +
 	                '<TD>'+ value.averageScore + '</TD>'
 	                ;
-	            	tableSetting += '</TR><TBODY>';
+	            	tableSetting += '</TR></TBODY>';
 	           });
 	            $("#kt_table_1 > TBODY").remove();
 				$("#kt_table_1").append(tableSetting);
@@ -89,6 +98,6 @@ function ajax() {
 				}
 		});
 		});
+}	
 	
-	
-}
+
