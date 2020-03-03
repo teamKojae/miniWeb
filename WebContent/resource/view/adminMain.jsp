@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/plugins.css"  >
 
 <script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
- 
+ <script src="${pageContext.request.contextPath}/resource/js/soobin.js"></script>
  <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
 
  
@@ -154,23 +154,13 @@
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
 								<label>지역</label> <select class="form-control kt-input" name="locationName"
 									data-col-index="7">
-									<option value="">구 선택</option>
-									<option value="강남구">강남구</option>
-									<option value="서초구">서초구</option>
-									<option value="3">Direct</option>
+									
 								</select>
 							</div>
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
 								<label>학교</label> <select class="form-control kt-input" name="schoolName"
 									data-col-index="2">
-									<option value="">학교선택</option>
-									<option value="개표고등학교">개표고등학교</option>
-									<option value="Austria">Austria</option>
-									<option value="China">China</option>
-									<option value="Colombia">Colombia</option>
-									<option value="Croatia">Croatia</option>
-									<option value="Indonesia">Indonesia</option>
-									<option value="Thailand">Thailand</option>
+									
 								</select>
 							</div>
 
@@ -178,28 +168,16 @@
 
 						<div class="row kt-margin-b-20">
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>년도</label> <select class="form-control kt-input" name="examDate"
+								<label>년도</label> <select class="form-control kt-input" name="examDate" id="year"
 									data-col-index="2">
-									<option value="">년도선택</option>
-									<option value="Argentina">Argentina</option>
-									<option value="Austria">Austria</option>
-									<option value="China">China</option>
-									<option value="Colombia">Colombia</option>
-									<option value="Croatia">Croatia</option>
-									<option value="Indonesia">Indonesia</option>
-									<option value="Thailand">Thailand</option>
+									
 								</select>
 							</div>
 
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>회차선택</label> <select class="form-control kt-input" name="examCode"
+								<label>회차선택</label> <select class="form-control kt-input" name="examCode" id="examCode"
 									data-col-index="6">
-									<option value="">회차 선택</option>
-									<option value="1">Pending</option>
-									<option value="2">Delivered</option>
-									<option value="3">Canceled</option>
-									<option value="5">Info</option>
-									<option value="6">Danger</option>
+								
 								</select>
 							</div>
 							
@@ -263,9 +241,6 @@
 												aria-label="Status: activate to sort column ascending">수학</th>
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 95px;"
-												aria-label="Type: activate to sort column ascending">사회</th>
-											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
-												rowspan="1" colspan="1" style="width: 95px;"
 												aria-label="Type: activate to sort column ascending">과학</th>
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 95px;"
@@ -278,11 +253,7 @@
 												aria-label="Type: activate to sort column ascending">평균</th>
 										</tr>
 									</thead>
-
-
-
-									<tbody>
-										<tr role="row" class="odd">
+									<tr role="row" class="odd" id="#kt_table_TR">
 											<td>1</td>
 											<td class="sorting_1" tabindex="0">389203S930D</td>
 											<td>고재현</td>
@@ -293,448 +264,10 @@
 											<td>100</td>
 											<td>100</td>
 											<td>100</td>
-											<td>100</td>
 											<td>270</td>
 											<td>90</td>
 										</tr>
-										<tr role="row" class="odd">
-											<td>2</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>2</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>3</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>4</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>5</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>6</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>7</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>8</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>9</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>10</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>11</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>12</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>13</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>15</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>16</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>17</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>18</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>19</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>20</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>21</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>22</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>23</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>24</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>25</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>26</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>27</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>28</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>29</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-										<tr role="row" class="odd">
-											<td>30</td>
-											<td class="sorting_1" tabindex="0">389203S930D</td>
-											<td>고재현</td>
-											<td>2020-02-28</td>
-											<td>1회차</td>
-											<td>90</td>
-											<td>80</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>100</td>
-											<td>270</td>
-											<td>90</td>
-										</tr>
-
-
-									</tbody>
+			
 								</table>
 								<div id="kt_table_1_processing"
 									class="dataTables_processing card" style="display: none;">Processing...</div>

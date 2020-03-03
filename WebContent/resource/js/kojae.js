@@ -18,13 +18,22 @@ function ajax(){
 		data : str,
 	
 		success : function(data) {
-			alert(data)
-/*			var a = jQuery.parseJSON(data);
-				alert(a);*/ 
+			var i=1;
+			var results = JSON.parse(data);
+			var tableSetting = '<TBODY><TR>';
+            $.each(results , function(key,value){
+            	tableSetting += '<TD>'+i+++'</TD><TD>' +value.studentNo+ '</TD><TD>' + value.StudentName + '</TD><TD>'+value.ExamDate+'</TD><TD>'+value.examNo+'</TD>' +
+            	'<TD>'+value.koreanScore + '</TD><TD>'+ value.englishScore + '</TD><TD>'+ value.mathScore + '</TD>'+
+                '<TD>'+ value.scienceScore + '</TD><TD>'+ value.historyScore + '</TD><TD>'+ value.totalScore + '</TD>' +
+                '<TD>'+ value.averageScore + '</TD>'
+                ;
+            	tableSetting += '</TR><TBODY>';
+           });
+            $("#kt_table_1 > TBODY").remove();
+			$("#kt_table_1").append(tableSetting);
 		},
 		error : function(data) {
-			alert(data.result);
-			console.log(data.result);
+			alert(error);
 		}
 	});
 	
