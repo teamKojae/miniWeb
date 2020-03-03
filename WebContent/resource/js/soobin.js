@@ -67,29 +67,31 @@ function ajax1(){
 	});
 }
 function ajax2(){
-	$("#kt_search").on("click",function(event) {
+	$("#kt_search").bind('click',function(event) {
 		event.preventDefault();
+		
 		var str = $("#form123").serialize();
+		console.log(str);
 		$.ajax({
 			url : "/SelectFilterRequest.do",
 			type : 'POST',
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
 			datatype : 'JSON',
 			data : str,
-		
 			success : function(data) {
 				var i=1;
 				var results = JSON.parse(data);
-				var tableSetting = '<TR>';
+				var tableSetting = '<TBODY><TR>';
 	            $.each(results , function(key,value){
 	            	tableSetting += '<TD>'+i+++'</TD><TD>' +value.studentNo+ '</TD><TD>' + value.StudentName + '</TD><TD>'+value.ExamDate+'</TD><TD>'+value.examNo+'</TD>' +
 	            	'<TD>'+value.koreanScore + '</TD><TD>'+ value.englishScore + '</TD><TD>'+ value.mathScore + '</TD>'+
 	                '<TD>'+ value.scienceScore + '</TD><TD>'+ value.historyScore + '</TD><TD>'+ value.totalScore + '</TD>' +
 	                '<TD>'+ value.averageScore + '</TD>'
 	                ;
-	            	tableSetting += '</TR>';
+	            	tableSetting += '</TR></TBODY>';
 	           });
-	            $("#studentData").remove();
-				$("#studentData").append(tableSetting);
+	            $("#kt_table_1 > TBODY").remove();
+				$("#kt_table_1").append(tableSetting);
 			},
 			error : function(data) {
 				alert(error);

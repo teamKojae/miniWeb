@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
-<% request.setCharacterEncoding("utf-8"); %>
-<% response.setContentType("text/html; charset=utf-8"); %>
+<% request.setCharacterEncoding("UTF-8"); %>
+<% response.setContentType("text/html; charset=UTF-8"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
@@ -117,15 +117,15 @@
 					<form id="form123" method="post" class="kt-form kt-form--fit kt-margin-b-20">
 						<div class="row kt-margin-b-20">
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>이름 </label> <input type="text" name="filter"
+								<label>이름 </label> <input type="text" name="studentName"
 									class="form-control kt-input" placeholder="" data-col-index="0">
 							</div>
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>수험번호</label> <input type="text"	name="filter"
+								<label>수험번호</label> <input type="text"	name="studentNo"
 									class="form-control kt-input" placeholder="" data-col-index="1">
 							</div>
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>지역</label> <select class="form-control kt-input" id="locationName" name="kojae"
+								<label>지역</label> <select class="form-control kt-input" id="locationName" name="locationName"
 									data-col-index="7">
 									<option value="" >구 선택</option>
 									<option value="" ></option>
@@ -137,21 +137,9 @@
 								</select>
 							</div>
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>학교</label> <select class="form-control kt-input" id="schoolName" name="kojae"
+								<label>학교</label> <select class="form-control kt-input" id="schoolName" name="schoolName"
 									data-col-index="2">
 									<option value="">학교선택</option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
 									
 								</select>
 							</div>
@@ -160,7 +148,7 @@
 
 						<div class="row kt-margin-b-20">
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
-								<label>년도</label> <select class="form-control kt-input" id="examDate" name="filter"
+								<label>년도</label> <select class="form-control kt-input" id="examDate" name="examDate"
 									data-col-index="2">
 									<option value="">년도선택</option>
 									<option value="">년도선택</option>
@@ -175,7 +163,7 @@
 
 							<div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
 								
-								<label>회차선택</label> <select class="form-control kt-input" id="examCode" name="filter"
+								<label>회차선택</label> <select class="form-control kt-input" id="examCode" name="examCode"
 									data-col-index="6">
 									<option value="">회차 선택</option>
 									<option value="1">1회차</option>
@@ -259,8 +247,6 @@
 												aria-label="Type: activate to sort column ascending">평균</th>
 										</tr>
 									</thead>
-									<tbody id="studentData">
-									</tbody>
 								</table>
 								<div id="kt_table_1_processing"
 									class="dataTables_processing card" style="display: none;">Processing...</div>
