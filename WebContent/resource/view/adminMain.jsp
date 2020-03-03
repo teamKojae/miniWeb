@@ -140,18 +140,6 @@
 								<label>학교</label> <select class="form-control kt-input" id="schoolName" name="kojae"
 									data-col-index="2">
 									<option value="">학교선택</option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
-									<option value="" ></option>
 									
 								</select>
 							</div>
