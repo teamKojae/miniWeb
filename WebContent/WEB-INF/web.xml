@@ -6,8 +6,15 @@
 	<welcome-file-list>
 		<welcome-file>adminMain.jsp</welcome-file>
 	</welcome-file-list>
-
-
+	
+	<servlet>
+		<servlet-name>adminlogin</servlet-name>
+		<jsp-file>/resource/view/adminLogin.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>adminlogin</servlet-name>
+		<url-pattern>/galaxy/hosting/bitcamp/login</url-pattern>
+	</servlet-mapping>
 
 
 	<!-- 고재현 -->
