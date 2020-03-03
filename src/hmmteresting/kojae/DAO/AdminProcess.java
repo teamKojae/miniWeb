@@ -46,15 +46,16 @@ public class AdminProcess {
 		}
 		sql.append(from);
 		int i = 0;
-		System.out.println("indexOf  "+sql.indexOf("WHERE"));
-		//if(sql.indexOf(" WHERE ") == -1 && whereQuary.size() == 1)
-	//	sql.append(" WHERE ");
+		if( ! whereQuary.get(0).equals(""))
+		sql.append(" WHERE ");
 		for(String where : whereQuary) {
 			if( column.size() == whereQuary.size() && ! whereQuary.get(i).equals("")) {
 				// 조건문 붙히기. 조건 추가되면 and붙히는 조건절이랑 조인문도 추가할예정   
-				System.out.println(" where query size :  "+ whereQuary.size());
 					// WHERE	    ex) ↓ locationName = '강남구'  ↓
-				sql.append(" "+ column.get(i)+"='"+where+"'" );
+				sql.append(" "+ column.get(i)+"='"+where+"' and " );
+				if( i == whereQuary.size()-1 || whereQuary.get(whereQuary.size()-1).equals("")) 
+					sql.delete(sql.length()-4 , sql.length());
+				
 				i++;
 			}
 		}
