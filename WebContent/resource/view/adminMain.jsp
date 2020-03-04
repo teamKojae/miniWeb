@@ -253,7 +253,7 @@
 						</div>
 						<div class="row btnContent">
 							
-							<div class="col-sm-12 col-md-7 dataTables_pager">
+							<div class="col-sm-12 col-md-12 dataTables_pager">
 								<div class="dataTables_length" id="kt_table_1_length">
 									
 								<div class="dataTables_paginate paging_simple_numbers pagination"

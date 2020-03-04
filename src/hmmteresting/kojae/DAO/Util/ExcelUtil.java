@@ -62,9 +62,9 @@ public class ExcelUtil {
 						switch (cell.getCellType()) {
 						case Cell.CELL_TYPE_STRING: // String 형 셀
 							if(cell.getRowIndex()>1) {
-							switch (cell.getColumnIndex() + 1) {
+							switch ( cell.getColumnIndex() + 1  ) {
 								default : 
-									gradeList.add(cell.getStringCellValue());
+									gradeList.add(cell.getStringCellValue().trim());
 								}
 							}
 						} // 셀마다 읽기 끝
