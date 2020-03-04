@@ -202,7 +202,7 @@
 						<div class="row">
 							<div class="col-sm-12">
 								<table
-									class="table table-striped- table-bordered table-hover table-checkable dataTable dtr-inline"
+									class="table table-striped- table-bordered table-hover table-checkable dataTable dtr-inline paginated"
 									id="kt_table_1" role="grid" aria-describedby="kt_table_1_info"
 									style="width: 1533px;">
 									<thead>
@@ -252,18 +252,19 @@
 									class="dataTables_processing card" style="display: none;">Processing...</div>
 							</div>
 						</div>
-						<div class="row">
+						<div class="row btnContent">
 							
 							<div class="col-sm-12 col-md-7 dataTables_pager">
 								<div class="dataTables_length" id="kt_table_1_length">
 									
-								<div class="dataTables_paginate paging_simple_numbers"
+								<div class="dataTables_paginate paging_simple_numbers pagination"
 									id="kt_table_1_paginate">
 									<ul class="pagination">
 										<li class=" paginate_button page-item previous disabled"
-											id="kt_table_1_previous"><a href="#"
+											id="kt_table_1_previous pagination"><a href="#"
 											aria-controls="kt_table_1" data-dt-idx="0" tabindex="0"
 											class="page-link"><i class="fas fa-arrow-left"></i></a></li>
+											
 										<li class="paginate_button page-item active"><a href="#"
 											aria-controls="kt_table_1" data-dt-idx="1" tabindex="0"
 											class="page-link">1</a></li>

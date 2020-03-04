@@ -20,7 +20,6 @@ function excelRead() {
 					data : data,
 					success : function(data) {
 						// alert(data);
-						console.log('success?');
 						$('#studentData').empty();
 						$('#kt_table_1').append("<tbody>");
 						$.each(jQuery.parseJSON(data), function(key, value) {
@@ -80,7 +79,6 @@ function getSchoolNames() {
 			'change',
 			function(event) {
 				event.preventDefault();
-				console.log($('#locationName').val());
 				$.ajax({
 					url : "/FilterGetExam.do",
 					type : 'POST',

@@ -106,10 +106,6 @@ public class SelectFilterRequest extends HttpServlet {
 		String examDate = request.getParameter("examDate");
 		String examCode = request.getParameter("examCode");
 		String locationName = request.getParameter("locationName");
-
-		System.out.println(request.getParameter("filter"));
-		System.out.println(request.getParameter("kojae"));
-		
 		DAO dao = new DAO();
 		String selcetData = dao.SelectWhere(schoolName, studentName, studentNo);
 		list.addAll(dao.SelcetFilter(selcetData, examDate, examCode, locationName));

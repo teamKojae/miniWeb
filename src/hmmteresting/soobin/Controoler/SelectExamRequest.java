@@ -37,8 +37,6 @@ public class SelectExamRequest extends HttpServlet {
 		
 		String examDate=request.getParameter("examDate");
 		ExamDAO dao = new ExamDAO();
-		System.out.println(examDate);
-		System.out.println("--------------------");
 		list.addAll(dao.SelcetExamDate(examDate));
 		String gson=new Gson().toJson(list);
 		response.setCharacterEncoding("UTF-8");

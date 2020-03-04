@@ -37,10 +37,9 @@ public class ExamDAO {
 		ResultSet rest = null;
 		List<ModelExamBean> listbean = new ArrayList<ModelExamBean>();
 		String sql=sqlinput;
-		System.out.println(args);
 		if (args!=null) {
-			System.out.println(args);
 			sql = sqlinput + " where examDate like '%" + args+ "%' ";
+			System.out.println(sql);
 		}
 			try {
 				sql = new String(sql.getBytes(), "utf-8");
@@ -55,7 +54,6 @@ public class ExamDAO {
 					listbean.add(bean);
 					bean = null;
 				}
-				
 				pState.close();
 				conn.close();
 			
