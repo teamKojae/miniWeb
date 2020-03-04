@@ -78,7 +78,6 @@ function getSchoolNames() {
 			'change',
 			function(event) {
 				event.preventDefault();
-				console.log($('#locationName').val());
 				$.ajax({
 					url : "/FilterGetExam.do",
 					type : 'POST',
