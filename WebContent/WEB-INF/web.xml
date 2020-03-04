@@ -5,6 +5,7 @@
 	id="WebApp_ID" version="3.1">
 	<welcome-file-list>
 		<welcome-file>adminMain.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 	
 	<!--  이예나 -->
@@ -28,7 +29,8 @@
 		<url-pattern>/galaxy/hosting/bitcamp</url-pattern>
 	</servlet-mapping>
 
- <servlet-mapping>
+<!--  css, js 안먹을때 쓰세요
+	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>/</url-pattern>
 		<url-pattern>*.js</url-pattern>
@@ -39,7 +41,7 @@
 		<url-pattern>*.woff2</url-pattern>
 		<url-pattern>*.woff</url-pattern>
 		<url-pattern>*.ttf</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> --> 
 
 
 

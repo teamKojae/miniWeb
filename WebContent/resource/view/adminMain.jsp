@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 
 
-<title>Insert title here</title>
+<title>hmmteresting </title>
 <!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminStyle.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminStyleCustom.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugins.css">
@@ -90,7 +90,6 @@
 										<i class="fas fa-file-upload"></i>
 										<label id="labelExcel" > 엑셀 업로드</label>
 								&nbsp; <input name="file" type="file"  id="fileUpload" style="width:200px">
-										<label id="checkExcel"> 확인하기</label>
 										<button type="submit" class="btn btn-brand btn-elevate btn-icon-sm">보내기</button>
 									</div>
 									</form>
@@ -290,6 +289,6 @@
 			</div>
 		</div>
 	</div>
-
+</div>
 </body>
 </html>

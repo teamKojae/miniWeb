@@ -20,11 +20,9 @@ function excelRead() {
 					data : data,
 					success : function(data) {
 						// alert(data);
-						console.log('success?');
 						$('#studentData').empty();
 						$('#kt_table_1').append("<tbody>");
 						$.each(jQuery.parseJSON(data), function(key, value) {
-							console.log(value);
 							$('#kt_table_1').append(
 									'<tr role="row" class="odd">' + '<td>'
 											+ (key + 1) + '</td>' + '<td>'
