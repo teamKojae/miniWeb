@@ -51,14 +51,12 @@ function ajax1(){
 			datatype : 'JSON',
 			data : str,
 			success : function(data) {
-				console.log(data);
 				var results = JSON.parse(data);
 				var examCodeSetting='<option value="">회차 선택</option>';
 				$.each(results, function(key, value) {
 					examCodeSetting+='<option value="'+value.examCode+'">'+value.examCode+'회차</option>';
 				});
 				$("#examCode > option").remove();
-				console.log(examCodeSetting);
 				$("#examCode").append(examCodeSetting);
 			},
 			error : function(data) {
