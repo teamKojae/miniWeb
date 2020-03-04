@@ -71,7 +71,6 @@ function ajax1(){
 function ajax2(){
 	$("#kt_search").bind('click',function(event) {
 		event.preventDefault();
-		
 		var str = $("#form123").serialize();
 		$.ajax({
 			url : "/SelectFilterRequest.do",

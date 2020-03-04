@@ -99,6 +99,7 @@ public class SelectFilterRequest extends HttpServlet {
 		ResultSet rest = null;
 		List<ModelViewBean> list = new ArrayList<ModelViewBean>();
 		ModelViewBean modelViewBean = new ModelViewBean();
+
 		request.setCharacterEncoding("UTF-8");
 		String studentName = request.getParameter("studentName");
 		String studentNo = request.getParameter("studentNo");

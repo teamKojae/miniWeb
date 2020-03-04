@@ -57,9 +57,8 @@ public class ExcelUtil {
 						
 						// 열 하나에 대한 셀값 가져오기
 						Cell cell = cellIterator.next();
-						//모든타입 스트링타입으로...ㅋㅋ;;;;ㅠ 
+						//모든타입 스트링타입으로
 						cell.setCellType(HSSFCell.CELL_TYPE_STRING);
-						// 타입에 따라 빈에 저장시키기
 						switch (cell.getCellType()) {
 						case Cell.CELL_TYPE_STRING: // String 형 셀
 							if(cell.getRowIndex()>1) {
