@@ -50,7 +50,7 @@
 				<div class="col-md-1"></div>
 				<ul class="kt-menu__nav ">
 					<li class="kt-menu__item fas fa-home "><label
-						class="kt-menu__link ">HOME</label></li>
+						class="kt-menu__link "><a href="/galaxy/hosting/bitcamp">HOME</a></label></li>
 
 					<li class="kt-menu__item fas fa-tools"><label
 						class="kt-menu__link ">수정요청</label><span>5</span></li>
@@ -265,7 +265,6 @@
 											class="page-link"><i class="fas fa-arrow-left"></i></a></li>
 											
 										<li class="paginate_button page-item active"><a href="#"
-											aria-controls="kt_table_1" data-dt-idx="1" tabindex="0"
 											class="page-link">1</a></li>
 										<li class="paginate_button page-item "><a href="#"
 											aria-controls="kt_table_1" data-dt-idx="2" tabindex="0"
