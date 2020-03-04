@@ -53,3 +53,17 @@
 #fileUpload {
 	color: black;
 }
+
+
+.dataTables_paginate .paging_simple_numbers .pagination{
+	 display:flex !important;
+}
+#kt_table_1_paginate{
+	 display:flex !important;
+}
+
+
+.page-item{
+	margin-left:6px;
+	margin-right:6px;
+}
