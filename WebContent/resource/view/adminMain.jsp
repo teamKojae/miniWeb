@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 
 
-<title>Insert title here</title>
+<title>hmmteresting </title>
 <!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminStyle.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminStyleCustom.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugins.css">
@@ -50,7 +50,7 @@
 				<div class="col-md-1"></div>
 				<ul class="kt-menu__nav ">
 					<li class="kt-menu__item fas fa-home "><label
-						class="kt-menu__link ">HOME</label></li>
+						class="kt-menu__link "><a href="/galaxy/hosting/bitcamp">HOME</a></label></li>
 
 					<li class="kt-menu__item fas fa-tools"><label
 						class="kt-menu__link ">수정요청</label><span>5</span></li>
@@ -90,7 +90,6 @@
 										<i class="fas fa-file-upload"></i>
 										<label id="labelExcel" > 엑셀 업로드</label>
 								&nbsp; <input name="file" type="file"  id="fileUpload" style="width:200px">
-										<label id="checkExcel"> 확인하기</label>
 										<button type="submit" class="btn btn-brand btn-elevate btn-icon-sm">보내기</button>
 									</div>
 									</form>
@@ -266,7 +265,6 @@
 											class="page-link"><i class="fas fa-arrow-left"></i></a></li>
 											
 										<li class="paginate_button page-item active"><a href="#"
-											aria-controls="kt_table_1" data-dt-idx="1" tabindex="0"
 											class="page-link">1</a></li>
 										<li class="paginate_button page-item "><a href="#"
 											aria-controls="kt_table_1" data-dt-idx="2" tabindex="0"
@@ -291,6 +289,6 @@
 			</div>
 		</div>
 	</div>
-
+</div>
 </body>
 </html>
