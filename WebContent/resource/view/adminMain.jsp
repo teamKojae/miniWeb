@@ -22,12 +22,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/adminStyleCustom.css"  >
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/plugins.css"  >
 
-<script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
-
- <script src="${pageContext.request.contextPath}/resource/js/soobin.js"></script>
-
- <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
-
  
 
 </head>
@@ -291,4 +285,9 @@
 	</div>
 </div>
 </body>
+
+<script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
+ <script src="${pageContext.request.contextPath}/resource/js/soobin.js"></script>
+ <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
+
 </html>
