@@ -4,10 +4,10 @@ $(function() {
 	ajax2();
 });
 
-$('input[type="file"]').change(function(e) {
-	var fileName = e.target.files[0].name;
-	alert("this file" + fileName + "has been select");
-})
+//$('input[type="file"]').change(function(e) {
+//	var fileName = e.target.files[0].name;
+//	alert("this file" + fileName + "has been select");
+//})
 
 function ajax() {
 
@@ -140,7 +140,7 @@ function ajax2() {
 
 function page() {
 
-	$('table.paginated').each(
+	$('.paginated').each(
 			function() {
 
 				var pagesu = 10; // 페이지 번호 갯수

@@ -22,12 +22,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/adminStyleCustom.css"  >
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/plugins.css"  >
 
-<script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
-
- <script src="${pageContext.request.contextPath}/resource/js/soobin.js"></script>
-
- <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
-
  
 
 </head>
@@ -54,8 +48,10 @@
 
 					<li class="kt-menu__item fas fa-tools"><label
 						class="kt-menu__link ">수정요청</label><span>5</span></li>
-
-
+					<li class="kt-menu__item fas fa-comments"><label
+						class="kt-menu__link ">수빈씨 네티</label></li>
+					<li class="kt-menu__item fas fa-comments"><label
+						class="kt-menu__link ">재현씨 네티</label></li>
 				</ul>
 			</div>
 		</div>
@@ -291,4 +287,10 @@
 	</div>
 </div>
 </body>
+
+
+ <script src="${pageContext.request.contextPath}/resource/js/soobin.js"></script>
+ <script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
+ <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
+
 </html>

@@ -11,5 +11,12 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/poi-ooxml-schemas-3.13.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar"/>
+<<<<<<< HEAD
 	<classpathentry kind="output" path="bin"/>
+=======
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.5 (2)"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/netty"/>
+	<classpathentry kind="output" path="build/classes"/>
+>>>>>>> 4a18c2ae772c7a9429057c95c0e58dad2d586aa7
 </classpath>
