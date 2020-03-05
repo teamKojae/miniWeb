@@ -16,7 +16,7 @@ import hmmteresting.jiyoon.DAO.RequestModifyDAO;
 @WebServlet("/InsertModify")
 public class InsertModify extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+//fdfd
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
