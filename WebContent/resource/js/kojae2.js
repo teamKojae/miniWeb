@@ -90,8 +90,6 @@ function getFilterAjax(event){
 					"paramValue" : filterValueArray
 				}
 
-				console.log(dataArray);
-				console.log(target.attr('id'));
 
 				// || $('.kt-input').change()
 				$.ajax({
@@ -101,11 +99,9 @@ function getFilterAjax(event){
 					data : dataArray,
 					success : function(data) {
 						$(event.target).empty();
-						console.log(data);
 						$.each(data, function(key, value) {
 
 							var contents = target.attr('id');
-							console.log(value.locationName);
 							if (contents == ('locationName')) {
 								$(event.target).append(
 										"<option value=" + value.locationName
