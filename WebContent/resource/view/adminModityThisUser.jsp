@@ -203,45 +203,10 @@
 
 									<tbody>
 									
-									<c:forEach items="${updateCheckList}" var="updateCheckList" varStatus="status">
+									
 														
 										<tr role="row" class="odd"  >
-											<td><c:out value="${status.count}" /></td>
-											<td><c:out value="${updateCheckList.studentNo}" /></td>
-											<td><c:out value="${updateCheckList.studentName}" /></td>
-											<td><c:out value="${updateCheckList.examDate}" /></td>
-											<td><c:out value="${updateCheckList.examCode}" /></td>
-											<td><c:out value="${updateCheckList.koreanScore}" /></td>
-											<td><c:out value="${updateCheckList.englishScore}" /></td>
-											<td><c:out value="${updateCheckList.mathScore}" /></td>
-											<td><c:out value="${updateCheckList.scienceScore}" /></td>
-											<td><c:out value="${updateCheckList.historyScore}" /></td>
-											<td><c:out value="${updateCheckList.totalScore}" /></td>
-											<td><c:out value="${updateCheckList.averageSocre}" /></td>
-											<td>											
-											<c:choose>
 											
-											<c:when test="${updateCheckList.state==1}">
-											
-											<button onclick="update_btn('${updateCheckList.studentNo}')">수정</button>
-											
-											<script type="text/javascript">
-											function update_btn(value){
-												var studentNo = value;
-												location.href="/AdminSelectUserUpdate.do?studentNo="+studentNo;
-											}
-											</script>
-											
-											</c:when>
-											
-											<c:otherwise>
-											<button onclick="" disabled='disabled'>완료</button>
-											</c:otherwise>
-											
-											</c:choose>											
-											</td>											
-										</tr>
-										</c:forEach>
 										
 									</tbody>
 								</table>
