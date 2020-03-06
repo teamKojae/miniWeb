@@ -30,18 +30,17 @@ public class AdaminMain extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.setAttribute("managerId", "kkojae");  // 로그인페이지 연동되면 없앨것
 		
 		if(session.getAttribute("managerId") == null) {
+			System.out.println("여기왔슴");
+			System.out.println(session.getAttribute("managerId"));
 			response.sendRedirect("/galaxy/hosting/bitcamp/loginPage");
 		}
+		System.out.println(session.getAttribute("managerId"));
 		request.setAttribute("countModify",new AdminProcess().getCountModify());
 		request.setAttribute("admin", session.getAttribute("managerId"));
 		
 		request.getRequestDispatcher("/galaxy/hosting/bitcamp/admin").forward(request, response);
 		
-		
 	}
-
-	
 }

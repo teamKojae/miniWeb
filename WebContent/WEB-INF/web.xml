@@ -8,6 +8,41 @@
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 	
+	<!-- 이지윤 -->
+	<servlet>
+		<servlet-name>studentLogin</servlet-name>
+		<jsp-file>/resource/view/studentLogin.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>studentLogin</servlet-name>
+		<url-pattern>/studentLogin</url-pattern>
+	</servlet-mapping>
+ 	<servlet>
+		<servlet-name>studentMain</servlet-name>
+		<jsp-file>/resource/view/studentMain.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>studentMain</servlet-name>
+		<url-pattern>/studentMain</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>studentGradeModify</servlet-name>
+		<jsp-file>/resource/view/studentGradeModify.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>studentGradeModify</servlet-name>
+		<url-pattern>/studentGradeModify</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>studentGradeModifyList</servlet-name>
+		<jsp-file>/resource/view/studentGradeModifyList.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>studentGradeModifyList</servlet-name>
+		<url-pattern>/studentGradeModifyList</url-pattern>
+	</servlet-mapping>
+
+
 	<!--  이예나 -->
 	<servlet>
 		<servlet-name>adminlogin</servlet-name>
@@ -29,7 +64,7 @@
 		<url-pattern>/galaxy/hosting/bitcamp/admin</url-pattern>
 	</servlet-mapping>
 
-<!--  css, js 안먹을때 쓰세요
+<!--  css, js 안먹을때 쓰세요 
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>/</url-pattern>
@@ -41,7 +76,7 @@
 		<url-pattern>*.woff2</url-pattern>
 		<url-pattern>*.woff</url-pattern>
 		<url-pattern>*.ttf</url-pattern>
-	</servlet-mapping> --> 
+	</servlet-mapping>--> 
 
 
 
