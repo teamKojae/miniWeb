@@ -3,52 +3,13 @@ $(function() {
 	getLocationAjax();
 	getSchoolNames();
 	
+	$(document).ready(function() {
+		$("table").on('click', function() {
+			$("table").tablesorter();
+		})
+	});
+	
 });
-
-document.write("<script type='text/javascript' src='/resource/js/soobin.js'><"+"/script>");  
-function excelRead() {
-	$('#fileUpload').change(
-			function(event) {
-				// Get form
-				event.preventDefault();
-				var form = $('#AdminExcelUpload')[0];
-				var data = new FormData(form);
-				$.ajax({
-					enctype : 'multipart/form-data',
-					url : "/AdminExcelRead.do",
-					type : 'POST',
-					processData : false,
-					contentType : false,
-					data : data,
-					success : function(data) {
-						// alert(data);
-						$('#kt_table_1').empty();
-						$('#kt_table_1').append("<tbody>");
-						$.each(jQuery.parseJSON(data), function(key, value) {
-							console.log(key);
-							$('#kt_table_1').append(
-									'<tr role="row" class="odd">' + '<td>'
-											+ (key + 1) + '</td>' + '<td>'
-											+ value[0] + '</td>' + '<td>'
-											+ value[1] + '</td>' + '<td>'
-											+ value[2] + '</td>' + '<td>'
-											+ value[3] + '회차</td>' + '<td>'
-											+ value[4] + '</td>' + '<td>'
-											+ value[5] + '</td>' + '<td>'
-											+ value[6] + '</td>' + '<td>'
-											+ value[7] + '</td>' + '<td>'
-											+ value[8] + '</td>' + '<td>'
-											+ value[9] + '</td>' + '<td>'
-											+ value[10] + '</td>' + +'</tr>'
-							);
-						})
-						$('#kt_table_1').append("</tbody>");
-						page();
-					}
-				});
-
-			});
-}
 
 function getLocationAjax() {
 	$('#locationName').on(
@@ -100,4 +61,47 @@ function getSchoolNames() {
 					}
 				})
 			})
+}
+
+document.write("<script type='text/javascript' src='/resource/js/soobin.js'><"
+		+ "/script>");
+function excelRead() {
+	$('#fileUpload').change(
+			function(event) {
+				// Get form
+				event.preventDefault();
+				var form = $('#AdminExcelUpload')[0];
+				var data = new FormData(form);
+				$.ajax({
+					enctype : 'multipart/form-data',
+					url : "/AdminExcelRead.do",
+					type : 'POST',
+					processData : false,
+					contentType : false,
+					data : data,
+					success : function(data) {
+						// alert(data);
+						$('#kt_table_1 > tbody').empty();
+						$('#kt_table_1').append('<tbody></tbody>');
+						$.each(jQuery.parseJSON(data), function(key, value) {
+							$('tbody').append(
+									'<tr>' + '<td>' + (key + 1) + '</td>'
+											+ '<td>' + value[0] + '</td>'
+											+ '<td>' + value[1] + '</td>'
+											+ '<td>' + value[2] + '</td>'
+											+ '<td>' + value[3] + '회차</td>'
+											+ '<td>' + value[4] + '</td>'
+											+ '<td>' + value[5] + '</td>'
+											+ '<td>' + value[6] + '</td>'
+											+ '<td>' + value[7] + '</td>'
+											+ '<td>' + value[8] + '</td>'
+											+ '<td>' + value[9] + '</td>'
+											+ '<td>' + value[10] + '</td>'
+											+ +'</tr>');
+						})
+						page();
+					}
+				});
+
+			});
 }

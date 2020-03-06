@@ -40,20 +40,12 @@ import java.util.Enumeration;
 					System.out.println("----------------------------");
 					AdminProcess process = new AdminProcess();
 					String locationName = request.getParameter("locationName");
-					System.out.println(locationName);
 					
 					List<SchoolBean> list = null;
-					if(locationName==null)
-						list = process.getLocation();
+					if(locationName==null) list = process.getLocation();
+					else list = process.getSchoolName(locationName);
 					
-					else {
-						list = process.getSchoolName(locationName);
-					}
-						
-					
-					String gson = new Gson().toJson(list);
-					System.out.println(gson);
-					response.getWriter().write(gson);
+					response.getWriter().write(new Gson().toJson(list));
 					
 				}
 			

@@ -26,7 +26,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>adminMain</servlet-name>
-		<url-pattern>/galaxy/hosting/bitcamp</url-pattern>
+		<url-pattern>/galaxy/hosting/bitcamp/admin</url-pattern>
 	</servlet-mapping>
 
 <!--  css, js 안먹을때 쓰세요

@@ -47,11 +47,7 @@
 						class="kt-menu__link "><a href="/galaxy/hosting/bitcamp">HOME</a></label></li>
 
 					<li class="kt-menu__item fas fa-tools"><label
-						class="kt-menu__link ">수정요청</label><span>5</span></li>
-					<li class="kt-menu__item fas fa-comments"><label
-						class="kt-menu__link ">수빈씨 네티</label></li>
-					<li class="kt-menu__item fas fa-comments"><label
-						class="kt-menu__link ">재현씨 네티</label></li>
+						class="kt-menu__link ">수정요청</label><span id="countModify">${countModify}</span></li>
 				</ul>
 			</div>
 		</div>
@@ -71,8 +67,7 @@
 						<span class="kt-portlet__head-icon"> <i
 							class="fas fa-user-tie"></i>
 						</span>
-						<h3 class="kt-portlet__head-title">This Page Hmmteresting
-							Adamin</h3>
+						<h3 class="kt-portlet__head-title">관리자 ${admin} 님 환영합니다</h3>
 					</div>
 					<div class="kt-portlet__head-toolbar">
 						<div class="kt-portlet__head-wrapper">
@@ -198,21 +193,13 @@
 							<div class="col-sm-12">
 								<table
 									class="table table-striped- table-bordered table-hover table-checkable dataTable dtr-inline paginated"
-									id="kt_table_1" role="grid" aria-describedby="kt_table_1_info"
-									style="width: 1533px;">
+									id="kt_table_1" 
+									style="width: 1533px;" >
 									<thead>
-										<tr role="row">
-											<th class="sorting_asc" tabindex="0"
-												aria-controls="kt_table_1" rowspan="1" colspan="1"
-												style="width: 40px;" aria-sort="ascending"
-												aria-label="Record ID: activate to sort column descending">번호</th>
-											<th class="sorting_asc" tabindex="0"
-												aria-controls="kt_table_1" rowspan="1" colspan="1"
-												style="width: 150px;" aria-sort="ascending"
-												aria-label="Record ID: activate to sort column descending">학생번호</th>
-											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
-												rowspan="1" colspan="1" style="width: 100px;"
-												aria-label="Order ID: activate to sort column ascending">이름</th>
+										<tr >
+											<th class="sorting_asc" style="width: 40px;" >번호</th>
+											<th class="sorting_asc" style="width: 150px;" >학생번호</th>
+											<th class="sorting" style="width: 100px;" >이름</th>
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 150px;"
 												aria-label="Country: activate to sort column ascending">일시</th>
@@ -242,6 +229,7 @@
 												aria-label="Type: activate to sort column ascending">평균</th>
 										</tr>
 									</thead>
+									
 								</table>
 								<div id="kt_table_1_processing"
 									class="dataTables_processing card" style="display: none;">Processing...</div>
@@ -262,15 +250,6 @@
 											
 										<li class="paginate_button page-item active"><a href="#"
 											class="page-link">1</a></li>
-										<li class="paginate_button page-item "><a href="#"
-											aria-controls="kt_table_1" data-dt-idx="2" tabindex="0"
-											class="page-link">2</a></li>
-										<li class="paginate_button page-item "><a href="#"
-											aria-controls="kt_table_1" data-dt-idx="3" tabindex="0"
-											class="page-link">3</a></li>
-										<li class="paginate_button page-item "><a href="#"
-											aria-controls="kt_table_1" data-dt-idx="4" tabindex="0"
-											class="page-link">4</a></li>
 										<li class="paginate_button page-item next"
 											id="kt_table_1_next"><a href="#"
 											aria-controls="kt_table_1" data-dt-idx="5" tabindex="0"
@@ -286,11 +265,15 @@
 		</div>
 	</div>
 </div>
+
+
 </body>
 
-
+<script src ="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.18.0/js/jquery.tablesorter.js "></script>
+ <%-- <script src="${pageContext.request.contextPath}/resource/js/jquery.tablesorter.min.js"></script> --%>
  <script src="${pageContext.request.contextPath}/resource/js/soobin.js"></script>
  <script src="${pageContext.request.contextPath}/resource/js/kojae.js"></script>
+ 
  <script src="https://kit.fontawesome.com/8fe653c8f8.js" crossorigin="anonymous"></script>
 
 </html>

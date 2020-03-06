@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+//import javax.servlet.http.HttpSession;
 
 import hmmteresting.yena.model.AdminBean;
 
@@ -17,35 +18,30 @@ public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private AdminLogin adminLogin;
 	
-	/**
-     * @see HttpServlet#HttpServlet()
-     */
-	public AdminLoginServlet(){
-		super();
-		adminLogin = new AdminLogin();
-	}
-
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String managerId = request.getParameter("userId");
-        String managerPassword = request.getParameter("userPw");
+		String managerId = request.getParameter("managerId");
+        String managerPassword = request.getParameter("managerPassword");
         
         AdminBean loginAdmin = new AdminBean();
         loginAdmin.setManagerId(managerId);
         loginAdmin.setManagerPassword(managerPassword);
-       
+        //System.out.println("servlet loginAdmin  :   "+loginAdmin);
+        
+        adminLogin = new AdminLogin();
         boolean isLoginSuccess = adminLogin.isAdminLogin(loginAdmin, request);
-
+        //System.out.println("is login:  "+isLoginSuccess);
+        
+        //HttpSession session = request.getSession();
+        //System.out.println("servlet session "+session.getAttribute("memberId"));
         if ( isLoginSuccess ) {
-            response.sendRedirect("/AdminMain.jsp");
-            return;
+            response.sendRedirect("/galaxy/hosting/bitcamp");
+           
         }
         else {
-            response.sendRedirect("/login?errorCode=1"); //?alert와 페이지에 머물기?ㄴ
-            return;
+        	request.setAttribute("name", "fail");
+            request.getRequestDispatcher("/galaxy/hosting/bitcamp/login").forward(request, response);
+            
         }
         
     }

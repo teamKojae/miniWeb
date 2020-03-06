@@ -47,10 +47,10 @@ public class AdminExcelRead extends HttpServlet {
 		MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "UTF-8",
 				new DefaultFileRenamePolicy());
 		
-		ExcelUtil excelUtil = new ExcelUtil();
-		List<List<String>> totalList = excelUtil.excelData(multi.getFile("file").toString());
+		List<List<String>> totalList = new ExcelUtil().excelData(multi.getFile("file").toString());
 		String gson = new Gson().toJson(totalList);
 		System.out.println(gson);
+		
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().print(gson);
 	}

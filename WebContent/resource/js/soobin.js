@@ -4,10 +4,10 @@ $(function() {
 	ajax2();
 });
 
-//$('input[type="file"]').change(function(e) {
-//	var fileName = e.target.files[0].name;
-//	alert("this file" + fileName + "has been select");
-//})
+// $('input[type="file"]').change(function(e) {
+// var fileName = e.target.files[0].name;
+// alert("this file" + fileName + "has been select");
+// })
 
 function ajax() {
 
@@ -99,9 +99,14 @@ function ajax2() {
 									success : function(data) {
 										var i = 1;
 										var results = JSON.parse(data);
-										var tableSetting = '<TBODY><TR>';
+										
+										/* 재현 바꿈 */
+										$('#kt_table_1 > tbody').remove();
+										$('#kt_table_1').append('<tbody></tbody>');
+										
 										$.each(results, function(key, value) {
-											tableSetting += '<TD>' + i++
+											$("tbody").append(
+													'<TR> '+'<TD>' + (key+1) // key = index = 0 ~ length
 													+ '</TD><TD>'
 													+ value.studentNo
 													+ '</TD><TD>'
@@ -124,11 +129,10 @@ function ajax2() {
 													+ value.totalScore
 													+ '</TD>' + '<TD>'
 													+ value.averageScore
-													+ '</TD>';
-											tableSetting += '</TR></TBODY>';
+													+ '</TD>'
+													+'</TR>'
+											);
 										});
-										$("#kt_table_1 > TBODY").remove();
-										$("#kt_table_1").append(tableSetting);
 										page();
 									},
 									error : function(data) {
@@ -193,7 +197,7 @@ function page() {
 					$('#kt_table_1_paginate').append(function(){});
 					
 					
-					// [처음]   Tag 지옥에 오신걸 환영합니다 ^^
+					// [처음] Tag 지옥에 오신걸 환영합니다 ^^
 					$('<li class=" paginate_button page-item previous" >'+
 						'<a href="#" pointer-events: none; class="page-link">'
 						+'<i class="fas fa-angle-double-left"></i></a></li>').bind(

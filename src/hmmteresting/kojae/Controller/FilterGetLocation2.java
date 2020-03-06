@@ -61,9 +61,7 @@ import java.util.Enumeration;
 					AdminProcess adminProcess = new AdminProcess();
 					List<SchoolBean> schoolList = adminProcess.getLoactionName(column,whereQuery);
 					
-					String gson = new Gson().toJson(schoolList);
-					System.out.println(gson);
-					response.getWriter().write(gson);
+					response.getWriter().write(new Gson().toJson(schoolList));
 					
 				}
 			

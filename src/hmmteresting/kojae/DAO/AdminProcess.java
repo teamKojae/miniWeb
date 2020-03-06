@@ -22,52 +22,75 @@ public class AdminProcess {
 	public AdminProcess() {
 
 	}
-
+	
+	/* SELECT  */
+	public int getCountModify() {
+		String sql = " SELECT COUNT(modifyState) FROM modify WHERE modifyState=1";
+		int countModify = sqlUtil.getCountModify(sql);
+		
+		return countModify;
+	}
+	
 	public List<SchoolBean> getLocation(){
-		connection = sqlUtil.getConnection();
-		String getLocation = " SELECT DISTINCT locationName FROM school";
-		SchoolBean schoolBean = null;
-		List<SchoolBean> list = new ArrayList<SchoolBean>();
-		try {
-			preparedStatement = connection.prepareStatement(getLocation);
-			resultSet = preparedStatement.executeQuery();
-			while(resultSet.next()) {
-				schoolBean = new SchoolBean();
-				schoolBean.setLocationName(resultSet.getString(1));
-				list.add(schoolBean);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		String sql = " SELECT DISTINCT locationName FROM school";
+		List<SchoolBean> list = sqlUtil.getLocation(sql);
+		
 		return list;
 	}
 	
 	public List<SchoolBean> getSchoolName(String locationName){
-		connection = sqlUtil.getConnection();
-		String getLocation = " SELECT DISTINCT locationName, schoolName FROM school "
+		String sql = " SELECT DISTINCT locationName, schoolName FROM school "
 				+ "WHERE locationName = '"+locationName+"'";
-		SchoolBean schoolBean = null;
-		List<SchoolBean> list = new ArrayList<SchoolBean>();
+		List<SchoolBean> list = sqlUtil.getSchoolName(sql);
+		
+		return list;
+	}
+	
+	
+	/* INSERT  */
+	
+	public void insertUserUseExcel(String fileName) {
+
 		try {
-			getLocation = new String(getLocation.getBytes(), "utf-8");
-			preparedStatement = connection.prepareStatement(getLocation);
-			resultSet = preparedStatement.executeQuery();
-			while(resultSet.next()) {
-				schoolBean = new SchoolBean();
-				schoolBean.setLocationName(resultSet.getString(1));
-				schoolBean.setSchoolName(resultSet.getString(2));
-				list.add(schoolBean);
+			ExcelUtil excelUtil = new ExcelUtil();
+			List<List<String>> gradeList = excelUtil.excelData(fileName);
+
+			connection = sqlUtil.getConnection();
+
+			String sql = "INSERT INTO hmmteresting.grade "
+					+ "(studentNo, examNo, koreanScore, mathScore, englishScore, scienceScore,historyScore,"
+					+ "totalScore,averageScore) VALUES(?,?,?,?,?,?,?,?,?)";
+
+			preparedStatement = connection.prepareStatement(sql);
+			int index=0;
+			for (List<String> excelDataList : gradeList) {
+				preparedStatement.setString(1, excelDataList.get(0));
+				preparedStatement.setInt(2, Integer.parseInt(excelDataList.get(3)));
+				preparedStatement.setInt(3, Integer.parseInt(excelDataList.get(4)));
+				preparedStatement.setInt(4, Integer.parseInt(excelDataList.get(5)));
+				preparedStatement.setInt(5, Integer.parseInt(excelDataList.get(6)));
+				preparedStatement.setInt(6, Integer.parseInt(excelDataList.get(7)));
+				preparedStatement.setInt(7, Integer.parseInt(excelDataList.get(8)));
+				preparedStatement.setInt(8, Integer.parseInt(excelDataList.get(9)));
+				preparedStatement.setDouble(9, Double.parseDouble(excelDataList.get(10)));
+				preparedStatement.execute();
 			}
+			preparedStatement.close();
+			connection.close();
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+
 		}
-		return list;
+
 	}
+	
+	
+	
+	
 	
 	
 	public List<SchoolBean> getLoactionName(List<String> column, List<String> whereQuary) {
@@ -132,43 +155,7 @@ public class AdminProcess {
 
 	
 	
-	public void insertUserUseExcel(String fileName) {
-
-		try {
-			ExcelUtil excelUtil = new ExcelUtil();
-			List<List<String>> gradeList = excelUtil.excelData(fileName);
-
-			connection = sqlUtil.getConnection();
-
-			String sql = "INSERT INTO hmmteresting.grade "
-					+ "(studentNo, examNo, koreanScore, mathScore, englishScore, scienceScore,historyScore,"
-					+ "totalScore,averageScore) VALUES(?,?,?,?,?,?,?,?,?)";
-
-			preparedStatement = connection.prepareStatement(sql);
-			int index=0;
-			for (List<String> excelDataList : gradeList) {
-				preparedStatement.setString(1, excelDataList.get(0));
-				preparedStatement.setInt(2, Integer.parseInt(excelDataList.get(3)));
-				preparedStatement.setInt(3, Integer.parseInt(excelDataList.get(4)));
-				preparedStatement.setInt(4, Integer.parseInt(excelDataList.get(5)));
-				preparedStatement.setInt(5, Integer.parseInt(excelDataList.get(6)));
-				preparedStatement.setInt(6, Integer.parseInt(excelDataList.get(7)));
-				preparedStatement.setInt(7, Integer.parseInt(excelDataList.get(8)));
-				preparedStatement.setInt(8, Integer.parseInt(excelDataList.get(9)));
-				preparedStatement.setDouble(9, Double.parseDouble(excelDataList.get(10)));
-				preparedStatement.execute();
-			}
-			preparedStatement.close();
-			connection.close();
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-
-		}
-
-	}
+	
 
 	public void close() {
 
