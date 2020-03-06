@@ -8,11 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import hmmteresting.jiyoon.DAO.RequestModifyDAO;
+import hmmteresting.jiyoon.DAO.studentDAO;
 import hmmteresting.jiyoon.model.RequestModifyDTO;
+import hmmteresting.jiyoon.model.StudentDTO;
 
-
+//수정요청 내역 불러오는 select
 @WebServlet("/SelectModify")
 public class SelectModify extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,15 +28,15 @@ public class SelectModify extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		//세션값을 통해 sudentNO를 가져와서 넣어주기
-		System.out.println("selectpage");
-		 ArrayList<RequestModifyDTO> list = new ArrayList<RequestModifyDTO>();
-		RequestModifyDAO dao = new RequestModifyDAO();
-		list = dao.selectModify("111D526S3285"); //세션값구해서 넣어주기
-		System.out.println(list);
+		HttpSession httpSession = request.getSession(false);
+		String studentNo = (String) httpSession.getAttribute("studentNo");
+		
+		ArrayList<RequestModifyDTO> list = new ArrayList<RequestModifyDTO>();
+		studentDAO dao = new studentDAO();
+		list = dao.selectModify(studentNo);
+		
 		request.setAttribute("list", list);
-				
-		request.getRequestDispatcher("/resource/view/studentGradeModifyList.jsp").forward(request, response);
-		//response.sendRedirect("/resource/view/studentGradeModifyList.jsp");
+		request.getRequestDispatcher("/studentGradeModifyList").forward(request, response);
 	}
 
 }
