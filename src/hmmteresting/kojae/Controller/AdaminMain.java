@@ -32,11 +32,9 @@ public class AdaminMain extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		if(session.getAttribute("managerId") == null) {
-			System.out.println("여기왔슴");
-			System.out.println(session.getAttribute("managerId"));
-			response.sendRedirect("/galaxy/hosting/bitcamp/loginPage");
+			response.sendRedirect("/galaxy/hosting/bitcamp/login");
+			return;
 		}
-		System.out.println(session.getAttribute("managerId"));
 		request.setAttribute("countModify",new AdminProcess().getCountModify());
 		request.setAttribute("admin", session.getAttribute("managerId"));
 		

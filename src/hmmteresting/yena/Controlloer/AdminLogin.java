@@ -18,14 +18,10 @@ private AdminDAO adminDAO;
     	//System.out.println("DAO loginAdmin   : "+admin);
         AdminBean loginAdmin = adminDAO.getAdminByIdAndPassword(admin);
         //System.out.println("DAO loginAdmin   : "+loginAdmin);
-        System.out.println("isAdmin : "+loginAdmin);
         // 관리자 정보가 존재한다면, 세션에 집어 넣는다.
         if ( loginAdmin != null ) {    
             // 세션을 가지고 온다.
             HttpSession session = request.getSession();
-            System.out.println("session New "+session.isNew());
-            System.out.println("session manager   "+session.getAttribute("managerId"));
-            
             // 세션에 관리자 정보 저장
             session.setAttribute("managerId", loginAdmin);
         }

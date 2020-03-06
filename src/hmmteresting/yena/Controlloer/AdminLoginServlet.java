@@ -13,16 +13,14 @@ import hmmteresting.yena.model.AdminBean;
 /**
  * Servlet implementation class AdminLoginServlet
  */
-@WebServlet("/adminlogin")
+@WebServlet("/galaxy/hosting/bitcamp/Adminlogin.do")
 public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private AdminLogin adminLogin;
 	
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String managerId = request.getParameter("managerId");
         String managerPassword = request.getParameter("managerPassword");
-        System.out.println(managerId+"  "+managerPassword);
         
         AdminBean loginAdmin = new AdminBean();
         loginAdmin.setManagerId(managerId);
@@ -31,14 +29,12 @@ public class AdminLoginServlet extends HttpServlet {
         
         adminLogin = new AdminLogin();
         boolean isLoginSuccess = adminLogin.isAdminLogin(loginAdmin, request);
-        System.out.println("로그인 success ? "+isLoginSuccess);
         //System.out.println("is login:  "+isLoginSuccess);
         
         //HttpSession session = request.getSession();
         //System.out.println("servlet session "+session.getAttribute("memberId"));
         if ( isLoginSuccess ) {
-        	 request.getRequestDispatcher("/galaxy/hosting/bitcamp").forward(request, response);;
-           
+        	 response.sendRedirect("/galaxy/hosting/bitcamp");
         }
         else {
         	request.setAttribute("name", "fail");

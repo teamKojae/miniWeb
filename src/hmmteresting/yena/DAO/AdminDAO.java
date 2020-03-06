@@ -32,7 +32,6 @@ public class AdminDAO {
             	validAdmin = new AdminBean();
             	validAdmin.setManagerId(res.getString("managerId"));
             	validAdmin.setManagerPassword(res.getString("managerPassword"));
-            	System.out.println("어드민 DB :  "+validAdmin);
             }
             
    

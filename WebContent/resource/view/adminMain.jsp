@@ -67,7 +67,7 @@
 						<span class="kt-portlet__head-icon"> <i
 							class="fas fa-user-tie"></i>
 						</span>
-						<h3 class="kt-portlet__head-title">관리자 ${admin} 님 환영합니다</h3>
+						<h3 class="kt-portlet__head-title">관리자 ${admin.managerId} 님 환영합니다</h3>
 					</div>
 					<div class="kt-portlet__head-toolbar">
 						<div class="kt-portlet__head-wrapper">

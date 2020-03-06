@@ -28,7 +28,7 @@ if( '${name}'== "fail" ){
 					<div class="col-12">
 						<h1 class="display-4 mb-10 text-center">Admin Login</h1>
 					</div>
-					<form action="/adminlogin" method="post">
+					<form action="/galaxy/hosting/bitcamp/Adminlogin.do" method="post">
 					<div class="col-12">
 						<input type="text" class="form-control" name="managerId" id="managerId" placeholder="ID"><br>
 					</div>
