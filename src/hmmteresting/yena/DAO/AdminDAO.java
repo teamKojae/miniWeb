@@ -11,7 +11,6 @@ import hmmteresting.yena.model.AdminBean;
 public class AdminDAO { 
 	private Connection conn;
 	private static AdminDAO instance;
-	//private String sqlSelect="select managerNo,managerId,managerPassword from manager";
 	private PreparedStatement stmt;
 	private ResultSet res;
 	public AdminBean getAdminByIdAndPassword(AdminBean admin) {
@@ -21,26 +20,24 @@ public class AdminDAO {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			conn=DriverManager.getConnection("jdbc:mysql://localhost/sample?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", dbId, dbPw);
-			
-			String sql ="SELECT managerId, managerPassword FROM manager WHERE managerId=? and managerPassword=?"; 
+			conn=DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", dbId, dbPw);
+			String sql ="SELECT managerId, managerPassword FROM hmmteresting.manager WHERE managerId=? and managerPassword=?"; 
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, admin.getManagerId());
             stmt.setString(2, admin.getManagerPassword());
- 
+            res=stmt.executeQuery();
             
-       
-            if( res.next() ){
+ 
+            while( res.next() ){
             	validAdmin = new AdminBean();
-            	validAdmin.setManagerId(res.getString(""));
-            	validAdmin.setManagerPassword( res.getString(""));
+            	validAdmin.setManagerId(res.getString("managerId"));
+            	validAdmin.setManagerPassword(res.getString("managerPassword"));
             }
             
    
             
         } catch (SQLException e) {
-            throw new RuntimeException(e.getMessage(), e);
- 
+        	e.printStackTrace();
         } catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
