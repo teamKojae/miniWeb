@@ -14,14 +14,14 @@ public class UpdateCheck {
 	private int historyScore;
 	private int totalScore;
 	private int averageSocre;
-	private int updateCheck;
+	private int state;
 	
 	@Override
 	public String toString() {
 		return "UpdateCheck [studentNo=" + studentNo + ", studentName=" + studentName + ", examDate=" + examDate
 				+ ", examCode=" + examCode + ", koreanScore=" + koreanScore + ", mathScore=" + mathScore
 				+ ", englishScore=" + englishScore + ", scienceScore=" + scienceScore + ", historyScore=" + historyScore
-				+ ", totalScore=" + totalScore + ", averageSocre=" + averageSocre + ", updateCheck=" + updateCheck
+				+ ", totalScore=" + totalScore + ", averageSocre=" + averageSocre + ", updateCheck=" + state
 				+ "]";
 	}
 	
@@ -91,11 +91,11 @@ public class UpdateCheck {
 	public void setAverageSocre(int averageSocre) {
 		this.averageSocre = averageSocre;
 	}
-	public int getUpdateCheck() {
-		return updateCheck;
+	public int getState() {
+		return state;
 	}
-	public void setUpdateCheck(int updateCheck) {
-		this.updateCheck = updateCheck;
+	public void setState(int updateCheck) {
+		this.state = updateCheck;
 	}
 	
 	

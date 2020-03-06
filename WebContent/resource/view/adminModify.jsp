@@ -203,8 +203,7 @@
 
 									<tbody>
 									<c:forEach items="${updateCheckList}" var="updateCheckList" varStatus="status">
-												
-												
+														
 										<tr role="row" class="odd">
 											<td><c:out value="${status.count}" /></td>
 											<td><c:out value="${updateCheckList.studentNo}" /></td>
@@ -218,7 +217,9 @@
 											<td><c:out value="${updateCheckList.historyScore}" /></td>
 											<td><c:out value="${updateCheckList.totalScore}" /></td>
 											<td><c:out value="${updateCheckList.averageSocre}" /></td>
-											<td><c:out value="${updateCheckList.updateCheck}" /></td>
+											
+											
+											<td><c:out value="${updateCheckList.state}" /></td>
 											<!--0과 1을 판단하여 수정 요청을 받은지 확인해야함  -->
 										</tr>
 										</c:forEach>

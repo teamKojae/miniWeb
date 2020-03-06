@@ -29,12 +29,12 @@ public class selectModifyUsers {
 
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
-			String sql = "SELECT grade.*, student.studentName, exam.examDate, exam.examCode "
+			String sql = "SELECT grade.*, student.studentName, exam.examDate, exam.examCode, modifyrequest.state "
 					+ "FROM hmmteresting.grade "
 					+ "inner join hmmteresting.student on grade.studentNo = student.studentNo "
 					+ "inner join hmmteresting.exam on grade.examNo = exam.examNo "
-					+ "where grade.updateCheck is not null "
-					+ "order by grade.updateCheck desc";
+					+ "inner join hmmteresting.modifyrequest on grade.studentNo = modifyrequest.studentNo "
+					+ "order by modifyrequest.state";
 			pstmt = connection.prepareStatement(sql);
 			resultset = pstmt.executeQuery();
 
@@ -49,12 +49,13 @@ public class selectModifyUsers {
 				UpdateCheck.setHistoryScore(resultset.getInt(7));
 				UpdateCheck.setTotalScore(resultset.getInt(8));
 				UpdateCheck.setAverageSocre(resultset.getInt(9));
-				UpdateCheck.setUpdateCheck(resultset.getInt(10));
-				UpdateCheck.setStudentName(resultset.getString(11));
-				UpdateCheck.setExamDate(resultset.getDate(12));
-				UpdateCheck.setExamCode(resultset.getInt(13));
+				UpdateCheck.setStudentName(resultset.getString(10));
+				UpdateCheck.setExamDate(resultset.getDate(11));
+				UpdateCheck.setExamCode(resultset.getInt(12));
+				UpdateCheck.setState(resultset.getInt(13));
 
 				UpdateCheckList.add(UpdateCheck);
+				System.out.println(UpdateCheckList);
 
 			}
 
