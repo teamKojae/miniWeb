@@ -39,5 +39,6 @@ public class AdaminMain extends HttpServlet {
 		request.setAttribute("admin", session.getAttribute("managerId"));
 		
 		request.getRequestDispatcher("/galaxy/hosting/bitcamp/admin").forward(request, response);
+		
 	}
 }
