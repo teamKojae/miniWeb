@@ -20,8 +20,7 @@ public class selectModifyThisUser {
 
 	public void update(String studentNo, int koreanScore, int englishScore, int mathScore, int scienceScore, int historyScore) {
 		int totalScore = koreanScore + englishScore + mathScore + scienceScore + historyScore;
-		int averageSocre = totalScore/5;
-		
+		int averageScore = totalScore/5;
 		
 		Connection connection = null;
 		PreparedStatement pstmt = null;
@@ -30,26 +29,33 @@ public class selectModifyThisUser {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
 			
 			String sql = "update hmmteresting.grade set "
-					+ "koreanScore ='?' "
-					+ "englishScore = '?' "
-					+ "mathScore = '?' "
-					+ "scienceScore = '?' "
-					+ "historyScore = '?' "
-					+ "totalScore = '?' "
-					+ "averageSocre = '?' "
-					+ "updateCheck = '1' "
-					+ "where studentNo='?'";
+					+ "koreanScore =?, "
+					+ "englishScore =?, "
+					+ "mathScore =?, "
+					+ "scienceScore =?, "
+					+ "historyScore =?, "
+					+ "totalScore =?, "
+					+ "averageScore =? "
+					+ "where grade.studentNo=?";
+			String updatesql = "update hmmteresting.modifyrequest set state = '0' "
+					+"where modifyrequest.studentNo=?";
 			
 			pstmt = connection.prepareStatement(sql);
+			System.out.println("update"+pstmt);
+			
 			pstmt.setInt(1, koreanScore);
 			pstmt.setInt(2, englishScore);
 			pstmt.setInt(3, mathScore);
 			pstmt.setInt(4, scienceScore);
 			pstmt.setInt(5, historyScore);
 			pstmt.setInt(6, totalScore);
-			pstmt.setInt(7, averageSocre);
+			pstmt.setInt(7, averageScore);
 			pstmt.setString(8, studentNo);
+			System.out.println(pstmt);
+			pstmt.executeUpdate();
 			
+			pstmt = connection.prepareStatement(updatesql);
+			pstmt.setString(1, studentNo);
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {

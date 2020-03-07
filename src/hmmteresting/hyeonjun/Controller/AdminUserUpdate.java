@@ -26,7 +26,7 @@ public class AdminUserUpdate extends HttpServlet {
 		ArrayList<UpdateCheck> updateCheckList = selectModifyUsers.updateCheck();
 		
 		request.setAttribute("updateCheckList", updateCheckList);		
-		request.getRequestDispatcher("/resource/view/adminModify.jsp").forward(request, response);
+		request.getRequestDispatcher("/adminModify").forward(request, response);
 		
 	}
 

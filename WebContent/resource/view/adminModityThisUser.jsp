@@ -155,11 +155,7 @@
 									id="kt_table_1" role="grid" aria-describedby="kt_table_1_info"
 									style="width: 1533px;">
 									<thead>
-										<tr role="row">
-											<th class="sorting_asc" tabindex="0"
-												aria-controls="kt_table_1" rowspan="1" colspan="1"
-												style="width: 60px;" aria-sort="ascending"
-												aria-label="Record ID: activate to sort column descending">번호</th>
+										<tr role="row">								
 											<th class="sorting_asc" tabindex="0"
 												aria-controls="kt_table_1" rowspan="1" colspan="1"
 												style="width: 115px;" aria-sort="ascending"
@@ -168,11 +164,8 @@
 												rowspan="1" colspan="1" style="width: 130px;"
 												aria-label="Order ID: activate to sort column ascending">이름</th>
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
-												rowspan="1" colspan="1" style="width: 130px;"
-												aria-label="Country: activate to sort column ascending">일시</th>
-											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
-												rowspan="1" colspan="1" style="width: 60px;"
-												aria-label="Ship City: activate to sort column ascending">회차</th>
+												rowspan="1" colspan="1" style="width: 400px;"
+												aria-label="Ship City: activate to sort column ascending">수정요청사항</th>
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 80px;"
 												aria-label="Company Agent: activate to sort column ascending">국어</th>
@@ -188,12 +181,7 @@
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 80px;"
 												aria-label="Type: activate to sort column ascending">한국사</th>
-											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
-												rowspan="1" colspan="1" style="width: 80px;"
-												aria-label="Type: activate to sort column ascending">총점</th>
-											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
-												rowspan="1" colspan="1" style="width: 80px;"
-												aria-label="Type: activate to sort column ascending">평균</th>
+											
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 100px;"
 												aria-label="Type: activate to sort column ascending">수정요청</th>
@@ -203,46 +191,23 @@
 
 									<tbody>
 									
-									<c:forEach items="${updateCheckList}" var="updateCheckList" varStatus="status">
-														
+											<form action="/AdminSelectUserUpdate.do" method="post">
 										<tr role="row" class="odd"  >
-											<td><c:out value="${status.count}" /></td>
-											<td><c:out value="${updateCheckList.studentNo}" /></td>
-											<td><c:out value="${updateCheckList.studentName}" /></td>
-											<td><c:out value="${updateCheckList.examDate}" /></td>
-											<td><c:out value="${updateCheckList.examCode}" /></td>
-											<td><c:out value="${updateCheckList.koreanScore}" /></td>
-											<td><c:out value="${updateCheckList.englishScore}" /></td>
-											<td><c:out value="${updateCheckList.mathScore}" /></td>
-											<td><c:out value="${updateCheckList.scienceScore}" /></td>
-											<td><c:out value="${updateCheckList.historyScore}" /></td>
-											<td><c:out value="${updateCheckList.totalScore}" /></td>
-											<td><c:out value="${updateCheckList.averageSocre}" /></td>
-											<td>											
-											<c:choose>
+											<td>${ThisUser.studentNo}</td>
+											<td>${ThisUser.studentName}</td>
+											<td>${ThisUser.content}</td>
+											<td><input type="number" name="koreanScore" style="width:50px;height:25px;"></td>
+											<td><input type="number" name="englishScore" style="width:50px;height:25px;"></td>
+											<td><input type="number" name="mathScore" style="width:50px;height:25px;"></td>
+											<td><input type="number" name="scienceScore" style="width:50px;height:25px;"></td>
+											<td><input type="number" name="historyScore" style="width:50px;height:25px;"></td>											
+											<input type="hidden" id="studentNo" name="studentNo" value="${ThisUser.studentNo}">
+											<td><input type="submit" value="수정하기" ></td>
 											
-											<c:when test="${updateCheckList.state==1}">
-											
-											<button onclick="update_btn('${updateCheckList.studentNo}')">수정</button>
-											
-											<script type="text/javascript">
-											function update_btn(value){
-												var studentNo = value;
-												location.href="/AdminSelectUserUpdate.do?studentNo="+studentNo;
-											}
-											</script>
-											
-											</c:when>
-											
-											<c:otherwise>
-											<button onclick="" disabled='disabled'>완료</button>
-											</c:otherwise>
-											
-											</c:choose>											
-											</td>											
+							
+																	
 										</tr>
-										</c:forEach>
-										
+										</form>		
 									</tbody>
 								</table>
 								<div id="kt_table_1_processing"
