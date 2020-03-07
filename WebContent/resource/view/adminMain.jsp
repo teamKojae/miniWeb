@@ -53,8 +53,8 @@ if(sessions.getAttribute("managerId") == null){
 					<li class="kt-menu__item fas fa-home "><label
 						class="kt-menu__link "><a href="/galaxy/hosting/bitcamp">HOME</a></label></li>
 
-					<li class="kt-menu__item fas fa-tools" onclick="location.href='/AdminUserUpdate.do'"><label
-						class="kt-menu__link ">수정요청</label><span id="countModify">${countModify}</span></li>
+					<li class="kt-menu__item fas fa-tools"><label
+						class="kt-menu__link " onclick="location.href='/AdminUserUpdate.do'" >수정요청</label><span id="countModify">${countModify}</span></li>
 					<li class="kt-menu__item fas fa-sign-out-alt" style="margin-left:20px" ><label
 						class="kt-menu__link "><a href="/galaxy/hosting/bitcamp/AdminLogout.do" >로그아웃</a></label></li>
 				</ul>

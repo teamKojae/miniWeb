@@ -40,10 +40,10 @@
 					<li class="kt-menu__item fas fa-tools"><label
 						onclick="javascript:document.location.href='studentGradeModify';"
 						class="kt-menu__link ">수정요청</label></li>
-					<li class="kt-menu__item fas fa-swatchbook"><label
+					<li class="kt-menu__item fas fa-tools"><label
 						onclick="javascript:document.location.href='/SelectModify';"
 						class="kt-menu__link ">요청내역</label></li>
-					<li class="kt-menu__item fas fa-sign-out-alt"><label
+					<li class="kt-menu__item fas fa-tools"><label
 						onclick="javascript:document.location.href='/Logout';"
 						class="kt-menu__link ">로그아웃</label></li>
 				</ul>
@@ -138,7 +138,7 @@
 												<td>${modifyList.content}</td>
 												<td align=center style="font-weight: bold;"><c:set
 														var="state" value="${modifyList.state}" /> <c:choose>
-														<c:when test="${state eq '0'}">  											미처리
+														<c:when test="${state eq '1'}">  											미처리
 											</c:when>
 														<c:otherwise>
       										 처리 완료

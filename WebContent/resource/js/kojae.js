@@ -11,15 +11,8 @@ $(function() {
 		})
 	});
 	
-	$.ajax({
-		url : "/CheckModifyCount.do",
-		type : 'GET',
-		success : function(data) {
-			console.log(data);
-			$('#countModify').text(data)
-		}
-	});
-})
+});
+
 function getLocationAjax() {
 	$('#locationName').on(
 			'click',
