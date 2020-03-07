@@ -25,6 +25,13 @@
  
 
 </head>
+<%
+HttpSession sessions = request.getSession();
+if(sessions.getAttribute("managerId") == null){
+	response.sendRedirect("/galaxy/hosting/bitcamp/login");
+}
+%>
+
 <body
 	class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed 
 	kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-aside--enabled 
@@ -48,6 +55,8 @@
 
 					<li class="kt-menu__item fas fa-tools"><label
 						class="kt-menu__link ">수정요청</label><span id="countModify">${countModify}</span></li>
+					<li class="kt-menu__item fas fa-sign-out-alt" style="margin-left:20px" ><label
+						class="kt-menu__link "><a href="/galaxy/hosting/bitcamp/AdminLogout.do" >로그아웃</a></label></li>
 				</ul>
 			</div>
 		</div>

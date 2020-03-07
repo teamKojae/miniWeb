@@ -2,8 +2,8 @@ package hmmteresting.kojae.Controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +16,6 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import hmmteresting.kojae.DAO.Util.ExcelUtil;
-import hmmteresting.kojae.Model.ExamBean;
 
 /**
  * Servlet implementation class AdminExcelRead

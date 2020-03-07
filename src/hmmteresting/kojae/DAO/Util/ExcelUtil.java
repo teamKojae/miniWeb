@@ -2,27 +2,17 @@ package hmmteresting.kojae.DAO.Util;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import hmmteresting.kojae.Model.ExamBean;
-import hmmteresting.kojae.Model.GradeBean;
-import hmmteresting.kojae.Model.SchoolBean;
-import hmmteresting.kojae.Model.StudentBean;
 
 public class ExcelUtil {
 
@@ -32,7 +22,9 @@ public class ExcelUtil {
 		try {
 			// Create the input stream from the xlsx/xls file
 			FileInputStream fileInputStream = new FileInputStream(fileName);
-			// Create Workbook instance for xlsx/xls file input stream
+			
+			// 2007년형 이상인 .xlsn은 XSSFWorkbook 타입
+			// 97-03 버전인 .xls은 HSSFWorkbook 타입
 			Workbook workbook = null;
 			if (fileName.toLowerCase().endsWith("xlsx")) {
 				workbook = new XSSFWorkbook(fileInputStream);
@@ -79,13 +71,12 @@ public class ExcelUtil {
 		return totalList;
 	}
 
-	/*
-	 * public static void main(String[] args) { ExcelUtil excelUtil = new
-	 * ExcelUtil(); List<GradeBean> a =
-	 * excelUtil.excelData("E:/excel/studentGrade.xlsx"); StringTokenizer st = null;
-	 * for( GradeBean b : a ) { System.out.println(b); }
-	 * 
-	 * 
-	 * }
-	 */
+
+
+		
+	  
+	
+	  
+	
+	
 }

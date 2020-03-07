@@ -25,7 +25,7 @@ public class AdminProcess {
 	
 	/* SELECT  */
 	public int getCountModify() {
-		String sql = " SELECT COUNT(modifyState) FROM modify WHERE modifyState=1";
+		String sql = " SELECT COUNT(state) FROM modifyrequest WHERE state=1";
 		int countModify = sqlUtil.getCountModify(sql);
 		
 		return countModify;

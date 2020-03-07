@@ -1,10 +1,12 @@
+
+document.write("<script type='text/javascript' src='/resource/js/soobin.js'></script>");
 $(function() {
 	excelRead();
 	getLocationAjax();
 	getSchoolNames();
 	
 	$(document).ready(function() {
-		$("table").on('click', function() {
+		$("table").bind('click', function() {
 			$("table").tablesorter();
 		})
 	});
@@ -63,8 +65,6 @@ function getSchoolNames() {
 			})
 }
 
-document.write("<script type='text/javascript' src='/resource/js/soobin.js'><"
-		+ "/script>");
 function excelRead() {
 	$('#fileUpload').change(
 			function(event) {
