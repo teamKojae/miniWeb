@@ -15,13 +15,23 @@ public class UpdateCheck {
 	private int totalScore;
 	private int averageSocre;
 	private int state;
+	private String content;
 	
+	
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	@Override
 	public String toString() {
 		return "UpdateCheck [studentNo=" + studentNo + ", studentName=" + studentName + ", examDate=" + examDate
 				+ ", examCode=" + examCode + ", koreanScore=" + koreanScore + ", mathScore=" + mathScore
 				+ ", englishScore=" + englishScore + ", scienceScore=" + scienceScore + ", historyScore=" + historyScore
-				+ ", totalScore=" + totalScore + ", averageSocre=" + averageSocre + ", updateCheck=" + state
+				+ ", totalScore=" + totalScore + ", averageSocre=" + averageSocre + ", state=" + state
 				+ "]";
 	}
 	
@@ -94,8 +104,8 @@ public class UpdateCheck {
 	public int getState() {
 		return state;
 	}
-	public void setState(int updateCheck) {
-		this.state = updateCheck;
+	public void setState(int state) {
+		this.state = state;
 	}
 	
 	

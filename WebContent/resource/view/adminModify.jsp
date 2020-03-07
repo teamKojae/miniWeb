@@ -58,7 +58,7 @@
 						class="kt-menu__link ">HOME</label></li>
 
 					<li class="kt-menu__item fas fa-tools"><label
-						class="kt-menu__link " onclick="location.href='/AdminUserUpdate.do'" >수정요청</label><span>n</span>
+						class="kt-menu__link " onclick="location.href='/AdminUserUpdate.do'" >수정요청</label><span></span>
 						<!-- 수정요청 받기전에 뜨게할려면 세션에 먼저 담아야함  -->
 					</li>
 				</ul>

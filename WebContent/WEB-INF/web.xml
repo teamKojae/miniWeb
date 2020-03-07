@@ -28,6 +28,25 @@
 		<servlet-name>adminMain</servlet-name>
 		<url-pattern>/galaxy/hosting/bitcamp</url-pattern>
 	</servlet-mapping>
+	
+	<!-- 유현준 -->
+	<servlet>
+		<servlet-name>adminModify</servlet-name>
+		<jsp-file>/resource/view/adminModify.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>adminModify</servlet-name>
+		<url-pattern>/adminModify</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>adminModityThisUser</servlet-name>
+		<jsp-file>/resource/view/adminModityThisUser.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>adminModityThisUser</servlet-name>
+		<url-pattern>/adminModityThisUser</url-pattern>
+	</servlet-mapping>
 
 <!--  css, js 안먹을때 쓰세요
 	<servlet-mapping>

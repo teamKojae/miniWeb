@@ -37,7 +37,7 @@ public class selectModifyUsers {
 					+ "order by modifyrequest.state desc";
 			pstmt = connection.prepareStatement(sql);
 			resultset = pstmt.executeQuery();
-
+			
 			while (resultset.next()) {
 				UpdateCheck UpdateCheck = new UpdateCheck();
 
@@ -83,26 +83,33 @@ public class selectModifyUsers {
 
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
-			String sql = "SELECT * from hmmteresting.grade where='?'";
+			String sql = "SELECT grade.*, student.studentName, modifyrequest.content, modifyrequest.state "
+					+ "from hmmteresting.grade "
+					+ "inner join hmmteresting.modifyrequest on grade.studentNo = modifyrequest.studentNo "
+					+ "inner join hmmteresting.student on grade.studentNo=student.studentNo "
+					+ "where grade.studentNo=?";
+			
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, getstudentNo);
+			System.out.println("업뎃유저확인"+pstmt);
 			resultset = pstmt.executeQuery();
+			while (resultset.next()) {
+				UpdateThisUser = new UpdateCheck();
 
-			UpdateThisUser = new UpdateCheck();
+				UpdateThisUser.setStudentNo(resultset.getString(1));
+				UpdateThisUser.setKoreanScore(resultset.getInt(3));
+				UpdateThisUser.setMathScore(resultset.getInt(4));
+				UpdateThisUser.setEnglishScore(resultset.getInt(5));
+				UpdateThisUser.setScienceScore(resultset.getInt(6));
+				UpdateThisUser.setHistoryScore(resultset.getInt(7));
+				UpdateThisUser.setTotalScore(resultset.getInt(8));
+				UpdateThisUser.setAverageSocre(resultset.getInt(9));
+				UpdateThisUser.setStudentName(resultset.getString(10));
+				UpdateThisUser.setContent(resultset.getString(11));
+				UpdateThisUser.setState(resultset.getInt(12));
 
-			UpdateThisUser.setStudentNo(resultset.getString(1));
-			UpdateThisUser.setKoreanScore(resultset.getInt(3));
-			UpdateThisUser.setMathScore(resultset.getInt(4));
-			UpdateThisUser.setEnglishScore(resultset.getInt(5));
-			UpdateThisUser.setScienceScore(resultset.getInt(6));
-			UpdateThisUser.setHistoryScore(resultset.getInt(7));
-			UpdateThisUser.setTotalScore(resultset.getInt(8));
-			UpdateThisUser.setAverageSocre(resultset.getInt(9));
-			UpdateThisUser.setStudentName(resultset.getString(10));
-			UpdateThisUser.setExamDate(resultset.getDate(11));
-			UpdateThisUser.setExamCode(resultset.getInt(12));
-			UpdateThisUser.setState(resultset.getInt(13));
-
+				System.out.println(UpdateThisUser);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

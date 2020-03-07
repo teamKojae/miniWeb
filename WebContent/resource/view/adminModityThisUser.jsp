@@ -58,7 +58,7 @@
 						class="kt-menu__link ">HOME</label></li>
 
 					<li class="kt-menu__item fas fa-tools"><label
-						class="kt-menu__link " onclick="location.href='/AdminUserUpdate.do'" >수정요청</label><span>n</span>
+						class="kt-menu__link " onclick="location.href='/AdminUserUpdate.do'" >수정요청</label><span></span>
 						<!-- 수정요청 받기전에 뜨게할려면 세션에 먼저 담아야함  -->
 					</li>
 				</ul>
@@ -155,11 +155,7 @@
 									id="kt_table_1" role="grid" aria-describedby="kt_table_1_info"
 									style="width: 1533px;">
 									<thead>
-										<tr role="row">
-											<th class="sorting_asc" tabindex="0"
-												aria-controls="kt_table_1" rowspan="1" colspan="1"
-												style="width: 60px;" aria-sort="ascending"
-												aria-label="Record ID: activate to sort column descending">번호</th>
+										<tr role="row">								
 											<th class="sorting_asc" tabindex="0"
 												aria-controls="kt_table_1" rowspan="1" colspan="1"
 												style="width: 115px;" aria-sort="ascending"
@@ -168,11 +164,8 @@
 												rowspan="1" colspan="1" style="width: 130px;"
 												aria-label="Order ID: activate to sort column ascending">이름</th>
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
-												rowspan="1" colspan="1" style="width: 130px;"
-												aria-label="Country: activate to sort column ascending">일시</th>
-											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
-												rowspan="1" colspan="1" style="width: 60px;"
-												aria-label="Ship City: activate to sort column ascending">회차</th>
+												rowspan="1" colspan="1" style="width: 400px;"
+												aria-label="Ship City: activate to sort column ascending">수정요청사항</th>
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 80px;"
 												aria-label="Company Agent: activate to sort column ascending">국어</th>
@@ -188,12 +181,7 @@
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 80px;"
 												aria-label="Type: activate to sort column ascending">한국사</th>
-											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
-												rowspan="1" colspan="1" style="width: 80px;"
-												aria-label="Type: activate to sort column ascending">총점</th>
-											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
-												rowspan="1" colspan="1" style="width: 80px;"
-												aria-label="Type: activate to sort column ascending">평균</th>
+											
 											<th class="sorting" tabindex="0" aria-controls="kt_table_1"
 												rowspan="1" colspan="1" style="width: 100px;"
 												aria-label="Type: activate to sort column ascending">수정요청</th>
@@ -203,11 +191,23 @@
 
 									<tbody>
 									
-									
-														
+											<form action="/AdminSelectUserUpdate.do" method="post">
 										<tr role="row" class="odd"  >
+											<td>${ThisUser.studentNo}</td>
+											<td>${ThisUser.studentName}</td>
+											<td>${ThisUser.content}</td>
+											<td><input type="number" name="koreanScore" style="width:50px;height:25px;"></td>
+											<td><input type="number" name="englishScore" style="width:50px;height:25px;"></td>
+											<td><input type="number" name="mathScore" style="width:50px;height:25px;"></td>
+											<td><input type="number" name="scienceScore" style="width:50px;height:25px;"></td>
+											<td><input type="number" name="historyScore" style="width:50px;height:25px;"></td>											
+											<input type="hidden" id="studentNo" name="studentNo" value="${ThisUser.studentNo}">
+											<td><input type="submit" value="수정하기" ></td>
 											
-										
+							
+																	
+										</tr>
+										</form>		
 									</tbody>
 								</table>
 								<div id="kt_table_1_processing"
