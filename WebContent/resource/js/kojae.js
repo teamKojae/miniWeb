@@ -11,6 +11,14 @@ $(function() {
 		})
 	});
 	
+	$.ajax({
+		url:"/CheckModifyCount.do",
+		type:"GET",
+		success:function(data){
+			$('#countModify').text(data);
+		}
+	})
+	
 });
 
 function getLocationAjax() {

@@ -58,9 +58,12 @@
 						class="kt-menu__link ">HOME</label></li>
 
 					<li class="kt-menu__item fas fa-tools"><label
-						class="kt-menu__link " onclick="location.href='/AdminUserUpdate.do'" >수정요청</label><span></span>
+						class="kt-menu__link " onclick="location.href='/AdminUserUpdate.do'" >수정요청</label>
+						<span id="countModify">${countModify}</span>
 						<!-- 수정요청 받기전에 뜨게할려면 세션에 먼저 담아야함  -->
 					</li>
+					<li class="kt-menu__item fas fa-sign-out-alt" style="margin-left:20px" ><label
+						class="kt-menu__link "><a href="/galaxy/hosting/bitcamp/AdminLogout.do" >로그아웃</a></label></li>
 				</ul>
 			</div>
 		</div>

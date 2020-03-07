@@ -40,10 +40,10 @@
 					<li class="kt-menu__item fas fa-tools"><label
 						onclick="javascript:document.location.href='studentGradeModify';"
 						class="kt-menu__link ">수정요청</label></li>
-					<li class="kt-menu__item fas fa-tools"><label
+					<li class="kt-menu__item fas fa-swatchbook"><label
 						onclick="javascript:document.location.href='/SelectModify';"
 						class="kt-menu__link ">요청내역</label></li>
-					<li class="kt-menu__item fas fa-tools"><label
+					<li class="kt-menu__item fas fa-sign-out-alt"><label
 						onclick="javascript:document.location.href='/Logout';"
 						class="kt-menu__link ">로그아웃</label></li>
 				</ul>
