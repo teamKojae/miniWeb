@@ -150,7 +150,7 @@
 												<td class="sorting_1" tabindex="0">${studentGrades[0].studentNo}</td>
 												<td>${studentGrades[0].studentName}</td>
 												<td>${studentGrades[0].examDate}</td>
-												<td>${studentGrades[0].examCode}</td>
+												<td>${studentGrades[0].examNo}</td>
 												<td>${studentGrades[0].koreanScore}</td>
 												<td>${studentGrades[0].englishScore}</td>
 												<td>${studentGrades[0].mathScore}</td>
@@ -197,6 +197,7 @@
 								placeholder="수정할 내용을 입력하세요."></textarea>
 
 						</div>
+						<input type="hidden" name="examNo" value="${studentGrades[0].examNo}">
 						<div align="right">
 							<button onclick="alert('전송되었습니다.')" type="submit">전송</button>
 						</div>

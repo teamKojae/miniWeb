@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 
 
-<title>Insert title here</title>
+<title>hmmteresting</title>
 <!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminStyle.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminStyleCustom.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugins.css">
@@ -207,6 +207,7 @@
 									<c:forEach items="${updateCheckList}" var="updateCheckList" varStatus="status">
 														
 										<tr role="row" class="odd"  >
+										
 											<td><c:out value="${status.count}" /></td>
 											<td><c:out value="${updateCheckList.studentNo}" /></td>
 											<td><c:out value="${updateCheckList.studentName}" /></td>
@@ -218,18 +219,20 @@
 											<td><c:out value="${updateCheckList.scienceScore}" /></td>
 											<td><c:out value="${updateCheckList.historyScore}" /></td>
 											<td><c:out value="${updateCheckList.totalScore}" /></td>
-											<td><c:out value="${updateCheckList.averageSocre}" /></td>
+											<td><c:out value="${updateCheckList.averageSocre}" />
+											<input type="hidden" name = "modifyNo" value="${updateCheckList.modifyNo }"></td>
 											<td>											
 											<c:choose>
 											
 											<c:when test="${updateCheckList.state==1}">
 											
-											<button onclick="update_btn('${updateCheckList.studentNo}')">수정</button>
+											<button onclick="update_btn('${updateCheckList.studentNo}',${updateCheckList.modifyNo })">수정</button>
 											
 											<script type="text/javascript">
-											function update_btn(value){
-												var studentNo = value;
-												location.href="/AdminSelectUserUpdate.do?studentNo="+studentNo;
+											function update_btn(studentNo, modifyNo){
+												
+												location.href="/AdminSelectUserUpdate.do?studentNo="
+														+studentNo+"&modifyNo="+modifyNo;
 											}
 											</script>
 											

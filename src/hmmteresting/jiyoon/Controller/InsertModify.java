@@ -25,10 +25,10 @@ public class InsertModify extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession httpSession = request.getSession(false);
 		String studentNo = (String) httpSession.getAttribute("studentNo");
-
+		System.out.println(request.getParameter("examNo"));
 		
 		studentDAO dao = new studentDAO();
-		dao.insertModify(studentNo, request.getParameter("modifyContent"));
+		dao.insertModify(request.getParameter("examNo"),studentNo, request.getParameter("modifyContent"));
 		
 		response.sendRedirect("/studentMain");
 		

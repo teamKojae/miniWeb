@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>hmmteresting Admin</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/rootui.css" >
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resource/css/bootstrap-custom.css" >
 

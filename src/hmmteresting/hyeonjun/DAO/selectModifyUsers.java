@@ -29,13 +29,17 @@ public class selectModifyUsers {
 
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
-			String sql = "SELECT grade.*, student.studentName, exam.examDate, exam.examCode, modifyrequest.state "
-					+ "FROM hmmteresting.grade "
-					+ "inner join hmmteresting.student on grade.studentNo = student.studentNo "
-					+ "inner join hmmteresting.exam on grade.examNo = exam.examNo "
-					+ "inner join hmmteresting.modifyrequest on grade.studentNo = modifyrequest.studentNo "
-					+ "where modifyrequest.state is not null "
-					+ "order by modifyrequest.state desc";
+			String sql = "SELECT grade.*, student.studentName, exam.examDate, exam.examCode, "
+					+ "modifyrequest.state , modifyrequest.modifyNo " 
+					+"FROM hmmteresting.grade, student, modifyrequest, exam "
+					+"WHERE grade.studentNo = student.studentNo  "
+					+"AND student.studentNo = modifyrequest.studentNo "
+					+"AND grade.examNo = exam.examNo "
+					+"AND modifyrequest.state is not null   "
+					+"AND exam.examNo = modifyrequest.examNo "
+					+"ORDER BY  modifyrequest.state DESC , modifyrequest.modifyNo ASC";
+			
+			System.out.println("updateCheck : "+sql);
 			pstmt = connection.prepareStatement(sql);
 			resultset = pstmt.executeQuery();
 			
@@ -54,7 +58,7 @@ public class selectModifyUsers {
 				UpdateCheck.setExamDate(resultset.getDate(11));
 				UpdateCheck.setExamCode(resultset.getInt(12));
 				UpdateCheck.setState(resultset.getInt(13));
-
+				UpdateCheck.setModifyNo(resultset.getInt(14));
 				UpdateCheckList.add(UpdateCheck);
 
 			}
@@ -74,7 +78,7 @@ public class selectModifyUsers {
 		return UpdateCheckList;
 	}
 
-	public UpdateCheck updateThisUser(String getstudentNo) {
+	public UpdateCheck updateThisUser(String getstudentNo, String modifyNo) {
 
 		Connection connection = null;
 		PreparedStatement pstmt = null;
@@ -84,20 +88,30 @@ public class selectModifyUsers {
 
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
-			String sql = "SELECT grade.*, student.studentName, modifyrequest.content, modifyrequest.state "
-					+ "from hmmteresting.grade "
-					+ "inner join hmmteresting.modifyrequest on grade.studentNo = modifyrequest.studentNo "
-					+ "inner join hmmteresting.student on grade.studentNo=student.studentNo "
-					+ "where modifyrequest.state ='1' and grade.studentNo=? ";
 			
+			String sql =  " SELECT grade.*, student.studentName, modifyrequest.content,"
+					+ " modifyrequest.state , modifyrequest.modifyNo "
+					+" from grade, student, exam, modifyrequest"
+					+" WHERE  grade.studentNo=student.studentNo "
+					+" AND exam.examNo=grade.examNo"
+					+" AND grade.studentNo = modifyrequest.studentNo"
+					+" AND exam.examNo = modifyrequest.examNo"
+					+" AND grade.studentNo= ? "
+					+" AND modifyrequest.modifyNo = ? "
+					+ "ORDER BY  modifyrequest.state DESC , modifyrequest.modifyNo ASC";
+			
+			
+			System.out.println("updateThisUser : "+sql);
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, getstudentNo);
+			pstmt.setString(2, modifyNo);
 			
 			resultset = pstmt.executeQuery();
 			while (resultset.next()) {
 				UpdateThisUser = new UpdateCheck();
 
 				UpdateThisUser.setStudentNo(resultset.getString(1));
+				UpdateThisUser.setExamNo(resultset.getInt(2));
 				UpdateThisUser.setKoreanScore(resultset.getInt(3));
 				UpdateThisUser.setMathScore(resultset.getInt(4));
 				UpdateThisUser.setEnglishScore(resultset.getInt(5));
@@ -108,7 +122,7 @@ public class selectModifyUsers {
 				UpdateThisUser.setStudentName(resultset.getString(10));
 				UpdateThisUser.setContent(resultset.getString(11));
 				UpdateThisUser.setState(resultset.getInt(12));
-
+				UpdateThisUser.setModifyNo(resultset.getInt(13));
 				System.out.println(UpdateThisUser);
 			}
 		} catch (SQLException e) {

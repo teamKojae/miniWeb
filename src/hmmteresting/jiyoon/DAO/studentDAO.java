@@ -74,14 +74,15 @@ public class studentDAO {
 	
 	
 	//수정요청 정보 DB에 insert
-	public void insertModify(String studentNo, String modifyContent ) {
+	public void insertModify( String examNo, String studentNo,String modifyContent ) {
 		
 		String SQL = "INSERT INTO `hmmteresting`.`modifyrequest` "
-				+ "(`studentNo`, `content`) VALUES (?, ?)";
+				+ "(`examNo`,`studentNo`, `content`) VALUES (?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, studentNo);
-			pstmt.setString(2, modifyContent);
+			pstmt.setInt(1, Integer.parseInt(examNo));
+			pstmt.setString(2, studentNo);
+			pstmt.setString(3, modifyContent);
 			pstmt.executeUpdate();	
 
 		} catch (SQLException e) {
@@ -104,9 +105,9 @@ public class studentDAO {
 			while(rs.next()) {
 				RequestModifyDTO student = new RequestModifyDTO();
 				student.setModifyNo(rs.getInt(1));
-				student.setStudentNO(rs.getString(2));
-				student.setContent(rs.getString(3));
-				student.setState(rs.getInt(4));
+				student.setStudentNO(rs.getString(3));
+				student.setContent(rs.getString(4));
+				student.setState(rs.getInt(5));
 				list.add(student);
 			}
 		} catch (SQLException e) {

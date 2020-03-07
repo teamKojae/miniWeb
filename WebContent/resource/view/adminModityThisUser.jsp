@@ -11,8 +11,7 @@
 
 <meta charset="UTF-8">
 
-
-<title>Insert title here</title>
+<title>hmmteresting</title>
 <!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminStyle.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminStyleCustom.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugins.css">
@@ -55,7 +54,7 @@
 				<div class="col-md-1"></div>
 				<ul class="kt-menu__nav ">
 					<li class="kt-menu__item fas fa-home "><label
-						class="kt-menu__link ">HOME</label></li>
+						class="kt-menu__link "><a href="/galaxy/hosting/bitcamp">HOME</a></label></li>
 
 					<li class="kt-menu__item fas fa-tools"><label
 						class="kt-menu__link " onclick="location.href='/AdminUserUpdate.do'" >수정요청</label>
@@ -194,8 +193,8 @@
 
 									<tbody>
 									
-											<form action="/AdminSelectUserUpdate.do" method="post">
-										<tr role="row" class="odd"  >
+									<form action="/AdminSelectUserUpdate.do" method="post">
+										<tr role="row" class="odd" >
 											<td>${ThisUser.studentNo}</td>
 											<td>${ThisUser.studentName}</td>
 											<td>${ThisUser.content}</td>
@@ -204,13 +203,11 @@
 											<td><input type="number" name="mathScore" style="width:50px;height:25px;"></td>
 											<td><input type="number" name="scienceScore" style="width:50px;height:25px;"></td>
 											<td><input type="number" name="historyScore" style="width:50px;height:25px;"></td>											
-											<input type="hidden" id="studentNo" name="studentNo" value="${ThisUser.studentNo}">
 											<td><input type="submit" value="수정하기" ></td>
-											
-							
-																	
 										</tr>
-										</form>		
+										<input type="hidden" id="studentNo" name="studentNo" value="${ThisUser.studentNo}">
+										<input type="hidden" id="examNo" name="examNo" value="${ThisUser.examNo}">
+									</form>		
 									</tbody>
 								</table>
 								<div id="kt_table_1_processing"
@@ -255,5 +252,6 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

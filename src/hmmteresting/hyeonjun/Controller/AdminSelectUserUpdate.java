@@ -23,10 +23,11 @@ public class AdminSelectUserUpdate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String studentNo = request.getParameter("studentNo").trim();
-
+		String modifyNo = request.getParameter("modifyNo");
+		
 		selectModifyUsers selectModifyUsers = new selectModifyUsers();
-		UpdateCheck ThisUser = selectModifyUsers.updateThisUser(studentNo);
-
+		UpdateCheck ThisUser = selectModifyUsers.updateThisUser(studentNo,modifyNo);
+		
 		request.setAttribute("ThisUser", ThisUser);		
 		request.getRequestDispatcher("/adminModityThisUser").forward(request, response);
 		
@@ -41,9 +42,10 @@ public class AdminSelectUserUpdate extends HttpServlet {
 		int scienceScore = Integer.parseInt(request.getParameter("scienceScore"));
 		int historyScore = Integer.parseInt(request.getParameter("historyScore"));
 		String studentNo = request.getParameter("studentNo");
+		int examNo = Integer.parseInt(request.getParameter("examNo"));
 		selectModifyThisUser selectModifyThisUser = new selectModifyThisUser();
 		
-		selectModifyThisUser.update(studentNo, koreanScore, englishScore, mathScore, scienceScore, historyScore);
+		selectModifyThisUser.update(studentNo, koreanScore, englishScore, mathScore, scienceScore, historyScore,examNo);
 		
 		selectModifyUsers selectModifyUsers = new selectModifyUsers();
 		ArrayList<UpdateCheck> updateCheckList = selectModifyUsers.updateCheck();

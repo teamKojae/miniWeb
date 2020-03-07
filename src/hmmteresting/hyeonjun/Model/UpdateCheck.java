@@ -16,8 +16,26 @@ public class UpdateCheck {
 	private int averageSocre;
 	private int state;
 	private String content;
+	private int modifyNo; 
+	private int examNo;
 	
 	
+	public int getExamNo() {
+		return examNo;
+	}
+
+	public void setExamNo(int examNo) {
+		this.examNo = examNo;
+	}
+
+	public int getModifyNo() {
+		return modifyNo;
+	}
+
+	public void setModifyNo(int modifyNo) {
+		this.modifyNo = modifyNo;
+	}
+
 	public String getContent() {
 		return content;
 	}
@@ -31,8 +49,8 @@ public class UpdateCheck {
 		return "UpdateCheck [studentNo=" + studentNo + ", studentName=" + studentName + ", examDate=" + examDate
 				+ ", examCode=" + examCode + ", koreanScore=" + koreanScore + ", mathScore=" + mathScore
 				+ ", englishScore=" + englishScore + ", scienceScore=" + scienceScore + ", historyScore=" + historyScore
-				+ ", totalScore=" + totalScore + ", averageSocre=" + averageSocre + ", state=" + state
-				+ "]";
+				+ ", totalScore=" + totalScore + ", averageSocre=" + averageSocre + ", state=" + state + ", content="
+				+ content + ", modifyNo=" + modifyNo + ", examNo=" + examNo + "]";
 	}
 	
 	public String getStudentNo() {

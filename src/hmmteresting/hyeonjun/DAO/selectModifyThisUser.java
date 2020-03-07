@@ -18,7 +18,7 @@ public class selectModifyThisUser {
 	
 	
 
-	public void update(String studentNo, int koreanScore, int englishScore, int mathScore, int scienceScore, int historyScore) {
+	public void update(String studentNo, int koreanScore, int englishScore, int mathScore, int scienceScore, int historyScore, int examNo) {
 		int totalScore = koreanScore + englishScore + mathScore + scienceScore + historyScore;
 		int averageScore = totalScore/5;
 		
@@ -36,9 +36,11 @@ public class selectModifyThisUser {
 					+ "historyScore =?, "
 					+ "totalScore =?, "
 					+ "averageScore =? "
-					+ "where grade.studentNo=?";
+					+ "where grade.studentNo=?"
+					+ " and grade.examNo = ?";
 			String updatesql = "update hmmteresting.modifyrequest set state = '0' "
 					+"where modifyrequest.studentNo=?";
+					
 			
 			pstmt = connection.prepareStatement(sql);
 			System.out.println("update"+pstmt);
@@ -51,11 +53,13 @@ public class selectModifyThisUser {
 			pstmt.setInt(6, totalScore);
 			pstmt.setInt(7, averageScore);
 			pstmt.setString(8, studentNo);
+			pstmt.setInt(9, examNo);
 			System.out.println(pstmt);
-			pstmt.executeUpdate();
 			
+			pstmt.executeUpdate();
 			pstmt = connection.prepareStatement(updatesql);
 			pstmt.setString(1, studentNo);
+			
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
