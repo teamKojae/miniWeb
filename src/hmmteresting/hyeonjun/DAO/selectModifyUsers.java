@@ -88,11 +88,11 @@ public class selectModifyUsers {
 					+ "from hmmteresting.grade "
 					+ "inner join hmmteresting.modifyrequest on grade.studentNo = modifyrequest.studentNo "
 					+ "inner join hmmteresting.student on grade.studentNo=student.studentNo "
-					+ "where grade.studentNo=?";
+					+ "where modifyrequest.state ='1' and grade.studentNo=? ";
 			
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, getstudentNo);
-			System.out.println("업뎃유저확인"+pstmt);
+			
 			resultset = pstmt.executeQuery();
 			while (resultset.next()) {
 				UpdateThisUser = new UpdateCheck();
