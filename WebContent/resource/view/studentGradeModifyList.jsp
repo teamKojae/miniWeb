@@ -138,7 +138,7 @@
 												<td>${modifyList.content}</td>
 												<td align=center style="font-weight: bold;"><c:set
 														var="state" value="${modifyList.state}" /> <c:choose>
-														<c:when test="${state eq '0'}">  											미처리
+														<c:when test="${state eq '1'}">  											미처리
 											</c:when>
 														<c:otherwise>
       										 처리 완료

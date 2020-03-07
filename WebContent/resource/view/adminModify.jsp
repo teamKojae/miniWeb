@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 
 
-<title>Insert title here</title>
+<title>hmmteresting</title>
 <!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminStyle.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/adminStyleCustom.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/plugins.css">
@@ -55,7 +55,7 @@
 				<div class="col-md-1"></div>
 				<ul class="kt-menu__nav ">
 					<li class="kt-menu__item fas fa-home "><label
-						class="kt-menu__link ">HOME</label></li>
+						class="kt-menu__link "><a href="/galaxy/hosting/bitcamp">HOME</a></label></li>
 
 					<li class="kt-menu__item fas fa-tools"><label
 						class="kt-menu__link " onclick="location.href='/AdminUserUpdate.do'" >수정요청</label><span></span>

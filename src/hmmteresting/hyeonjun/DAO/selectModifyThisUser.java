@@ -41,8 +41,7 @@ public class selectModifyThisUser {
 					+"where modifyrequest.studentNo=?";
 			
 			pstmt = connection.prepareStatement(sql);
-			System.out.println("update"+pstmt);
-			
+
 			pstmt.setInt(1, koreanScore);
 			pstmt.setInt(2, englishScore);
 			pstmt.setInt(3, mathScore);
@@ -51,7 +50,7 @@ public class selectModifyThisUser {
 			pstmt.setInt(6, totalScore);
 			pstmt.setInt(7, averageScore);
 			pstmt.setString(8, studentNo);
-			System.out.println(pstmt);
+
 			pstmt.executeUpdate();
 			
 			pstmt = connection.prepareStatement(updatesql);

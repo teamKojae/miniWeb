@@ -34,6 +34,7 @@ public class selectModifyUsers {
 					+ "inner join hmmteresting.student on grade.studentNo = student.studentNo "
 					+ "inner join hmmteresting.exam on grade.examNo = exam.examNo "
 					+ "inner join hmmteresting.modifyrequest on grade.studentNo = modifyrequest.studentNo "
+					+ "where modifyrequest.state is not null "
 					+ "order by modifyrequest.state desc";
 			pstmt = connection.prepareStatement(sql);
 			resultset = pstmt.executeQuery();
@@ -91,7 +92,7 @@ public class selectModifyUsers {
 			
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, getstudentNo);
-			System.out.println("업뎃유저확인"+pstmt);
+
 			resultset = pstmt.executeQuery();
 			while (resultset.next()) {
 				UpdateThisUser = new UpdateCheck();
