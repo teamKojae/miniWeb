@@ -39,7 +39,7 @@ if(sessions.getAttribute("managerId") == null){
 
 	<div id="kt_header"
 		class="kt-header kt-grid kt-grid--ver  kt-header--fixed ">
-		<!-- begin: Header Menu -->
+		<%-- begin: Header Menu --%>
 		<button class="kt-header-menu-wrapper-close"
 			id="kt_header_menu_mobile_close_btn">
 			<i class="la la-close"></i>
@@ -93,17 +93,6 @@ if(sessions.getAttribute("managerId") == null){
 										<button type="submit" class="btn btn-brand btn-elevate btn-icon-sm">보내기</button>
 									</div>
 									</form>
-									
-								<!-- 	<script type="text/javascript">
-									$('input[type="file"]').change(function(e){
-										var fileValue = $("#fileUpload").val();
-										var fileName = e.target.files[0].name;
-										var fileaa = e.target.files[0].path;
-										console.log(fileValue);
-										console.log(fileName);
-										console.log(aa);
-									});
-									</script> -->
 							</div>
 						</div>
 					</div>
