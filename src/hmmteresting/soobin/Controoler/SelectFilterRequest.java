@@ -31,7 +31,7 @@ public class SelectFilterRequest extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
+		
 		List<ModelViewBean> list = new ArrayList<ModelViewBean>();
 			
 		String studentName = request.getParameter("studentName");
@@ -52,7 +52,7 @@ public class SelectFilterRequest extends HttpServlet {
 		stringBuffer.append(obj.toString());
 		request.setAttribute("list", list);
 		String gson = new Gson().toJson(obj);
-
+		
 		response.getWriter().write(gson);
 
 //		printWriter.write(stringBuffer.toString());

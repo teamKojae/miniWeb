@@ -21,7 +21,7 @@ public class studentDAO {
 	//dao객체 생성시 db 커넥트
 	public studentDAO(){
 		try {
-			String dbURL = "jdbc:mysql://localhost/hmmteresting";
+			String dbURL = "jdbc:mysql://54.180.142.10:3306/hmmteresting?characterEncoding=utf8";
 			String dbID = "root";
 			String dbPassword = "1234";
 			Class.forName("com.mysql.jdbc.Driver").newInstance();

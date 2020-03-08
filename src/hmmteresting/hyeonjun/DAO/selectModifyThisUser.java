@@ -26,7 +26,7 @@ public class selectModifyThisUser {
 		PreparedStatement pstmt = null;
 
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
+			connection = DriverManager.getConnection("jdbc:mysql://54.180.142.10:3306/hmmteresting?characterEncoding=utf8", "root", "1234");
 			
 			String sql = "update hmmteresting.grade set "
 					+ "koreanScore =?, "

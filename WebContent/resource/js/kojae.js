@@ -8,8 +8,8 @@ $(function() {
 	$(document).ready(function() {
 		$("table").bind('click', function() {
 			$("table").tablesorter();
-		})
-	});
+		});
+	})
 	
 	$.ajax({
 		url:"/CheckModifyCount.do",
@@ -26,7 +26,6 @@ function getLocationAjax() {
 			'click',
 			function(event) {
 				event.preventDefault();
-				// var str = $("#examDate").serialize();
 				$.ajax({
 					url : "/FilterGetExam.do",
 					type : 'POST',
@@ -52,6 +51,7 @@ function getSchoolNames() {
 	$('#locationName').bind(
 			'change',
 			function(event) {
+				console.log($('#locationName').val());
 				event.preventDefault();
 				$.ajax({
 					url : "/FilterGetExam.do",

@@ -28,7 +28,7 @@ public class selectModifyUsers {
 		ArrayList<UpdateCheck> UpdateCheckList = new ArrayList<UpdateCheck>();
 
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
+			connection = DriverManager.getConnection("jdbc:mysql://54.180.142.10:3306/hmmteresting?characterEncoding=utf8", "root", "1234");
 			String sql = "SELECT grade.*, student.studentName, exam.examDate, exam.examCode, "
 					+ "modifyrequest.state , modifyrequest.modifyNo " 
 					+"FROM hmmteresting.grade, student, modifyrequest, exam "
@@ -87,7 +87,7 @@ public class selectModifyUsers {
 		UpdateCheck UpdateThisUser = null;
 
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
+			connection = DriverManager.getConnection("jdbc:mysql://54.180.142.10:3306/hmmteresting?characterEncoding=utf8", "root", "1234");
 			
 			String sql =  " SELECT grade.*, student.studentName, modifyrequest.content,"
 					+ " modifyrequest.state , modifyrequest.modifyNo "

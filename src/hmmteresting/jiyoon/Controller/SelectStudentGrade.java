@@ -22,6 +22,7 @@ public class SelectStudentGrade extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		HttpSession httpSession = request.getSession(false);
 		String studentNo = (String) httpSession.getAttribute("studentNo");
 		StudentDTO student = (StudentDTO) httpSession.getAttribute("student");

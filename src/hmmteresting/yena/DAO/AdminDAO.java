@@ -20,7 +20,7 @@ public class AdminDAO {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			conn=DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", dbId, dbPw);
+			conn=DriverManager.getConnection("jdbc:mysql://54.180.142.10:3306/hmmteresting?characterEncoding=utf8", dbId, dbPw);
 			String sql ="SELECT managerId, managerPassword FROM hmmteresting.manager WHERE managerId=? and managerPassword=?"; 
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, admin.getManagerId());

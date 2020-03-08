@@ -83,14 +83,11 @@ function ajax1(){
 
 }
 function ajax2() {
-	$("#kt_search")
-			.bind(
-					'click',
-					function(event) {
+	$("#kt_search").bind('click',function(event) {
+						console.log('하아ㅠㅠㅠ')
 						event.preventDefault();
 						var str = $("#form123").serialize();
-						$
-								.ajax({
+						$.ajax({
 									url : "/SelectFilterRequest.do",
 									type : 'POST',
 									contentType : "application/x-www-form-urlencoded; charset=UTF-8",

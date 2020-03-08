@@ -41,9 +41,13 @@ import java.util.Enumeration;
 					AdminProcess process = new AdminProcess();
 					String locationName = request.getParameter("locationName");
 					
+					System.out.println(locationName);
 					List<SchoolBean> list = null;
 					if(locationName==null) list = process.getLocation();
-					else list = process.getSchoolName(locationName);
+					else {
+						list = process.getSchoolName(locationName);
+						System.out.println(list);	
+					}
 					
 					response.getWriter().write(new Gson().toJson(list));
 					

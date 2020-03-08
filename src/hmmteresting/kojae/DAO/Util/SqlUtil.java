@@ -21,7 +21,7 @@ public class SqlUtil {
 		try {
 			 
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/hmmteresting?", "root", "1234");
+			connection = DriverManager.getConnection("jdbc:mysql://54.180.142.10:3306/hmmteresting?characterEncoding=utf8", "root", "1234");
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -84,6 +84,7 @@ public class SqlUtil {
 				schoolBean = new SchoolBean();
 				schoolBean.setLocationName(resultSet.getString(1));
 				schoolBean.setSchoolName(resultSet.getString(2));
+				System.out.println(resultSet.getString(1));
 				list.add(schoolBean);
 			}
 		} catch (SQLException e) {
@@ -116,4 +117,5 @@ public class SqlUtil {
 		}
 
 	}
+	
 }

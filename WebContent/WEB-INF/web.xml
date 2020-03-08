@@ -45,11 +45,11 @@
 
 	<!--  이예나 -->
 	<servlet>
-		<servlet-name>adminlogin</servlet-name>
+		<servlet-name>adminLogin</servlet-name>
 		<jsp-file>/resource/view/adminLogin.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>adminlogin</servlet-name>
+		<servlet-name>adminLogin</servlet-name>
 		<url-pattern>/galaxy/hosting/bitcamp/login</url-pattern>
 	</servlet-mapping>
 
