@@ -44,10 +44,8 @@ import java.util.Enumeration;
 					System.out.println(locationName);
 					List<SchoolBean> list = null;
 					if(locationName==null) list = process.getLocation();
-					else {
-						list = process.getSchoolName(locationName);
-						System.out.println(list);	
-					}
+					else list = process.getSchoolName(locationName);
+					
 					
 					response.getWriter().write(new Gson().toJson(list));
 					

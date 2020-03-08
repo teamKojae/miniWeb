@@ -150,7 +150,7 @@
 												<td class="sorting_1" tabindex="0">${studentGrades[0].studentNo}</td>
 												<td>${studentGrades[0].studentName}</td>
 												<td>${studentGrades[0].examDate}</td>
-												<td>${studentGrades[0].examNo}</td>
+												<td>${studentGrades[0].examCode}</td>
 												<td>${studentGrades[0].koreanScore}</td>
 												<td>${studentGrades[0].englishScore}</td>
 												<td>${studentGrades[0].mathScore}</td>
